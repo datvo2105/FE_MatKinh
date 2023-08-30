@@ -15,7 +15,7 @@ const Banner = () => {
                     <Slider {...settingSlider}>
                         <div className="slide">
                             <div className="blur-up lazyload bg-size">
-                                <img className="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/belle-banner1.jpg" src="assets/images/slideshow-banners/belle-banner1.jpg" alt="Shop Our New Collection" title="Shop Our New Collection" />
+                                <img className="blur-up lazyload bg-img" style={{width: "100vw", height:"100vh", objectFit: "cover"}} data-src="assets/images/slideshow-banners/home-mk-1.jpg" src="assets/images/slideshow-banners/home-mk-1.jpg" alt="Shop Our New Collection" title="Shop Our New Collection" />
                                 <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                                     <div className="slideshow__text-content bottom">
                                         <div className="wrap-caption center">
@@ -29,7 +29,7 @@ const Banner = () => {
                         </div>
                         <div className="slide">
                             <div className="blur-up lazyload bg-size">
-                                <img className="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/belle-banner2.jpg" src="assets/images/slideshow-banners/belle-banner2.jpg" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
+                                <img className="blur-up lazyload bg-img" style={{width: "100vw", height:"100vh", objectFit: "cover"}} data-src="assets/images/slideshow-banners/home-mk-2.jpg" src="assets/images/slideshow-banners/home-mk-2.jpg" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
                                 <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                                     <div className="slideshow__text-content bottom">
                                         <div className="wrap-caption center">

@@ -15,12 +15,19 @@ const Blog = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-6 col-lg-6">
               <div className="wrap-blog">
-                <a href="blog-left-sidebar.html" className="article__grid-image">
+                <a
+                  href="blog-left-sidebar.html"
+                  className="article__grid-image">
                   <img
                     src="assets/images/blog/post-img1.jpg"
                     alt="It's all about how you wear"
                     title="It's all about how you wear"
                     className="blur-up lazyloaded"
+                    style={{
+                      width: "272.25px",
+                      height: "272.25px",
+                      objectFit: "cover",
+                    }}
                   />
                 </a>
                 <div className="article__grid-meta article__grid-meta--has-image">
@@ -47,12 +54,19 @@ const Blog = () => {
             </div>
             <div className="col-12 col-sm-12 col-md-6 col-lg-6">
               <div className="wrap-blog">
-                <a href="blog-left-sidebar.html" className="article__grid-image">
+                <a
+                  href="blog-left-sidebar.html"
+                  className="article__grid-image">
                   <img
                     src="assets/images/blog/post-img2.jpg"
                     alt="27 Days of Spring Fashion Recap"
                     title="27 Days of Spring Fashion Recap"
                     className="blur-up lazyloaded"
+                    style={{
+                      width: "272.25px",
+                      height: "272.25px",
+                      objectFit: "cover",
+                    }}
                   />
                 </a>
                 <div className="article__grid-meta article__grid-meta--has-image">
@@ -89,7 +103,9 @@ const Blog = () => {
                 <li className="display-table-cell">
                   <i className="icon anm anm-truck-l"></i>
                   <h5>Free Shipping &amp; Return</h5>
-                  <span className="sub-text">Free shipping on all US orders</span>
+                  <span className="sub-text">
+                    Free shipping on all US orders
+                  </span>
                 </li>
                 <li className="display-table-cell">
                   <i className="icon anm anm-dollar-sign-r"></i>
@@ -99,7 +115,9 @@ const Blog = () => {
                 <li className="display-table-cell">
                   <i className="icon anm anm-comments-l"></i>
                   <h5>Online Support</h5>
-                  <span className="sub-text">We support online 24/7 on day</span>
+                  <span className="sub-text">
+                    We support online 24/7 on day
+                  </span>
                 </li>
                 <li className="display-table-cell">
                   <i className="icon anm anm-credit-card-front-r"></i>

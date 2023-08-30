@@ -16,7 +16,7 @@ const Header = () => {
               type="search"
               name="q"
               value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
+              onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Search entire store..."
               aria-label="Search"
               autoComplete="off"
@@ -95,7 +95,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header-wrap classicHeader animated d-flex">
+      <div className="header-wrap bg-white shadow bg-body-tertiary classicHeader animated d-flex">
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
@@ -1620,6 +1620,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
+      <div className="p-2 mt-5"></div>
     </>
   );
 };

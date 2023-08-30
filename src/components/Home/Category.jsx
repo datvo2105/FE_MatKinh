@@ -23,10 +23,15 @@ const Category = () => {
                     src="assets/images/collection/fashion.jpg"
                     alt="Fashion"
                     className="blur-up lazyload"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Fashion
+                      Pokemon Frame Collection
                     </h3>
                   </div>
                 </a>
@@ -40,10 +45,15 @@ const Category = () => {
                     data-src="assets/images/collection/cosmetic.jpg"
                     src="assets/images/collection/cosmetic.jpg"
                     alt="Cosmetic"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Cosmetic
+                      OWNDAYS
                     </h3>
                   </div>
                 </a>
@@ -57,10 +67,15 @@ const Category = () => {
                     src="assets/images/collection/bag.jpg"
                     alt="Bag"
                     className="blur-up lazyload"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Bag
+                      AIR Uitem
                     </h3>
                   </div>
                 </a>
@@ -74,10 +89,15 @@ const Category = () => {
                     src="assets/images/collection/accessories.jpg"
                     alt="Accessories"
                     className="blur-up lazyload"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Accessories
+                      NICHE
                     </h3>
                   </div>
                 </a>
@@ -91,10 +111,15 @@ const Category = () => {
                     src="assets/images/collection/shoes.jpg"
                     alt="Shoes"
                     className="blur-up lazyload"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Shoes
+                    AIR FIT
                     </h3>
                   </div>
                 </a>
@@ -108,10 +133,15 @@ const Category = () => {
                     src="assets/images/collection/jewellry.jpg"
                     alt="Jewellry"
                     className="blur-up lazyload"
+                    style={{
+                      height: "356.5px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="collection-grid-item__title-wrapper">
                     <h3 className="collection-grid-item__title btn btn--secondary no-border">
-                      Jewellry
+                    Based
                     </h3>
                   </div>
                 </a>
