@@ -2,7 +2,7 @@ import React from "react";
 
 const Content = () => {
   return (
-    <div id="page-content">
+    <>
       <div className="page section-header text-center mb-0">
         <div className="page-title">
           <div className="wrapper">
@@ -30,7 +30,10 @@ const Content = () => {
                 <div className="widget-content">
                   <ul className="sidebar_categories">
                     <li className="lvl-1 ">
-                      <a href="http://annimexweb.com/" className="site-nav lvl-1">
+                      <a
+                        href="http://annimexweb.com/"
+                        className="site-nav lvl-1"
+                      >
                         Beauty
                       </a>
                     </li>
@@ -331,7 +334,8 @@ const Content = () => {
                 method="get"
                 className="input-group search-header search"
                 role="search"
-                style={{position: "relative"}}>
+                style={{ position: "relative" }}
+              >
                 <input
                   className="search-header__input search__input input-group__field"
                   type="search"
@@ -366,7 +370,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -404,7 +409,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -440,7 +446,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -476,7 +483,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -511,7 +519,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -546,7 +555,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -581,7 +591,8 @@ const Content = () => {
                   </h2>
                   <ul className="publish-detail">
                     <li>
-                      <i className="anm anm-user-al" aria-hidden="true"></i> User
+                      <i className="anm anm-user-al" aria-hidden="true"></i>{" "}
+                      User
                     </li>
                     <li>
                       <i className="icon anm anm-clock-r"></i>{" "}
@@ -623,7 +634,7 @@ const Content = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

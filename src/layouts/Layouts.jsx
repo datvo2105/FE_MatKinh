@@ -1,9 +1,7 @@
-import React from "react";
 import Header from "../layouts/Header";
-import Product from "../components/Shop/Product";
 import Footer from "../layouts/Footer";
 
-const SingleProduct = () => {
+const Layouts = ({ content }) => {
   return (
     <div className="template-collection belle">
       <div className="template-index belle template-index-belle">
@@ -12,7 +10,7 @@ const SingleProduct = () => {
       </div> */}
         <div className="pageWapper">
           <Header />
-          <Product />
+          <div id="page-content">{content}</div>
           <Footer />
         </div>
       </div>
@@ -20,4 +18,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default Layouts;

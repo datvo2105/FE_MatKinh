@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [isSearch, setIsSearch] = useState(false);
 
   return (
     <>
-      <div className="search">
+      <div className={`search ${isSearch ? "search--opened" : ""}`}>
         <div className="search__form">
           <form className="search-bar__form" action="#">
             <button className="go-btn search__button" type="submit">
@@ -22,324 +24,162 @@ const Header = () => {
               autoComplete="off"
             />
           </form>
-          <button type="button" className="search-trigger close-btn">
+          <button
+            type="button"
+            className="search-trigger close-btn"
+            onClick={() => {
+              setIsSearch(false);
+            }}
+          >
             <i className="anm anm-times-l"></i>
           </button>
-        </div>
-      </div>
-      <div className="top-header">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-10 col-sm-8 col-md-5 col-lg-4">
-              <div className="currency-picker">
-                <span className="selected-currency">USD</span>
-                <ul id="currencies">
-                  <li data-currency="INR" className="">
-                    INR
-                  </li>
-                  <li data-currency="GBP" className="">
-                    GBP
-                  </li>
-                  <li data-currency="CAD" className="">
-                    CAD
-                  </li>
-                  <li data-currency="USD" className="selected">
-                    USD
-                  </li>
-                  <li data-currency="AUD" className="">
-                    AUD
-                  </li>
-                  <li data-currency="EUR" className="">
-                    EUR
-                  </li>
-                  <li data-currency="JPY" className="">
-                    JPY
-                  </li>
-                </ul>
-              </div>
-              <div className="language-dropdown">
-                <span className="language-dd">English</span>
-                <ul id="language">
-                  <li className="">German</li>
-                  <li className="">French</li>
-                </ul>
-              </div>
-              <p className="phone-no">
-                <i className="anm anm-phone-s"></i> +440 0(111) 044 833
-              </p>
-            </div>
-            <div className="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
-              <div className="text-center">
-                <p className="top-header_middle-text">
-                  {" "}
-                  Worldwide Express Shipping
-                </p>
-              </div>
-            </div>
-            <div className="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
-              <span className="user-menu d-block d-lg-none">
-                <i className="anm anm-user-al" aria-hidden="true"></i>
-              </span>
-              <ul className="customer-links list-inline">
-                <li>
-                  <a href="login.html">Login</a>
-                </li>
-                <li>
-                  <a href="register.html">Create Account</a>
-                </li>
-                <li>
-                  <a href="wishlist.html">Wishlist</a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
       <div className="header-wrap bg-white shadow bg-body-tertiary classicHeader animated d-flex">
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
-              <a href="index.html">
+              <Link to="/">
                 <img
                   src="assets/images/logo.svg"
                   alt="Belle Multipurpose Html Template"
                   title="Belle Multipurpose Html Template"
                 />
-              </a>
+              </Link>
             </div>
             <div className="col-2 col-sm-3 col-md-3 col-lg-8">
               <div className="d-block d-lg-none">
                 <button
                   type="button"
-                  className="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                  className="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open"
+                >
                   <i className="icon anm anm-times-l"></i>
                   <i className="anm anm-bars-r"></i>
                 </button>
               </div>
               <nav className="grid__item" id="AccessibleNav">
                 <ul id="siteNav" className="site-nav medium center hidearrow">
+                  <li className="lvl1">
+                    <Link to="/">Trang Chủ</Link>
+                  </li>
                   <li className="lvl1 parent megamenu">
-                    <a href="#">
-                      Home <i className="anm anm-angle-down-l"></i>
-                    </a>
+                    <Link to="/shop">
+                      Cửa Hàng<i className="anm anm-angle-down-l"></i>
+                    </Link>
                     <div className="megamenu style1">
                       <ul className="grid mmWrapper">
                         <li className="grid__item large-up--one-whole">
                           <ul className="grid">
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Home Group 1
-                              </a>
+                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
+                              <Link to="/sunglasses" className="site-nav lvl-1">
+                                Kính Mát
+                              </Link>
                               <ul className="subLinks">
                                 <li className="lvl-2">
-                                  <a
-                                    href="index.html"
-                                    className="site-nav lvl-2">
-                                    Home 1 - Classic
-                                  </a>
+                                  <Link
+                                    to="/sunglasses/sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Sale
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home2-default.html"
-                                    className="site-nav lvl-2">
-                                    Home 2 - Default
-                                  </a>
+                                  <Link
+                                    to="/sunglasses/hot-sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Bán Chạy
+                                    <span className="lbl nm_label3 ml-1">
+                                      Hot
+                                    </span>
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home15-funiture.html"
-                                    className="site-nav lvl-2">
-                                    Home 15 - Furniture{" "}
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home3-boxed.html"
-                                    className="site-nav lvl-2">
-                                    Home 3 - Boxed
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home4-fullwidth.html"
-                                    className="site-nav lvl-2">
-                                    Home 4 - Fullwidth
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home5-cosmetic.html"
-                                    className="site-nav lvl-2">
-                                    Home 5 - Cosmetic
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home6-modern.html"
-                                    className="site-nav lvl-2">
-                                    Home 6 - Modern
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home7-shoes.html"
-                                    className="site-nav lvl-2">
-                                    Home 7 - Shoes
-                                  </a>
+                                  <Link
+                                    to="/sunglasses/new"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Hàng Mới Về
+                                    <span className="lbl nm_label1 ml-1">
+                                      New
+                                    </span>
+                                  </Link>
                                 </li>
                               </ul>
                             </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Home Group 2
-                              </a>
+                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
+                              <Link to="/glasses" className="site-nav lvl-1">
+                                Gọng Kính
+                              </Link>
                               <ul className="subLinks">
                                 <li className="lvl-2">
-                                  <a
-                                    href="home8-jewellery.html"
-                                    className="site-nav lvl-2">
-                                    Home 8 - Jewellery
-                                  </a>
+                                  <Link
+                                    to="/glasses/sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Sale
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home9-parallax.html"
-                                    className="site-nav lvl-2">
-                                    Home 9 - Parallax
-                                  </a>
+                                  <Link
+                                    to="/glasses/hot-sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Bán Chạy
+                                    <span className="lbl nm_label3 ml-1">
+                                      Hot
+                                    </span>
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home10-minimal.html"
-                                    className="site-nav lvl-2">
-                                    Home 10 - Minimal
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home11-grid.html"
-                                    className="site-nav lvl-2">
-                                    Home 11 - Grid
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home12-category.html"
-                                    className="site-nav lvl-2">
-                                    Home 12 - Category
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home13-auto-parts.html"
-                                    className="site-nav lvl-2">
-                                    Home 13 - Auto Parts
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home14-bags.html"
-                                    className="site-nav lvl-2">
-                                    Home 14 - Bags{" "}
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
+                                  <Link
+                                    to="/glasses/new"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Hàng Mới Về
+                                    <span className="lbl nm_label1 ml-1">
+                                      {" "}
+                                      New
+                                    </span>
+                                  </Link>
                                 </li>
                               </ul>
                             </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                New Sections
-                              </a>
+                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
+                              <Link to="/lenses" className="site-nav lvl-1">
+                                Tròng Kính
+                              </Link>
                               <ul className="subLinks">
                                 <li className="lvl-2">
-                                  <a
-                                    href="home11-grid.html"
-                                    className="site-nav lvl-2">
-                                    Image Gallery
-                                  </a>
+                                  <Link
+                                    to="/lenses/sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Sale
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home5-cosmetic.html"
-                                    className="site-nav lvl-2">
-                                    Featured Product
-                                  </a>
+                                  <Link
+                                    to="/lenses/hot-sale"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Bán Chạy
+                                    <span className="lbl nm_label3 ml-1">
+                                      Hot
+                                    </span>
+                                  </Link>
                                 </li>
                                 <li className="lvl-2">
-                                  <a
-                                    href="home7-shoes.html"
-                                    className="site-nav lvl-2">
-                                    Columns with Items
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home6-modern.html"
-                                    className="site-nav lvl-2">
-                                    Text columns with images
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home2-default.html"
-                                    className="site-nav lvl-2">
-                                    Products Carousel
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="home9-parallax.html"
-                                    className="site-nav lvl-2">
-                                    Parallax Banner
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                New Features
-                              </a>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <a
-                                    href="home13-auto-parts.html"
-                                    className="site-nav lvl-2">
-                                    Top Information Bar{" "}
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    Age Varification{" "}
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    Footer Blocks
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    2 New Megamenu style
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    Show Total Savings{" "}
-                                    <span className="lbl nm_label3">Hot</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    New Custom Icons
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a href="#" className="site-nav lvl-2">
-                                    Auto Currency
-                                  </a>
+                                  <Link
+                                    to="/lenses/new"
+                                    className="site-nav lvl-2"
+                                  >
+                                    Hàng Mới Về
+                                    <span className="lbl nm_label1 ml-1">
+                                      {" "}
+                                      New
+                                    </span>
+                                  </Link>
                                 </li>
                               </ul>
                             </li>
@@ -348,509 +188,43 @@ const Header = () => {
                       </ul>
                     </div>
                   </li>
+                  <li className="lvl1">
+                    <Link to="/blog">Bài Viết</Link>
+                  </li>
                   <li className="lvl1 parent megamenu">
                     <a href="#">
-                      Shop <i className="anm anm-angle-down-l"></i>
+                      Thông Tin <i className="anm anm-angle-down-l"></i>
                     </a>
                     <div className="megamenu style4">
                       <ul className="grid grid--uniform mmWrapper">
-                        <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                          <a href="#" className="site-nav lvl-1">
-                            Shop Pages
-                          </a>
+                        <li className="grid__item lvl-1 col-md-5 col-lg-5">
                           <ul className="subLinks">
                             <li className="lvl-2">
-                              <a
-                                href="shop-left-sidebar.html"
-                                className="site-nav lvl-2">
-                                Left Sidebar
-                              </a>
+                              <Link to="/about" className="site-nav lvl-2">
+                                Về Chúng Tôi
+                              </Link>
                             </li>
                             <li className="lvl-2">
-                              <a
-                                href="shop-right-sidebar.html"
-                                className="site-nav lvl-2">
-                                Right Sidebar
-                              </a>
+                              <Link to="/faqs" className="site-nav lvl-2">
+                                Câu Hỏi Thường Gặp
+                              </Link>
                             </li>
                             <li className="lvl-2">
-                              <a
-                                href="shop-fullwidth.html"
-                                className="site-nav lvl-2">
-                                Fullwidth
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-3.html"
-                                className="site-nav lvl-2">
-                                3 items per row
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-4.html"
-                                className="site-nav lvl-2">
-                                4 items per row
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-5.html"
-                                className="site-nav lvl-2">
-                                5 items per row
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-6.html"
-                                className="site-nav lvl-2">
-                                6 items per row
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-7.html"
-                                className="site-nav lvl-2">
-                                7 items per row
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-listview.html"
-                                className="site-nav lvl-2">
-                                Product Listview
-                              </a>
+                              <Link to="/contact" className="site-nav lvl-2">
+                                Liên Hệ
+                              </Link>
                             </li>
                           </ul>
                         </li>
-                        <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                          <a href="#" className="site-nav lvl-1">
-                            Shop Features
-                          </a>
-                          <ul className="subLinks">
-                            <li className="lvl-2">
-                              <a
-                                href="shop-left-sidebar.html"
-                                className="site-nav lvl-2">
-                                Product Countdown{" "}
-                                <span className="lbl nm_label3">Hot</span>
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-right-sidebar.html"
-                                className="site-nav lvl-2">
-                                Infinite Scrolling
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-3.html"
-                                className="site-nav lvl-2">
-                                Pagination - Classic
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-6.html"
-                                className="site-nav lvl-2">
-                                Pagination - Load More
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="product-labels.html"
-                                className="site-nav lvl-2">
-                                Dynamic Product Labels
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="product-swatches-style.html"
-                                className="site-nav lvl-2">
-                                Product Swatches{" "}
-                                <span className="lbl nm_label2">Sale</span>
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="product-hover-info.html"
-                                className="site-nav lvl-2">
-                                Product Hover Info
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-grid-3.html"
-                                className="site-nav lvl-2">
-                                Product Reviews
-                              </a>
-                            </li>
-                            <li className="lvl-2">
-                              <a
-                                href="shop-left-sidebar.html"
-                                className="site-nav lvl-2">
-                                Discount Label{" "}
-                                <span className="lbl nm_label1">New</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="grid__item lvl-1 col-md-6 col-lg-6">
-                          <a href="#">
-                            <img
-                              src="assets/images/megamenu-bg1.jpg"
-                              alt=""
-                              title=""
-                            />
-                          </a>
+                        <li className="grid__item lvl-1 col-md-7 col-lg-7">
+                          <img
+                            src="assets/images/megamenu-bg1.jpg"
+                            alt=""
+                            title=""
+                          />
                         </li>
                       </ul>
                     </div>
-                  </li>
-                  <li className="lvl1 parent megamenu">
-                    <a href="#">
-                      Product <i className="anm anm-angle-down-l"></i>
-                    </a>
-                    <div className="megamenu style2">
-                      <ul className="grid mmWrapper">
-                        <li className="grid__item one-whole">
-                          <ul className="grid">
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Product Page
-                              </a>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-layout-1.html"
-                                    className="site-nav lvl-2">
-                                    Product Layout 1
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-layout-2.html"
-                                    className="site-nav lvl-2">
-                                    Product Layout 2
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-layout-3.html"
-                                    className="site-nav lvl-2">
-                                    Product Layout 3
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-left-thumbs.html"
-                                    className="site-nav lvl-2">
-                                    Product With Left Thumbs
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-right-thumbs.html"
-                                    className="site-nav lvl-2">
-                                    Product With Right Thumbs
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-bottom-thumbs.html"
-                                    className="site-nav lvl-2">
-                                    Product With Bottom Thumbs
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Product Features
-                              </a>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <a
-                                    href="short-description.html"
-                                    className="site-nav lvl-2">
-                                    Short Description
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-countdown.html"
-                                    className="site-nav lvl-2">
-                                    Product Countdown
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-video.html"
-                                    className="site-nav lvl-2">
-                                    Product Video
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-quantity-message.html"
-                                    className="site-nav lvl-2">
-                                    Product Quantity Message
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-visitor-sold-count.html"
-                                    className="site-nav lvl-2">
-                                    Product Visitor/Sold Count
-                                    <span className="lbl nm_label3">Hot</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-zoom-lightbox.html"
-                                    className="site-nav lvl-2">
-                                    Product Zoom/Lightbox
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Product Features
-                              </a>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-variant-image.html"
-                                    className="site-nav lvl-2">
-                                    Product with Variant Image
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-color-swatch.html"
-                                    className="site-nav lvl-2">
-                                    Product with Color Swatch
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-image-swatch.html"
-                                    className="site-nav lvl-2">
-                                    Product with Image Swatch
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-dropdown.html"
-                                    className="site-nav lvl-2">
-                                    Product with Dropdown
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-with-rounded-square.html"
-                                    className="site-nav lvl-2">
-                                    Product with Rounded Square
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="swatches-style.html"
-                                    className="site-nav lvl-2">
-                                    Product Swatches All Style
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-3 col-lg-3">
-                              <a href="#" className="site-nav lvl-1">
-                                Product Features
-                              </a>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-accordion.html"
-                                    className="site-nav lvl-2">
-                                    Product Accordion
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-pre-orders.html"
-                                    className="site-nav lvl-2">
-                                    Product Pre-orders
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-labels-detail.html"
-                                    className="site-nav lvl-2">
-                                    Product Labels
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-discount.html"
-                                    className="site-nav lvl-2">
-                                    Product Discount In %
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="product-shipping-message.html"
-                                    className="site-nav lvl-2">
-                                    Product Shipping Message
-                                  </a>
-                                </li>
-                                <li className="lvl-2">
-                                  <a
-                                    href="size-guide.html"
-                                    className="site-nav lvl-2">
-                                    Size Guide
-                                    <span className="lbl nm_label1">New</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="grid__item large-up--one-whole imageCol">
-                          <a href="#">
-                            <img src="assets/images/megamenu-bg2.jpg" alt="" />
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li className="lvl1 parent dropdown">
-                    <a href="#">
-                      Pages <i className="anm anm-angle-down-l"></i>
-                    </a>
-                    <ul className="dropdown">
-                      <li>
-                        <a href="cart-variant1.html" className="site-nav">
-                          Cart Page <i className="anm anm-angle-right-l"></i>
-                        </a>
-                        <ul className="dropdown">
-                          <li>
-                            <a href="cart-variant1.html" className="site-nav">
-                              Cart Variant1
-                            </a>
-                          </li>
-                          <li>
-                            <a href="cart-variant2.html" className="site-nav">
-                              Cart Variant2
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="compare-variant1.html" className="site-nav">
-                          Compare Product{" "}
-                          <i className="anm anm-angle-right-l"></i>
-                        </a>
-                        <ul className="dropdown">
-                          <li>
-                            <a
-                              href="compare-variant1.html"
-                              className="site-nav">
-                              Compare Variant1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="compare-variant2.html"
-                              className="site-nav">
-                              Compare Variant2
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="checkout.html" className="site-nav">
-                          Checkout
-                        </a>
-                      </li>
-                      <li>
-                        <a href="about-us.html" className="site-nav">
-                          About Us <span className="lbl nm_label1">New</span>{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="contact-us.html" className="site-nav">
-                          Contact Us
-                        </a>
-                      </li>
-                      <li>
-                        <a href="faqs.html" className="site-nav">
-                          FAQs
-                        </a>
-                      </li>
-                      <li>
-                        <a href="lookbook1.html" className="site-nav">
-                          Lookbook<i className="anm anm-angle-right-l"></i>
-                        </a>
-                        <ul>
-                          <li>
-                            <a href="lookbook1.html" className="site-nav">
-                              Style 1
-                            </a>
-                          </li>
-                          <li>
-                            <a href="lookbook2.html" className="site-nav">
-                              Style 2
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="404.html" className="site-nav">
-                          404
-                        </a>
-                      </li>
-                      <li>
-                        <a href="coming-soon.html" className="site-nav">
-                          Coming soon <span className="lbl nm_label1">New</span>{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="lvl1 parent dropdown">
-                    <a href="#">
-                      Blog <i className="anm anm-angle-down-l"></i>
-                    </a>
-                    <ul className="dropdown">
-                      <li>
-                        <a href="blog-left-sidebar.html" className="site-nav">
-                          Left Sidebar
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-right-sidebar.html" className="site-nav">
-                          Right Sidebar
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-fullwidth.html" className="site-nav">
-                          Fullwidth
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-grid-view.html" className="site-nav">
-                          Gridview
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-article.html" className="site-nav">
-                          Article
-                        </a>
-                      </li>
-                    </ul>
                   </li>
                   <li className="lvl1">
                     <a href="#">
@@ -878,7 +252,8 @@ const Header = () => {
                   <span
                     id="CartCount"
                     className="site-header__cart-count"
-                    data-cart-render="item_count">
+                    data-cart-render="item_count"
+                  >
                     2
                   </span>
                 </a>
@@ -908,10 +283,12 @@ const Header = () => {
                             <span className="label">Qty:</span>
                             <a
                               className="qtyBtn minus"
-                              href="event.preventDefault()">
+                              href="event.preventDefault()"
+                            >
                               <i
                                 className="fa anm anm-minus-r"
-                                aria-hidden="true"></i>
+                                aria-hidden="true"
+                              ></i>
                             </a>
                             <input
                               type="text"
@@ -921,10 +298,12 @@ const Header = () => {
                             />
                             <a
                               className="qtyBtn plus"
-                              href="event.preventDefault()">
+                              href="event.preventDefault()"
+                            >
                               <i
                                 className="fa anm anm-plus-r"
-                                aria-hidden="true"></i>
+                                aria-hidden="true"
+                              ></i>
                             </a>
                           </div>
                         </div>
@@ -959,10 +338,12 @@ const Header = () => {
                             <span className="label">Qty:</span>
                             <a
                               className="qtyBtn minus"
-                              href="event.preventDefault()">
+                              href="event.preventDefault()"
+                            >
                               <i
                                 className="fa anm anm-minus-r"
-                                aria-hidden="true"></i>
+                                aria-hidden="true"
+                              ></i>
                             </a>
                             <input
                               type="text"
@@ -972,10 +353,12 @@ const Header = () => {
                             />
                             <a
                               className="qtyBtn plus"
-                              href="event.preventDefault()">
+                              href="event.preventDefault()"
+                            >
                               <i
                                 className="fa anm anm-plus-r"
-                                aria-hidden="true"></i>
+                                aria-hidden="true"
+                              ></i>
                             </a>
                           </div>
                         </div>
@@ -997,12 +380,14 @@ const Header = () => {
                     <div className="buttonSet text-center">
                       <a
                         href="cart.html"
-                        className="btn btn-secondary btn--small">
+                        className="btn btn-secondary btn--small"
+                      >
                         View Cart
                       </a>
                       <a
                         href="checkout.html"
-                        className="btn btn-secondary btn--small">
+                        className="btn btn-secondary btn--small"
+                      >
                         Checkout
                       </a>
                     </div>
@@ -1010,7 +395,13 @@ const Header = () => {
                 </div>
               </div>
               <div className="site-header__search">
-                <button type="button" className="search-trigger">
+                <button
+                  type="button"
+                  className="search-trigger"
+                  onClick={() => {
+                    setIsSearch(true);
+                  }}
+                >
                   <i className="icon anm anm-search-l"></i>
                 </button>
               </div>
@@ -1337,21 +728,24 @@ const Header = () => {
                   <li>
                     <a
                       href="product-with-left-thumbs.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product With Left Thumbs
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-with-right-thumbs.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product With Right Thumbs
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-with-bottom-thumbs.html"
-                      className="site-nav last">
+                      className="site-nav last"
+                    >
                       Product With Bottom Thumbs
                     </a>
                   </li>
@@ -1380,21 +774,24 @@ const Header = () => {
                   <li>
                     <a
                       href="product-quantity-message.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product Quantity Message
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-visitor-sold-count.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product Visitor/Sold Count
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-zoom-lightbox.html"
-                      className="site-nav last">
+                      className="site-nav last"
+                    >
                       Product Zoom/Lightbox
                     </a>
                   </li>
@@ -1408,21 +805,24 @@ const Header = () => {
                   <li>
                     <a
                       href="product-with-variant-image.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product with Variant Image
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-with-color-swatch.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product with Color Swatch
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-with-image-swatch.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product with Image Swatch
                     </a>
                   </li>
@@ -1434,7 +834,8 @@ const Header = () => {
                   <li>
                     <a
                       href="product-with-rounded-square.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product with Rounded Square
                     </a>
                   </li>
@@ -1473,14 +874,16 @@ const Header = () => {
                   <li>
                     <a
                       href="product-shipping-message.html"
-                      className="site-nav">
+                      className="site-nav"
+                    >
                       Product Shipping Message
                     </a>
                   </li>
                   <li>
                     <a
                       href="product-shipping-message.html"
-                      className="site-nav last">
+                      className="site-nav last"
+                    >
                       Size Guide
                     </a>
                   </li>
@@ -1620,7 +1023,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="p-2 mt-5"></div>
     </>
   );
 };
