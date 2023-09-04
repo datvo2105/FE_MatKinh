@@ -1,51 +1,72 @@
-import React from 'react'
-import Slider from "react-slick"
+import React from "react";
+import Slider from "react-slick";
 
 const Banner = () => {
-    const settingSlider = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
-    return (
-        <>
-            <div className="slideshow slideshow-wrapper pb-section sliderFull">
-                <div className="home-slideshow">
-                    <Slider {...settingSlider}>
-                        <div className="slide">
-                            <div className="blur-up lazyload bg-size">
-                                <img className="blur-up lazyload bg-img" style={{width: "100vw", height:"100vh", objectFit: "cover"}} data-src="assets/images/slideshow-banners/home-mk-1.jpg" src="assets/images/slideshow-banners/home-mk-1.jpg" alt="Shop Our New Collection" title="Shop Our New Collection" />
-                                <div className="slideshow__text-wrap slideshow__overlay classic bottom">
-                                    <div className="slideshow__text-content bottom">
-                                        <div className="wrap-caption center">
-                                            <h2 className="h1 mega-title slideshow__title">Shop Our New Collection</h2>
-                                            <span className="mega-subtitle slideshow__subtitle">From Hight to low, classic or modern. We have you covered</span>
-                                            <span className="btn">Shop now</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="slide">
-                            <div className="blur-up lazyload bg-size">
-                                <img className="blur-up lazyload bg-img" style={{width: "100vw", height:"100vh", objectFit: "cover"}} data-src="assets/images/slideshow-banners/home-mk-2.jpg" src="assets/images/slideshow-banners/home-mk-2.jpg" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
-                                <div className="slideshow__text-wrap slideshow__overlay classic bottom">
-                                    <div className="slideshow__text-content bottom">
-                                        <div className="wrap-caption center">
-                                            <h2 className="h1 mega-title slideshow__title">Summer Bikini Collection</h2>
-                                            <span className="mega-subtitle slideshow__subtitle">Save up to 50% off this weekend only</span>
-                                            <span className="btn">Shop now</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Slider>
-                </div>
-            </div>
-        </>
-    )
-}
+  const settingSlider = {
+    infinite: true,
+    speed: 100,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
-export default Banner
+  const slides = [
+    {
+      id: 0,
+      title: "Shop Our New Collection",
+      subtitle: "From Hight to low, classic or modern. We have you covered",
+      img: "assets/images/slideshow-banners/home-mk-1.jpg",
+    },
+    {
+      id: 1,
+      title: "Summer Bikini Collection",
+      subtitle: "Save up to 50% off this weekend only",
+      img: "assets/images/slideshow-banners/home-mk-2.jpg",
+    },
+  ];
+
+  return (
+    <>
+      <div className="slideshow slideshow-wrapper pb-section sliderFull">
+        <div className="home-slideshow">
+          <Slider {...settingSlider}>
+            {slides.map((slide) => {
+              return (
+                <div className="slide" key={slide.id}>
+                  <div className="blur-up lazyload bg-size">
+                    <img
+                      className="blur-up lazyload bg-img"
+                      style={{
+                        width: "100vw",
+                        height: "100vh",
+                        objectFit: "cover",
+                      }}
+                      data-src={slide.img}
+                      src={slide.img}
+                      alt={slide.title}
+                      title={slide.title}
+                    />
+                    <div className="slideshow__text-wrap slideshow__overlay classic bottom">
+                      <div className="slideshow__text-content bottom">
+                        <div className="wrap-caption center">
+                          <h2 className="h1 mega-title slideshow__title">
+                            {slide.title}
+                          </h2>
+                          <span className="mega-subtitle slideshow__subtitle">
+                            {slide.subtitle}
+                          </span>
+                          <span className="btn">Shop now</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Banner;
