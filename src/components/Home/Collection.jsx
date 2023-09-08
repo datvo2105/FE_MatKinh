@@ -20,8 +20,12 @@ const Collection = () => {
                 <h2 className="h2">New Arrivals</h2>
                 <p>Browse the huge variety of our products</p>
               </div>
-              <Tabs className="tabs-listing">
-                <TabList className="tabs clearfix">
+              <Tabs
+                defaultFocus={true}
+                defaultIndex={0}
+                className="tabs-listing"
+              >
+                <TabList className="tabs clearfix text-decoration-none">
                   <Tab>Kính Mát</Tab>
                   <Tab>Gọng Kính</Tab>
                   <Tab>Trọng Kính</Tab>
@@ -37,9 +41,8 @@ const Collection = () => {
                               <img
                                 className="primary blur-up lazyload "
                                 style={{
-                                  height: "392px",
-                                  width: "100%",
                                   objectFit: "cover",
+                                  height: 392,
                                 }}
                                 data-src="assets/images/product-images/product-image1.jpg"
                                 src="assets/images/product-images/product-image1.jpg"
