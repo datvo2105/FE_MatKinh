@@ -1,4 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
@@ -15,39 +17,45 @@ import SingleBlog from "./components/Blog/SingleBlog";
 import Shoppage from "./components/Shop/Shop";
 import SingleProduct from "./components/Shop/Product";
 
-function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layouts content={<Homepage />} />}></Route>
-        <Route
-          path="/shop"
-          element={<Layouts content={<Shoppage />} />}
-        ></Route>
-        <Route
-          path="/blog"
-          element={<Layouts content={<Blogpage />} />}
-        ></Route>
-        <Route
-          path="/single"
-          element={<Layouts content={<SingleProduct />} />}
-        ></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
-        <Route
-          path="/single-blog"
-          element={<Layouts content={<SingleBlog />} />}
-        ></Route>
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:5151";
 
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/faqs" element={<Faqs />}></Route>
-        <Route path="*" element={<Notfound />}></Route>
-      </Routes>
-    </>
+const App = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<Layouts content={<Homepage />} />} />
+      <Route path="/shop" element={<Layouts content={<Shoppage />} />}></Route>
+      <Route path="/blog" element={<Layouts content={<Blogpage />} />}></Route>
+      <Route
+        path="/single"
+        element={<Layouts content={<SingleProduct />} />}
+      ></Route>
+      <Route path="/cart" element={<Cart />}></Route>
+      <Route path="/checkout" element={<Checkout />}></Route>
+      <Route
+        path="/single-blog"
+        element={<Layouts content={<SingleBlog />} />}
+      ></Route>
+
+      <Route path="/login" element={<Layouts content={<Login />} />}></Route>
+      <Route
+        path="/register"
+        element={<Layouts content={<Register />} />}
+      ></Route>
+      <Route path="/about" element={<Layouts content={<About />} />}></Route>
+      <Route
+        path="/contact"
+        element={<Layouts content={<Contact />} />}
+      ></Route>
+      <Route path="/faqs" element={<Layouts content={<Faqs />} />}></Route>
+      <Route path="*" element={<Layouts content={<Notfound />} />}></Route>
+    </Routes>
   );
-}
+};
 
 export default App;

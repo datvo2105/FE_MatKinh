@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
@@ -40,10 +39,6 @@ const Collection = () => {
                             <a href="short-description.html">
                               <img
                                 className="primary blur-up lazyload "
-                                style={{
-                                  objectFit: "cover",
-                                  height: 392,
-                                }}
                                 data-src="assets/images/product-images/product-image1.jpg"
                                 src="assets/images/product-images/product-image1.jpg"
                                 alt="image"
@@ -159,11 +154,6 @@ const Collection = () => {
                             <a href="short-description.html">
                               <img
                                 className="primary blur-up lazyload"
-                                style={{
-                                  height: "392px",
-                                  width: "100%",
-                                  objectFit: "cover",
-                                }}
                                 data-src="assets/images/product-images/product-image2.jpg"
                                 src="assets/images/product-images/product-image2.jpg"
                                 alt="image"
@@ -265,11 +255,6 @@ const Collection = () => {
                             <a href="short-description.html">
                               <img
                                 className="primary blur-up lazyload"
-                                style={{
-                                  height: "392px",
-                                  width: "100%",
-                                  objectFit: "cover",
-                                }}
                                 data-src="assets/images/product-images/product-image3.jpg"
                                 src="assets/images/product-images/product-image3.jpg"
                                 alt="image"
@@ -381,11 +366,6 @@ const Collection = () => {
                             <a href="short-description.html">
                               <img
                                 className="primary blur-up lazyload"
-                                style={{
-                                  height: "392px",
-                                  width: "100%",
-                                  objectFit: "cover",
-                                }}
                                 data-src="assets/images/product-images/product-image4.jpg"
                                 src="assets/images/product-images/product-image4.jpg"
                                 alt="image"
@@ -490,11 +470,6 @@ const Collection = () => {
                             <a href="short-description.html">
                               <img
                                 className="primary blur-up lazyload"
-                                style={{
-                                  height: "392px",
-                                  width: "100%",
-                                  objectFit: "cover",
-                                }}
                                 data-src="assets/images/product-images/product-image5.jpg"
                                 src="assets/images/product-images/product-image5.jpg"
                                 alt="image"

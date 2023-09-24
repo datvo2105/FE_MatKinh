@@ -50,7 +50,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <div className="header-wrap bg-white shadow bg-body-tertiary classicHeader animated d-flex">
+      <div className="header-wrap bg-white shadow bg-body-tertiary classicHeader position-sticky animated d-flex">
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
