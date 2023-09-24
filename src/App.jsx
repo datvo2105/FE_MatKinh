@@ -17,9 +17,6 @@ import SingleBlog from "./components/Blog/SingleBlog";
 import Shoppage from "./components/Shop/Shop";
 import SingleProduct from "./components/Shop/Product";
 
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5151";
-
 const App = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -35,8 +32,11 @@ const App = () => {
         path="/single"
         element={<Layouts content={<SingleProduct />} />}
       ></Route>
-      <Route path="/cart" element={<Cart />}></Route>
-      <Route path="/checkout" element={<Checkout />}></Route>
+      <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>
+      <Route
+        path="/checkout"
+        element={<Layouts content={<Checkout />} />}
+      ></Route>
       <Route
         path="/single-blog"
         element={<Layouts content={<SingleBlog />} />}

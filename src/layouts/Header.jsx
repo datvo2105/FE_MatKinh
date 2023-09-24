@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLayoutEffect, useState } from "react";
+import { Link, Navigate, redirect } from "react-router-dom";
+import { authSelector, logout } from "../features/authSlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -7,17 +9,19 @@ const Header = () => {
   const [showMoblie, setShowMoblie] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const [isSubDrop, setIsSubDrop] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+
+  const dispatch = useDispatch();
+  const { isAuth } = authSelector();
 
   const handleMenu = () => {
     setShowMoblie(!showMoblie);
   };
 
-  const handleDropdown = () => {
-    setIsDropdown(!isDropdown);
-  };
-
-  const handleSubDrop = () => {
-    setIsSubDrop(!isSubDrop);
+  const handleLogout = () => {
+    dispatch(logout());
+    window.location.reload();
   };
 
   return (
@@ -265,7 +269,14 @@ const Header = () => {
             </div>
             <div className="col-4 col-sm-3 col-md-3 col-lg-2">
               <div className="site-cart">
-                <a href="#;" className="site-header__cart" title="Cart">
+                <div
+                  className="site-header__cart "
+                  title="Cart"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    setShowCart(!showCart);
+                  }}
+                >
                   <i className="icon anm anm-bag-l"></i>
                   <span
                     id="CartCount"
@@ -274,8 +285,13 @@ const Header = () => {
                   >
                     2
                   </span>
-                </a>
-                <div id="header-cart" className="block block-cart">
+                </div>
+                <div
+                  id="header-cart"
+                  className={`block block-cart ${
+                    showCart ? "d-block" : "d-none"
+                  }`}
+                >
                   <ul className="mini-products-list">
                     <li className="item">
                       <a className="product-image" href="#">
@@ -424,12 +440,47 @@ const Header = () => {
                 </button>
               </div>
               <div className="site-user float-right py-1 pr-3">
-                <Link to="/login">
-                  <i
-                    className="icon anm anm-user-al"
-                    style={{ fontSize: "20px" }}
-                  ></i>
-                </Link>
+                <div className="site-cart">
+                  <div
+                    className="site-header__cart "
+                    title="Cart"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setShowAuth(!showAuth);
+                    }}
+                  >
+                    <i
+                      className="icon anm anm-user-al"
+                      style={{ fontSize: "20px" }}
+                    ></i>
+                  </div>
+                  <div
+                    id="header-cart"
+                    className={`block block-cart ${
+                      showAuth ? "d-block" : "d-none"
+                    }`}
+                    style={{ width: 180 }}
+                  >
+                    <ul className="mini-products-list">
+                      <li className="item text-center">
+                        <Link className="pName mr-0" to="/login">
+                          Login
+                        </Link>
+                      </li>
+                      {isAuth && (
+                        <li className="item text-center">
+                          <div
+                            className="pName mr-0"
+                            style={{ cursor: "pointer" }}
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </div>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -451,7 +502,9 @@ const Header = () => {
               Cửa Hàng
               <i
                 className={`anm anm-${isDropdown ? "minus-r" : "plus-l"}`}
-                onClick={handleDropdown}
+                onClick={() => {
+                  setIsDropdown(!isDropdown);
+                }}
               ></i>
             </Link>
             <ul className={`${isDropdown ? "d-block" : ""}`}>
@@ -477,7 +530,9 @@ const Header = () => {
               Thông Tin
               <i
                 className={`second anm anm-${isSubDrop ? "minus-r" : "plus-l"}`}
-                onClick={handleSubDrop}
+                onClick={() => {
+                  setIsSubDrop(!isSubDrop);
+                }}
               ></i>
             </Link>
             <ul className={`${isSubDrop ? "d-block" : ""}`}>

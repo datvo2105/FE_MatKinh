@@ -1,31 +1,21 @@
-import axios from "axios";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { authLogin, authSelector } from "../features/authSlice";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const dispatch = useDispatch();
+  const { isAuth, userData } = authSelector();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios({
-        method: "post",
-        url: "/auth/login",
-        data: {
-          user_name: username,
-          password,
-        },
-      }).then((res) => {
-        if (res.status == 200) return setRedirect(true);
-      });
-    } catch (error) {
-      alert("Something worng. Can't login!");
-    }
+    const res = await dispatch(authLogin({ user_name: username, password }));
+    const message = res?.error?.message;
+    if (message) alert(message);
   };
-
-  if (redirect) return <Navigate to="/" />;
+  if (isAuth != null) return <Navigate to="/" />;
 
   return (
     <>
