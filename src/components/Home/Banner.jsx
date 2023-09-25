@@ -34,12 +34,7 @@ const Banner = () => {
                 <div className="slide" key={slide.id}>
                   <div className="blur-up lazyload bg-size">
                     <img
-                      className="blur-up lazyload bg-img"
-                      style={{
-                        width: "100vw",
-                        height: "100vh",
-                        objectFit: "cover",
-                      }}
+                      className="blur-up lazyload bg-img object-fit-cover"
                       data-src={slide.img}
                       src={slide.img}
                       alt={slide.title}

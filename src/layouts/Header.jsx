@@ -1,5 +1,5 @@
-import { useLayoutEffect, useState } from "react";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { Link, Navigate, redirect, useLocation } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 
@@ -13,7 +13,12 @@ const Header = () => {
   const [showAuth, setShowAuth] = useState(false);
 
   const dispatch = useDispatch();
-  const { isAuth } = authSelector();
+  const { isAuth, userData } = authSelector();
+
+  const location = useLocation();
+  useEffect(() => {
+    setShowAuth(false), setShowCart(false);
+  }, [location]);
 
   const handleMenu = () => {
     setShowMoblie(!showMoblie);
@@ -462,20 +467,28 @@ const Header = () => {
                     style={{ width: 180 }}
                   >
                     <ul className="mini-products-list">
-                      <li className="item text-center">
-                        <Link className="pName mr-0" to="/login">
-                          Login
-                        </Link>
-                      </li>
-                      {isAuth && (
+                      {isAuth !== null ? (
+                        <>
+                          <li className="item text-center">
+                            <div className="pName mr-0 text-truncate d-inline">
+                              {userData.user_name}
+                            </div>
+                          </li>
+                          <li className="item text-center">
+                            <div
+                              className="pName mr-0"
+                              style={{ cursor: "pointer" }}
+                              onClick={handleLogout}
+                            >
+                              Logout
+                            </div>
+                          </li>
+                        </>
+                      ) : (
                         <li className="item text-center">
-                          <div
-                            className="pName mr-0"
-                            style={{ cursor: "pointer" }}
-                            onClick={handleLogout}
-                          >
-                            Logout
-                          </div>
+                          <Link className="pName mr-0" to="/login">
+                            Login
+                          </Link>
                         </li>
                       )}
                     </ul>

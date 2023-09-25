@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -16,45 +15,50 @@ import Blogpage from "./components/Blog/ListBlog";
 import SingleBlog from "./components/Blog/SingleBlog";
 import Shoppage from "./components/Shop/Shop";
 import SingleProduct from "./components/Shop/Product";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 const App = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
-    <Routes>
-      <Route path="/" element={<Layouts content={<Homepage />} />} />
-      <Route path="/shop" element={<Layouts content={<Shoppage />} />}></Route>
-      <Route path="/blog" element={<Layouts content={<Blogpage />} />}></Route>
-      <Route
-        path="/single"
-        element={<Layouts content={<SingleProduct />} />}
-      ></Route>
-      <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>
-      <Route
-        path="/checkout"
-        element={<Layouts content={<Checkout />} />}
-      ></Route>
-      <Route
-        path="/single-blog"
-        element={<Layouts content={<SingleBlog />} />}
-      ></Route>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Layouts content={<Homepage />} />} />
+        <Route
+          path="/shop"
+          element={<Layouts content={<Shoppage />} />}
+        ></Route>
+        <Route
+          path="/blog"
+          element={<Layouts content={<Blogpage />} />}
+        ></Route>
+        <Route
+          path="/single"
+          element={<Layouts content={<SingleProduct />} />}
+        ></Route>
+        <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>
+        <Route
+          path="/checkout"
+          element={<Layouts content={<Checkout />} />}
+        ></Route>
+        <Route
+          path="/single-blog"
+          element={<Layouts content={<SingleBlog />} />}
+        ></Route>
 
-      <Route path="/login" element={<Layouts content={<Login />} />}></Route>
-      <Route
-        path="/register"
-        element={<Layouts content={<Register />} />}
-      ></Route>
-      <Route path="/about" element={<Layouts content={<About />} />}></Route>
-      <Route
-        path="/contact"
-        element={<Layouts content={<Contact />} />}
-      ></Route>
-      <Route path="/faqs" element={<Layouts content={<Faqs />} />}></Route>
-      <Route path="*" element={<Layouts content={<Notfound />} />}></Route>
-    </Routes>
+        <Route path="/login" element={<Layouts content={<Login />} />}></Route>
+        <Route
+          path="/register"
+          element={<Layouts content={<Register />} />}
+        ></Route>
+        <Route path="/about" element={<Layouts content={<About />} />}></Route>
+        <Route
+          path="/contact"
+          element={<Layouts content={<Contact />} />}
+        ></Route>
+        <Route path="/faqs" element={<Layouts content={<Faqs />} />}></Route>
+        <Route path="*" element={<Layouts content={<Notfound />} />}></Route>
+      </Routes>
+    </>
   );
 };
 

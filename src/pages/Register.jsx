@@ -25,24 +25,13 @@ const Register = () => {
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="form-group">
-                      <label htmlFor="FirstName">First Name</label>
+                      <label htmlFor="FirstName">User Name</label>
                       <input
                         type="text"
                         name="customer[first_name]"
                         placeholder=""
-                        id="FirstName"
+                        id="Username"
                         autoFocus=""
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div className="form-group">
-                      <label htmlFor="LastName">Last Name</label>
-                      <input
-                        type="text"
-                        name="customer[last_name]"
-                        placeholder=""
-                        id="LastName"
                       />
                     </div>
                   </div>
@@ -58,6 +47,17 @@ const Register = () => {
                         autoCorrect="off"
                         autoCapitalize="off"
                         autoFocus=""
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div className="form-group">
+                      <label htmlFor="LastName">Address</label>
+                      <input
+                        type="text"
+                        name="customer[last_name]"
+                        placeholder=""
+                        id="LastName"
                       />
                     </div>
                   </div>

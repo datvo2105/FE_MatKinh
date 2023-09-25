@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Navigate, Link } from "react-router-dom";
 import { authLogin, authSelector } from "../features/authSlice";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isAuth, userData } = authSelector();
+  const { isAuth } = authSelector();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,13 +77,9 @@ const Login = () => {
                   <div className="text-center col-12 col-sm-12 col-md-12 col-lg-12">
                     <input type="submit" className="btn mb-3" value="Sign In" />
                     <p className="mb-4">
-                      <a href="#" id="RecoverPassword">
-                        Forgot your password?
-                      </a>{" "}
-                      &nbsp; | &nbsp;
-                      <a href="register.html" id="customer_register_link">
+                      <Link to="/register" id="customer_register_link">
                         Create account
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
