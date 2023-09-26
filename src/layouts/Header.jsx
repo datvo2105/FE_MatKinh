@@ -1,5 +1,5 @@
-import { useEffect, useLayoutEffect, useState } from "react";
-import { Link, Navigate, redirect, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 
@@ -485,11 +485,18 @@ const Header = () => {
                           </li>
                         </>
                       ) : (
-                        <li className="item text-center">
-                          <Link className="pName mr-0" to="/login">
-                            Login
-                          </Link>
-                        </li>
+                        <>
+                          <li className="item text-center">
+                            <Link className="pName mr-0" to="/login">
+                              Login
+                            </Link>
+                          </li>
+                          <li className="item text-center">
+                            <Link className="pName mr-0" to="/register">
+                              Register
+                            </Link>
+                          </li>
+                        </>
                       )}
                     </ul>
                   </div>

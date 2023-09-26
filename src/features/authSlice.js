@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Authlogin } from "../configs/auth.config";
 import { useSelector } from "react-redux";
+import { Authlogin } from "../services/auth.service";
 
 const initialState = {
   isAuth: null,
