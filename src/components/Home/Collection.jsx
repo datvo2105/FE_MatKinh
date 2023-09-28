@@ -16,8 +16,8 @@ const Collection = ({ title, desc, status }) => {
   };
 
   useEffect(() => {
-    getAllProduct({ search: "test" })
-      .then((res) => res.data.data.record)
+    getAllProduct()
+      .then((res) => res.data.record)
       .then((listProduct) => {
         listProduct.forEach((product) => {
           if (product.status.toUpperCase() === status.toUpperCase())
@@ -88,15 +88,22 @@ const Collection = ({ title, desc, status }) => {
                                     title="product"
                                   />
                                   <div className="product-labels rectangular">
-                                    {product.status == "default" ? (
+                                    {product.status.toUpperCase() ==
+                                    "DEFAULT" ? (
                                       ""
                                     ) : (
-                                      <span className="lbl pr-label1">
+                                      <span
+                                        className={`lbl ${
+                                          product.status.toUpperCase() == "NEW"
+                                            ? "pr-label1"
+                                            : "on-sale"
+                                        }`}
+                                      >
                                         {product.status}
                                       </span>
                                     )}
                                     {product.discount > 0 ? (
-                                      <span className="lbl on-sale">
+                                      <span className="lbl pr-label2">
                                         -{product.discount}%
                                       </span>
                                     ) : (

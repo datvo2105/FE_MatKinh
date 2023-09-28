@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
+import { getAllProduct } from "../../services/product.service";
 import Sidebar from "./Sidebar";
 import ListProducts from "./ListProducts";
 
 const Shop = () => {
+  const [listProduct, setListProduct] = useState([]);
+
+  useEffect(() => {
+    getAllProduct().then((res) => {
+      setListProduct(res.data.record);
+    });
+  }, []);
+
+  const priceDiscount = (price, discount) => {
+    let newPrice = price;
+    return (newPrice = newPrice - (price * discount) / 100);
+  };
+
   return (
     <>
       <div className="collection-header">
@@ -24,8 +39,11 @@ const Shop = () => {
       </div>
       <div className="container">
         <div className="row">
-          <Sidebar />
-          <ListProducts />
+          <Sidebar listProduct={listProduct} priceDiscount={priceDiscount} />
+          <ListProducts
+            listProduct={listProduct}
+            priceDiscount={priceDiscount}
+          />
         </div>
       </div>
     </>

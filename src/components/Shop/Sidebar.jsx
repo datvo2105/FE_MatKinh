@@ -1,9 +1,18 @@
-import { useState } from "react";
-import PriceSlider from "./PriceSlider";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import Filters from "./Filters";
 
-const Sidebar = () => {
-  const [showCategory, setShowCategory] = useState(false);
-  const [showBrand, setShowBrand] = useState(false);
+const Sidebar = ({ listProduct, priceDiscount }) => {
+  const settingSlider = {
+    infinite: true,
+    autoplaySpeed: 2500,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    vertical: true,
+    verticalSwiping: true,
+    arrows: false,
+  };
 
   return (
     <>
@@ -12,272 +21,69 @@ const Sidebar = () => {
           <i className="icon icon anm anm-times-l"></i>
         </div>
         <div className="sidebar_tags">
-          <div className="sidebar_widget categories filter-widget">
-            <div
-              className={`widget-title ${showCategory ? "" : "active"}`}
-              onClick={() => {
-                setShowCategory(!showCategory);
-              }}
-            >
-              <h2>Categories</h2>
-            </div>
-            <div
-              className={`widget-content ${
-                showCategory ? "d-none opacity-0 overfollow-hidden" : ""
-              }`}
-              style={{
-                transition: "all 5ms ease",
-                opacity: 1,
-                overflow: "visible",
-              }}
-            >
-              <ul className="sidebar_categories">
-                <li className="level1 sub-level">
-                  <a href="#;" className="site-nav">
-                    Clothing
-                  </a>
-                  <ul className="sublinks">
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Men
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Women
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Child
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        View All Clothing
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="level1 sub-level">
-                  <a href="#;" className="site-nav">
-                    Jewellery
-                  </a>
-                  <ul className="sublinks">
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Ring
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Neckalses
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        Eaarings
-                      </a>
-                    </li>
-                    <li className="level2">
-                      <a href="#;" className="site-nav">
-                        View All Jewellery
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="lvl-1">
-                  <a href="#;" className="site-nav">
-                    Shoes
-                  </a>
-                </li>
-                <li className="lvl-1">
-                  <a href="#;" className="site-nav">
-                    Accessories
-                  </a>
-                </li>
-                <li className="lvl-1">
-                  <a href="#;" className="site-nav">
-                    Collections
-                  </a>
-                </li>
-                <li className="lvl-1">
-                  <a href="#;" className="site-nav">
-                    Sale
-                  </a>
-                </li>
-                <li className="lvl-1">
-                  <a href="#;" className="site-nav">
-                    Page
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <PriceSlider />
-          <div className="sidebar_widget filterBox filter-widget">
-            <div
-              className={`widget-title ${showBrand ? "" : "active"}`}
-              onClick={() => {
-                setShowBrand(!showBrand);
-              }}
-            >
-              <h2>Brands</h2>
-            </div>
-            <ul className={showBrand ? "d-none" : ""}>
-              <li>
-                <input type="checkbox" value="allen-vela" id="check1" />
-                <label htmlFor="check1">
-                  <span>
-                    <span></span>
-                  </span>
-                  Allen Vela
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" value="oxymat" id="check3" />
-                <label htmlFor="check3">
-                  <span>
-                    <span></span>
-                  </span>
-                  Oxymat
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" value="vanelas" id="check4" />
-                <label htmlFor="check4">
-                  <span>
-                    <span></span>
-                  </span>
-                  Vanelas
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" value="pagini" id="check5" />
-                <label htmlFor="check5">
-                  <span>
-                    <span></span>
-                  </span>
-                  Pagini
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" value="monark" id="check6" />
-                <label htmlFor="check6">
-                  <span>
-                    <span></span>
-                  </span>
-                  Monark
-                </label>
-              </li>
-            </ul>
-          </div>
           <div className="sidebar_widget">
+            <Filters />
             <div className="widget-title">
-              <h2>Popular Products</h2>
+              <h2>New Products</h2>
             </div>
             <div className="widget-content">
               <div className="list list-sidebar-products">
                 <div className="grid">
-                  <div className="grid__item">
-                    <div className="mini-list-item">
-                      <div className="mini-view_image">
-                        <a className="grid-view-item__link" href="#">
-                          <img
-                            className="grid-view-item__image"
-                            src="assets/images/product-images/mini-product-img.jpg"
-                            alt=""
-                          />
-                        </a>
-                      </div>
-                      <div className="details">
-                        {" "}
-                        <a className="grid-view-item__title" href="#">
-                          Cena Skirt
-                        </a>
-                        <div className="grid-view-item__meta">
-                          <span className="product-price__price">
-                            <span className="money">$173.60</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid__item">
-                    <div className="mini-list-item">
-                      <div className="mini-view_image">
-                        {" "}
-                        <a className="grid-view-item__link" href="#">
-                          <img
-                            className="grid-view-item__image"
-                            src="assets/images/product-images/mini-product-img1.jpg"
-                            alt=""
-                          />
-                        </a>{" "}
-                      </div>
-                      <div className="details">
-                        {" "}
-                        <a className="grid-view-item__title" href="#">
-                          Block Button Up
-                        </a>
-                        <div className="grid-view-item__meta">
-                          <span className="product-price__price">
-                            <span className="money">$378.00</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid__item">
-                    <div className="mini-list-item">
-                      <div className="mini-view_image">
-                        {" "}
-                        <a className="grid-view-item__link" href="#">
-                          <img
-                            className="grid-view-item__image"
-                            src="assets/images/product-images/mini-product-img2.jpg"
-                            alt=""
-                          />
-                        </a>{" "}
-                      </div>
-                      <div className="details">
-                        {" "}
-                        <a className="grid-view-item__title" href="#">
-                          Balda Button Pant
-                        </a>
-                        <div className="grid-view-item__meta">
-                          <span className="product-price__price">
-                            <span className="money">$278.60</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid__item">
-                    <div className="mini-list-item">
-                      <div className="mini-view_image">
-                        {" "}
-                        <a className="grid-view-item__link" href="#">
-                          <img
-                            className="grid-view-item__image"
-                            src="assets/images/product-images/mini-product-img3.jpg"
-                            alt=""
-                          />
-                        </a>{" "}
-                      </div>
-                      <div className="details">
-                        {" "}
-                        <a className="grid-view-item__title" href="#">
-                          Border Dress in Black/Silver
-                        </a>
-                        <div className="grid-view-item__meta">
-                          <span className="product-price__price">
-                            <span className="money">$228.00</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <Slider {...settingSlider}>
+                    {listProduct.map((product) => {
+                      if (product.status.toUpperCase() === "NEW") {
+                        return (
+                          <div className="grid__item" key={product._id}>
+                            <div className="mini-list-item">
+                              <div className="mini-view_image">
+                                <Link
+                                  className="grid-view-item__link"
+                                  to={`/product/${product._id}`}
+                                >
+                                  <img
+                                    className="grid-view-item__image"
+                                    src={product.images[0]}
+                                    style={{ height: 70, objectFit: "cover" }}
+                                    alt=""
+                                  />
+                                </Link>
+                              </div>
+                              <div className="details">
+                                <Link
+                                  className="grid-view-item__title"
+                                  to={`/product/${product._id}`}
+                                  style={{
+                                    fontWeight: 600,
+                                    overflow: "hidden",
+                                    whiteSpace: "nowrap",
+                                    textOverflow: "ellipsis",
+                                  }}
+                                >
+                                  {product.name}
+                                </Link>
+                                <div className="grid-view-item__meta">
+                                  <span className="product-price__price">
+                                    <span
+                                      className="money"
+                                      style={{
+                                        color: "#e95144 ",
+                                      }}
+                                    >
+                                      ${" "}
+                                      {priceDiscount(
+                                        product.price,
+                                        product.discount,
+                                      )}
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}
+                  </Slider>
                 </div>
               </div>
             </div>

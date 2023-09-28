@@ -4,6 +4,7 @@ export const getAllCategory = () => {
   return api.get("/category");
 };
 
-export const getAllProduct = () => {
-  return api.get("/product");
+export const getAllProduct = (params) => {
+  const res = api.get("/product", { params }).then((res) => res.data);
+  return res;
 };
