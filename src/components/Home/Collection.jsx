@@ -31,7 +31,7 @@ const Collection = () => {
                 </TabList>
                 <div className="tab_container">
                   {/* display block  */}
-                  <div className="tab_content grid-products d-block">
+                  <TabPanel className="tab_content grid-products d-block">
                     <div className="productSlider">
                       <Slider {...settingSlider}>
                         <div className="col-12 item">
@@ -992,7 +992,7 @@ const Collection = () => {
                       </Slider>
                     </div>
                   </TabPanel>
-                  <div className="tab_content grid-products d-block">
+                  <TabPanel className="tab_content grid-products d-block">
                     <div className="productSlider">
                       <Slider {...settingSlider}>
                         <div className="col-12 item">
@@ -1402,7 +1402,7 @@ const Collection = () => {
                         </div>
                       </Slider>
                     </div>
-                  </div>
+                  </TabPanel>
                 </div>
               </Tabs>
             </div>
