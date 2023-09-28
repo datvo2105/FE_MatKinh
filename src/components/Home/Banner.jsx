@@ -26,7 +26,7 @@ const Banner = () => {
 
   return (
     <>
-      <div className="slideshow slideshow-wrapper pb-section sliderFull">
+      <div className="slideshow slideshow-wrapper sliderFull">
         <div className="home-slideshow">
           <Slider {...settingSlider}>
             {slides.map((slide) => {

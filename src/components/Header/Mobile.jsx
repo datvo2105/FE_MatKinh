@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Mobile = ({ showMoblie, handleMenu }) => {
-  const [isDropdown, setIsDropdown] = useState(false);
   const [isSubDrop, setIsSubDrop] = useState(false);
 
   return (
@@ -18,32 +17,7 @@ const Mobile = ({ showMoblie, handleMenu }) => {
           <Link to="/">Trang Chủ</Link>
         </li>
         <li className="lvl1 parent megamenu">
-          <Link to="/product">
-            Cửa Hàng
-            <i
-              className={`anm anm-${isDropdown ? "minus-r" : "plus-l"}`}
-              onClick={() => {
-                setIsDropdown(!isDropdown);
-              }}
-            ></i>
-          </Link>
-          <ul className={`${isDropdown ? "d-block" : ""}`}>
-            <li>
-              <Link to="/sunglasses" className="site-nav">
-                Kính Mát
-              </Link>
-            </li>
-            <li>
-              <Link to="/glasses" className="site-nav">
-                Gọng Kính
-              </Link>
-            </li>
-            <li>
-              <Link to="/lenses" className="site-nav">
-                Tròng Kính
-              </Link>
-            </li>
-          </ul>
+          <Link to="/product">Cửa Hàng</Link>
         </li>
         <li className="lvl1 parent megamenu">
           <Link>

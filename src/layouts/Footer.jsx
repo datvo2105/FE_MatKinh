@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllCategory } from "../services/product.service";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [emailInput, setEmailInput] = useState("");
   const [visible, setVisible] = useState(false);
+
+  const [listCategory, setListCategory] = useState([]);
+
+  useEffect(() => {
+    getAllCategory().then((res) => setListCategory(res.data.data));
+  }, []);
 
   const toggleVisible = () => {
     const scrolled = window.scrollY;
@@ -156,40 +164,18 @@ const Footer = () => {
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                   <h4 className="h4">Quick Shop</h4>
                   <ul>
-                    <li>
-                      <a href="#">Women</a>
-                    </li>
-                    <li>
-                      <a href="#">Men</a>
-                    </li>
-                    <li>
-                      <a href="#">Kids</a>
-                    </li>
-                    <li>
-                      <a href="#">Sportswear</a>
-                    </li>
-                    <li>
-                      <a href="#">Sale</a>
-                    </li>
+                    {listCategory.map((category) => (
+                      <li key={category._id}>
+                        <Link to={category.desc}>{category.name}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                   <h4 className="h4">Informations</h4>
                   <ul>
                     <li>
-                      <a href="#">About us</a>
-                    </li>
-                    <li>
-                      <a href="#">Careers</a>
-                    </li>
-                    <li>
-                      <a href="#">Privacy policy</a>
-                    </li>
-                    <li>
-                      <a href="#">Terms &amp; condition</a>
-                    </li>
-                    <li>
-                      <a href="#">My Account</a>
+                      <Link to="/about">About us</Link>
                     </li>
                   </ul>
                 </div>
@@ -197,19 +183,10 @@ const Footer = () => {
                   <h4 className="h4">Customer Services</h4>
                   <ul>
                     <li>
-                      <a href="#">Request Personal Data</a>
+                      <Link to="/faqs">FAQ's</Link>
                     </li>
                     <li>
-                      <a href="#">FAQ's</a>
-                    </li>
-                    <li>
-                      <a href="#">Contact Us</a>
-                    </li>
-                    <li>
-                      <a href="#">Orders and Returns</a>
-                    </li>
-                    <li>
-                      <a href="#">Support Center</a>
+                      <Link to="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </div>
@@ -245,32 +222,32 @@ const Footer = () => {
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
                   <ul className="payment-icons list--inline">
                     <li>
-                      <i className="icon fa fa-cc-visa" aria-hidden="true"></i>
-                    </li>
-                    <li>
                       <i
-                        className="icon fa fa-cc-mastercard"
+                        className="icon mx-1 fa fa-cc-visa"
                         aria-hidden="true"
                       ></i>
                     </li>
                     <li>
                       <i
-                        className="icon fa fa-cc-discover"
+                        className="icon mx-1 fa fa-cc-mastercard"
                         aria-hidden="true"
                       ></i>
                     </li>
                     <li>
                       <i
-                        className="icon fa fa-cc-paypal"
+                        className="icon mx-1 fa fa-cc-discover"
                         aria-hidden="true"
                       ></i>
                     </li>
                     <li>
-                      <i className="icon fa fa-cc-amex" aria-hidden="true"></i>
+                      <i
+                        className="icon mx-1 fa fa-cc-paypal"
+                        aria-hidden="true"
+                      ></i>
                     </li>
                     <li>
                       <i
-                        className="icon fa fa-credit-card"
+                        className="icon mx-1 fa fa-credit-card"
                         aria-hidden="true"
                       ></i>
                     </li>

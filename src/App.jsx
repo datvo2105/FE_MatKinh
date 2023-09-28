@@ -32,7 +32,7 @@ const App = () => {
           element={<Layouts content={<Blogpage />} />}
         ></Route>
         <Route
-          path="/single"
+          path="/product/:id"
           element={<Layouts content={<SingleProduct />} />}
         ></Route>
         <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>

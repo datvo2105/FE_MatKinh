@@ -89,44 +89,35 @@ const Header = () => {
                   <li className="lvl1">
                     <Link to="/">Trang Chủ</Link>
                   </li>
-                  <Category />
+                  <li className="lvl1 parent megamenu">
+                    <Link to="/product">
+                      Cửa Hàng<i className="anm anm-angle-down-l"></i>
+                    </Link>
+                  </li>
                   <li className="lvl1">
                     <Link to="/blog">Bài Viết</Link>
                   </li>
-                  <li className="lvl1 parent megamenu">
-                    <a href="#">
+                  <li className="lvl1 parent dropdown">
+                    <Link to="/about">
                       Thông Tin <i className="anm anm-angle-down-l"></i>
-                    </a>
-                    <div className="megamenu style4">
-                      <ul className="grid grid--uniform mmWrapper">
-                        <li className="grid__item lvl-1 col-md-5 col-lg-5">
-                          <ul className="subLinks">
-                            <li className="lvl-2">
-                              <Link to="/about" className="site-nav lvl-2">
-                                Về Chúng Tôi
-                              </Link>
-                            </li>
-                            <li className="lvl-2">
-                              <Link to="/faqs" className="site-nav lvl-2">
-                                Câu Hỏi Thường Gặp
-                              </Link>
-                            </li>
-                            <li className="lvl-2">
-                              <Link to="/contact" className="site-nav lvl-2">
-                                Liên Hệ
-                              </Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="grid__item lvl-1 col-md-7 col-lg-7">
-                          <img
-                            src="assets/images/megamenu-bg1.jpg"
-                            alt=""
-                            title=""
-                          />
-                        </li>
-                      </ul>
-                    </div>
+                    </Link>
+                    <ul className="dropdown">
+                      <li>
+                        <Link to="/about" className="site-nav">
+                          About Us
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/contact" className="site-nav">
+                          Contact Us
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/faqs" className="site-nav">
+                          FAQs
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                   <li className="lvl1">
                     <a href="#">
@@ -345,7 +336,15 @@ const Header = () => {
                       {isAuth !== null ? (
                         <>
                           <li className="item text-center">
-                            <div className="pName mr-0 text-truncate d-inline">
+                            <div
+                              className="pName mr-0 "
+                              style={{
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                                maxWidth: "100%",
+                              }}
+                            >
                               {userData.user_name}
                             </div>
                           </li>

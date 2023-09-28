@@ -8,9 +8,21 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <Collection />
+      <Collection
+        title={"New"}
+        desc={
+          "Chúng tôi luôn liên tục cập nhật những sản phẩm mới nhất tới cho khách hàng"
+        }
+        status={"new"}
+      />
       <Category />
-      <Collection />
+      <Collection
+        title={"Sales"}
+        desc={
+          "Chúng tôi luôn liên tục cập nhật những sản phẩm mới nhất tới cho khách hàng"
+        }
+        status={"sales"}
+      />
       <Blog />
     </>
   );
