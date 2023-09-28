@@ -24,7 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layouts content={<Homepage />} />} />
         <Route
-          path="/shop"
+          path="/product"
           element={<Layouts content={<Shoppage />} />}
         ></Route>
         <Route

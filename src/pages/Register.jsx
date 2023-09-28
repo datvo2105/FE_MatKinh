@@ -13,7 +13,8 @@ const Register = () => {
       email,
       password,
     });
-    console.log(res);
+    const message = res?.error?.message;
+    if (message) alert(message);
   };
 
   return (

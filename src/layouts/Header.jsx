@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
+import Mobile from "../components/Header/Mobile";
+import Category from "../components/Header/Category";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isSearch, setIsSearch] = useState(false);
-  const [showMoblie, setShowMoblie] = useState(false);
-  const [isDropdown, setIsDropdown] = useState(false);
-  const [isSubDrop, setIsSubDrop] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
+  const [showMoblie, setShowMoblie] = useState(false);
+
+  const handleMenu = () => {
+    setShowMoblie(!showMoblie);
+  };
 
   const dispatch = useDispatch();
   const { isAuth, userData } = authSelector();
@@ -19,10 +23,6 @@ const Header = () => {
   useEffect(() => {
     setShowAuth(false), setShowCart(false);
   }, [location]);
-
-  const handleMenu = () => {
-    setShowMoblie(!showMoblie);
-  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -89,132 +89,7 @@ const Header = () => {
                   <li className="lvl1">
                     <Link to="/">Trang Chủ</Link>
                   </li>
-                  <li className="lvl1 parent megamenu">
-                    <Link to="/shop">
-                      Cửa Hàng<i className="anm anm-angle-down-l"></i>
-                    </Link>
-                    <div className="megamenu style1">
-                      <ul className="grid mmWrapper">
-                        <li className="grid__item large-up--one-whole">
-                          <ul className="grid">
-                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
-                              <Link to="/sunglasses" className="site-nav lvl-1">
-                                Kính Mát
-                              </Link>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/sunglasses/sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Sale
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/sunglasses/hot-sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Bán Chạy
-                                    <span className="lbl nm_label3 ml-1">
-                                      Hot
-                                    </span>
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/sunglasses/new"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Hàng Mới Về
-                                    <span className="lbl nm_label1 ml-1">
-                                      New
-                                    </span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
-                              <Link to="/glasses" className="site-nav lvl-1">
-                                Gọng Kính
-                              </Link>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/glasses/sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Sale
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/glasses/hot-sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Bán Chạy
-                                    <span className="lbl nm_label3 ml-1">
-                                      Hot
-                                    </span>
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/glasses/new"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Hàng Mới Về
-                                    <span className="lbl nm_label1 ml-1">
-                                      {" "}
-                                      New
-                                    </span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li className="grid__item lvl-1 col-md-4 col-lg-4">
-                              <Link to="/lenses" className="site-nav lvl-1">
-                                Tròng Kính
-                              </Link>
-                              <ul className="subLinks">
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/lenses/sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Sale
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/lenses/hot-sale"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Bán Chạy
-                                    <span className="lbl nm_label3 ml-1">
-                                      Hot
-                                    </span>
-                                  </Link>
-                                </li>
-                                <li className="lvl-2">
-                                  <Link
-                                    to="/lenses/new"
-                                    className="site-nav lvl-2"
-                                  >
-                                    Hàng Mới Về
-                                    <span className="lbl nm_label1 ml-1">
-                                      {" "}
-                                      New
-                                    </span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
+                  <Category />
                   <li className="lvl1">
                     <Link to="/blog">Bài Viết</Link>
                   </li>
@@ -506,83 +381,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div
-        className={`mobile-nav-wrapper ${showMoblie ? "active" : ""}`}
-        role="navigation"
-      >
-        <div className="closemobileMenu" onClick={handleMenu}>
-          <i className="icon anm anm-times-l pull-right"></i> Close Menu
-        </div>
-        <ul id="MobileNav" className="mobile-nav">
-          <li className="lvl1">
-            <Link to="/">Trang Chủ</Link>
-          </li>
-          <li className="lvl1 parent megamenu">
-            <Link to="/shop">
-              Cửa Hàng
-              <i
-                className={`anm anm-${isDropdown ? "minus-r" : "plus-l"}`}
-                onClick={() => {
-                  setIsDropdown(!isDropdown);
-                }}
-              ></i>
-            </Link>
-            <ul className={`${isDropdown ? "d-block" : ""}`}>
-              <li>
-                <Link to="/sunglasses" className="site-nav">
-                  Kính Mát
-                </Link>
-              </li>
-              <li>
-                <Link to="/glasses" className="site-nav">
-                  Gọng Kính
-                </Link>
-              </li>
-              <li>
-                <Link to="/lenses" className="site-nav">
-                  Tròng Kính
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="lvl1 parent megamenu">
-            <Link>
-              Thông Tin
-              <i
-                className={`second anm anm-${isSubDrop ? "minus-r" : "plus-l"}`}
-                onClick={() => {
-                  setIsSubDrop(!isSubDrop);
-                }}
-              ></i>
-            </Link>
-            <ul className={`${isSubDrop ? "d-block" : ""}`}>
-              <li>
-                <Link to="/contact" className="site-nav">
-                  Liên Hệ
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="site-nav">
-                  Về Chúng Tôi
-                </Link>
-              </li>
-              <li>
-                <Link to="/faqs" className="site-nav">
-                  Câu Hỏi Thường Gặp
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="lvl1">
-            <Link to="/blog">Bài Viết</Link>
-          </li>
-          <li className="lvl1">
-            <Link to="/">
-              <b>Buy Now!</b>
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <Mobile showMoblie={showMoblie} handleMenu={handleMenu} />
     </>
   );
 };
