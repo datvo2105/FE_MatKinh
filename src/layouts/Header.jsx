@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import Mobile from "../components/Header/Mobile";
-import Category from "../components/Header/Category";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -65,7 +64,7 @@ const Header = () => {
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
               <Link to="/">
                 <img
-                  src="assets/images/logo.svg"
+                  src="../../public/assets/images/logo.svg"
                   alt="Belle Multipurpose Html Template"
                   title="Belle Multipurpose Html Template"
                 />
@@ -131,7 +130,7 @@ const Header = () => {
               <div className="logo">
                 <Link to="/">
                   <img
-                    src="assets/images/logo.svg"
+                    src="../../public/assets/images/logo.svg"
                     alt="Belle Multipurpose Html Template"
                     title="Belle Multipurpose Html Template"
                   />

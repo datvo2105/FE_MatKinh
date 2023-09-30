@@ -1,5 +1,3 @@
-import React from "react";
-
 const Blog = () => {
   return (
     <>
@@ -17,7 +15,8 @@ const Blog = () => {
               <div className="wrap-blog">
                 <a
                   href="blog-left-sidebar.html"
-                  className="article__grid-image">
+                  className="article__grid-image"
+                >
                   <img
                     src="assets/images/blog/post-img1.jpg"
                     alt="It's all about how you wear"
@@ -56,7 +55,8 @@ const Blog = () => {
               <div className="wrap-blog">
                 <a
                   href="blog-left-sidebar.html"
-                  className="article__grid-image">
+                  className="article__grid-image"
+                >
                   <img
                     src="assets/images/blog/post-img2.jpg"
                     alt="27 Days of Spring Fashion Recap"

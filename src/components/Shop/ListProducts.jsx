@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-// import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { setListProducts, selectorProduct } from "../../features/productSlice";
 
 const ListProducts = ({ listProduct, priceDiscount }) => {
   const countRating = (rate) => {

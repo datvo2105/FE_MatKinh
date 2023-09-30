@@ -4,12 +4,6 @@ const PriceSlider = () => {
   const [showPrice, setShowPrice] = useState(false);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(20);
-  const [price, setPrice] = useState(maxPrice - minPrice);
-
-  const handleSliderChange = (e) => {
-    setMinPrice(e.target.value);
-    setMaxPrice(parseInt(e.target.value, 10) + 20); // Adjust the right span accordingly
-  };
 
   return (
     <>
