@@ -98,7 +98,7 @@ const Sidebar = ({ priceDiscount }) => {
             </div>
           </div>
           <div className="sidebar_widget static-banner">
-            <img src="assets/images/side-banner-2.jpg" alt="" />
+            <img src="../../../public/assets/images/side-banner-2.jpg" alt="" />
           </div>
           <div className="sidebar_widget">
             <div className="widget-title">

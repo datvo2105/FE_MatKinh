@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { getAllProduct } from "../services/product.service";

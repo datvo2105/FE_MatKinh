@@ -26,7 +26,7 @@ const Shop = () => {
             <img
               className="blur-up lazyload"
               data-src="assets/images/cat-women1.jpg"
-              src="assets/images/cat-women1.jpg"
+              src="../../../public/assets/images/cat-women1.jpg"
               alt="Women"
               title="Women"
             />
