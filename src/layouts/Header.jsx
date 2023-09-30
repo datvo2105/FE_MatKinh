@@ -166,7 +166,7 @@ const Header = () => {
                     <li className="item">
                       <a className="product-image" href="#">
                         <img
-                          src="assets/images/product-images/cape-dress-1.jpg"
+                          src="../../public/assets/images/product-images/cape-dress-1.jpg"
                           alt="3/4 Sleeve Kimono Dress"
                           title=""
                         />
@@ -221,7 +221,7 @@ const Header = () => {
                     <li className="item">
                       <a className="product-image" href="#">
                         <img
-                          src="assets/images/product-images/cape-dress-2.jpg"
+                          src="../../public/assets/images/product-images/cape-dress-2.jpg"
                           alt="Elastic Waist Dress - Black / Small"
                           title=""
                         />
