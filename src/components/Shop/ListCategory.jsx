@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { getAllCategory } from "../../services/product.service";
+import { useDispatch } from "react-redux";
+import { filterCategoryById } from "../../features/productSlice";
 
-const ListCategory = () => {
+const ListCategory = ({ listCategory }) => {
   const [showCategory, setShowCategory] = useState(false);
-  const [listCategory, setListCategory] = useState([]);
-  const [isCheck, setIsCheck] = useState(null);
+  const [isCheck, setIsCheck] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getAllCategory().then((res) => setListCategory(res.data.data));
-  }, [showCategory]);
+    dispatch(filterCategoryById(isCheck));
+  }, [isCheck]);
 
   return (
     <div className="sidebar_widget filterBox filter-widget">
@@ -33,8 +34,8 @@ const ListCategory = () => {
             type="radio"
             id="checkDefault"
             value="all"
-            checked={isCheck == null ? true : false}
-            onChange={() => setIsCheck(null)}
+            checked={isCheck == "" ? true : false}
+            onChange={() => setIsCheck("")}
           />
           <label htmlFor="checkDefault" style={{ marginLeft: 5, fontSize: 14 }}>
             <span>

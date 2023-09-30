@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
-import { getAllProduct } from "../../services/product.service";
+import { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import ListProducts from "./ListProducts";
+import { useDispatch } from "react-redux";
+import { selectorProduct, setListProducts } from "../../features/productSlice";
 
 const Shop = () => {
-  const [listProduct, setListProduct] = useState([]);
+  const dispatch = useDispatch();
+  const { listProduct } = selectorProduct();
+  const params = {};
 
   useEffect(() => {
-    getAllProduct().then((res) => {
-      setListProduct(res.data.record);
-    });
+    dispatch(setListProducts({ params }));
   }, []);
 
   const priceDiscount = (price, discount) => {

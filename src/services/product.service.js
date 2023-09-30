@@ -4,7 +4,14 @@ export const getAllCategory = () => {
   return api.get("/category");
 };
 
-export const getAllProduct = (params) => {
-  const res = api.get("/product", { params }).then((res) => res.data);
-  return res;
+export const getAllProduct = async ({ params }) => {
+  const res = await api.get("/product", { params }).then((res) => res?.data);
+  return res.data;
+};
+
+export const filterByCategory = async (query) => {
+  const res = await api
+    .get(`/product?categoryId=${query}`)
+    .then((res) => res?.data);
+  return res.data;
 };

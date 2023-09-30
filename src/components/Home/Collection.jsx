@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Collection = ({ title, desc, status }) => {
   const [listNew, setListNew] = useState([]);
+  const params = {};
 
   const settingSlider = {
     infinite: listNew.length >= 4 ? true : false,
@@ -16,8 +17,8 @@ const Collection = ({ title, desc, status }) => {
   };
 
   useEffect(() => {
-    getAllProduct()
-      .then((res) => res.data.record)
+    getAllProduct(params)
+      .then((res) => res.record)
       .then((listProduct) => {
         listProduct.forEach((product) => {
           if (product.status.toUpperCase() === status.toUpperCase())

@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Filters from "./Filters";
+import { useState, useEffect } from "react";
+import { getAllProduct } from "../../services/product.service";
 
-const Sidebar = ({ listProduct, priceDiscount }) => {
+const Sidebar = ({ priceDiscount }) => {
+  const [listProduct, setListProduct] = useState([]);
+  const params = {};
+
+  useEffect(() => {
+    getAllProduct(params).then((res) => setListProduct(res.record));
+  }, []);
+
   const settingSlider = {
     infinite: true,
     autoplaySpeed: 2500,
