@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
-import Mobile from "../components/Header/Mobile";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -10,6 +9,7 @@ const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showMoblie, setShowMoblie] = useState(false);
+  const [isSubDrop, setIsSubDrop] = useState(false);
 
   const handleMenu = () => {
     setShowMoblie(!showMoblie);
@@ -379,7 +379,59 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Mobile showMoblie={showMoblie} handleMenu={handleMenu} />
+
+      <div
+        className={`mobile-nav-wrapper ${showMoblie ? "active" : ""}`}
+        role="navigation"
+      >
+        <div className="closemobileMenu" onClick={handleMenu}>
+          <i className="icon anm anm-times-l pull-right"></i> Close Menu
+        </div>
+        <ul id="MobileNav" className="mobile-nav">
+          <li className="lvl1">
+            <Link to="/">Trang Chủ</Link>
+          </li>
+          <li className="lvl1 parent megamenu">
+            <Link to="/product">Cửa Hàng</Link>
+          </li>
+          <li className="lvl1 parent megamenu">
+            <Link>
+              Thông Tin
+              <i
+                className={`second anm anm-${isSubDrop ? "minus-r" : "plus-l"}`}
+                onClick={() => {
+                  setIsSubDrop(!isSubDrop);
+                }}
+              ></i>
+            </Link>
+            <ul className={`${isSubDrop ? "d-block" : ""}`}>
+              <li>
+                <Link to="/contact" className="site-nav">
+                  Liên Hệ
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="site-nav">
+                  Về Chúng Tôi
+                </Link>
+              </li>
+              <li>
+                <Link to="/faqs" className="site-nav">
+                  Câu Hỏi Thường Gặp
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li className="lvl1">
+            <Link to="/blog">Bài Viết</Link>
+          </li>
+          <li className="lvl1">
+            <Link to="/">
+              <b>Buy Now!</b>
+            </Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
