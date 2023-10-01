@@ -3,8 +3,16 @@ import { getOneProduct } from "../../services/product.service";
 import { Link, useParams } from "react-router-dom";
 import ProductSlider from "../../layouts/ProductSlider";
 import Slider from "react-slick";
+import { priceDiscount, countRating } from "../../hooks/Func";
 
 const Product = () => {
+  const [product, setProduct] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    getOneProduct(id).then((res) => setProduct(res.data));
+  }, [id]);
+
   const settingSlider = {
     infinite: true,
     autoplaySpeed: 2500,
@@ -14,35 +22,6 @@ const Product = () => {
     vertical: true,
     verticalSwiping: true,
     arrows: false,
-  };
-
-  const [product, setProduct] = useState();
-  const { id } = useParams();
-
-  useEffect(() => {
-    getOneProduct(id).then((res) => setProduct(res.data));
-  }, [id]);
-
-  const countRating = (rate) => {
-    const rating = [];
-    const isStar = "font-13 fa fa-star";
-    const nonStar = "font-13 fa fa-star-o";
-    let nonRate = 5 - rate;
-    for (let star = 5; star >= 1; star--) {
-      if (rate > 0) {
-        rate--;
-        rating.push(isStar);
-      } else if (nonRate > 0) {
-        nonRate--;
-        rating.push(nonStar);
-      }
-    }
-    return rating;
-  };
-
-  const priceDiscount = (price, discount) => {
-    let newPrice = price;
-    return (newPrice = newPrice - (price * discount) / 100);
   };
 
   return (
@@ -244,14 +223,14 @@ const Product = () => {
                           >
                             <input
                               className="swatchInput"
-                              id="swatch-0-black"
+                              id={`swatch-0-${color}`}
                               type="radio"
                               name="option-0"
                               defaultValue={color}
                             />
                             <label
                               className="swatchLbl color small"
-                              htmlFor="swatch-0-black"
+                              htmlFor={`swatch-0-${color}`}
                               style={{ backgroundColor: `${color}` }}
                               title={color}
                             ></label>

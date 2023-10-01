@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
-import { getAllProduct } from "../services/product.service";
 import { Link } from "react-router-dom";
+import { getAllProduct } from "../services/product.service";
+import { priceDiscount, countRating } from "../hooks/Func";
 
 const ProductSlider = ({ status }) => {
   const [listProduct, setListProduct] = useState([]);
@@ -27,27 +28,6 @@ const ProductSlider = ({ status }) => {
       });
   }, [status]);
 
-  const countRating = (rate) => {
-    const rating = [];
-    const isStar = "font-13 fa fa-star";
-    const nonStar = "font-13 fa fa-star-o";
-    let nonRate = 5 - rate;
-    for (let star = 5; star >= 1; star--) {
-      if (rate > 0) {
-        rate--;
-        rating.push(isStar);
-      } else if (nonRate > 0) {
-        nonRate--;
-        rating.push(nonStar);
-      }
-    }
-    return rating;
-  };
-
-  const priceDiscount = (price, discount) => {
-    let newPrice = price;
-    return (newPrice = newPrice - (price * discount) / 100);
-  };
   return (
     <Slider {...settingSlider}>
       {listProduct.map((product) => {

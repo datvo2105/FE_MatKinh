@@ -13,11 +13,6 @@ const Shop = () => {
     dispatch(setListProducts({ params }));
   }, []);
 
-  const priceDiscount = (price, discount) => {
-    let newPrice = price;
-    return (newPrice = newPrice - (price * discount) / 100);
-  };
-
   return (
     <>
       <div className="collection-header">
@@ -40,11 +35,8 @@ const Shop = () => {
       </div>
       <div className="container">
         <div className="row">
-          <Sidebar listProduct={listProduct} priceDiscount={priceDiscount} />
-          <ListProducts
-            listProduct={listProduct}
-            priceDiscount={priceDiscount}
-          />
+          <Sidebar listProduct={listProduct} />
+          <ListProducts listProduct={listProduct} />
         </div>
       </div>
     </>

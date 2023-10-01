@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import Filters from "./Filters";
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
+import { priceDiscount } from "../../hooks/Func";
 
-const Sidebar = ({ priceDiscount }) => {
+const Sidebar = () => {
   const [listProduct, setListProduct] = useState([]);
   const params = {};
 

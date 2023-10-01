@@ -1,23 +1,7 @@
 import { Link } from "react-router-dom";
+import { priceDiscount, countRating } from "../../hooks/Func";
 
-const ListProducts = ({ listProduct, priceDiscount }) => {
-  const countRating = (rate) => {
-    const rating = [];
-    const isStar = "font-13 fa fa-star";
-    const nonStar = "font-13 fa fa-star-o";
-    let nonRate = 5 - rate;
-    for (let star = 5; star >= 1; star--) {
-      if (rate > 0) {
-        rate--;
-        rating.push(isStar);
-      } else if (nonRate > 0) {
-        nonRate--;
-        rating.push(nonStar);
-      }
-    }
-    return rating;
-  };
-
+const ListProducts = ({ listProduct }) => {
   return (
     <>
       <div className="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
