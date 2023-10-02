@@ -1,12 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { priceDiscount, countRating } from "../../hooks/Func";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { addToCart } from "../../features/orderSlice";
+import { getShipping } from "../../services/order.service";
+import { Navigate } from "react-router-dom";
 
 const RightProduct = ({ product }) => {
-  const [math, setMath] = useState("");
+  const dispatch = useDispatch();
   const [chooseSize, setChooseSize] = useState("");
   const [chooseColor, setChooseColor] = useState("");
+  const [statusShip, setStatusShip] = useState();
   const [qty, setQty] = useState(1);
+  const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    getShipping()
+      .then((res) => res.data)
+      .then((shipping) =>
+        shipping.forEach((ship) => {
+          if (ship.status.toLowerCase() == "đơn hàng vừa mới khởi tạo")
+            setStatusShip(ship._id);
+        }),
+      );
+  }, []);
+
+  const handleAddCart = (e) => {
+    e.preventDefault();
+    dispatch(
+      addToCart({
+        product: product._id,
+        quantity: qty,
+        size: chooseSize,
+        color: chooseColor,
+        status: "cart",
+        shipping: statusShip,
+      }),
+    );
+    setRedirect(true);
+  };
+  if (redirect) {
+    return <Navigate to="/product" />;
+  }
 
   return (
     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -77,11 +112,11 @@ const RightProduct = ({ product }) => {
       </div>
       <form
         method="post"
-        action="http://annimexweb.com/cart/add"
         id="product_form_10508262282"
         acceptCharset="UTF-8"
         className="product-form product-form-product-template hidedropdown"
         encType="multipart/form-data"
+        onSubmit={handleAddCart}
       >
         <div className="swatch clearfix swatch-0 option1" data-option-index="0">
           <div className="product-form__item">
@@ -146,7 +181,11 @@ const RightProduct = ({ product }) => {
           <div className="product-form__item--quantity">
             <div className="wrapQtyBtn">
               <div className="qtyField">
-                <button className="qtyBtn minus" onClick={() => setMath("-")}>
+                <button
+                  type="button"
+                  className="qtyBtn minus"
+                  onClick={() => setQty(qty - 1)}
+                >
                   <i className="fa anm anm-minus-r" aria-hidden="true"></i>
                 </button>
                 <input
@@ -154,10 +193,14 @@ const RightProduct = ({ product }) => {
                   id="Quantity"
                   name="quantity"
                   value={qty}
-                  onChange={() => setQty(qty + setMath + 1)}
+                  onChange={(e) => setQty(e.target.value)}
                   className="product-form__input qty"
                 />
-                <button className="qtyBtn plus" onClick={() => setMath("+")}>
+                <button
+                  className="qtyBtn plus"
+                  type="button"
+                  onClick={() => setQty(qty + 1)}
+                >
                   <i className="fa anm anm-plus-r" aria-hidden="true"></i>
                 </button>
               </div>
@@ -165,7 +208,7 @@ const RightProduct = ({ product }) => {
           </div>
           <div className="product-form__item--submit">
             <button
-              type="button"
+              type="submit"
               name="add"
               className="btn product-form__cart-submit"
             >
@@ -271,3 +314,7 @@ const RightProduct = ({ product }) => {
 };
 
 export default RightProduct;
+
+RightProduct.propTypes = {
+  product: PropTypes.object,
+};

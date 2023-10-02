@@ -1,5 +1,6 @@
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import PropTypes from "prop-types";
 
 const Layouts = ({ content }) => {
   return (
@@ -19,3 +20,7 @@ const Layouts = ({ content }) => {
 };
 
 export default Layouts;
+
+Layouts.propTypes = {
+  content: PropTypes.element,
+};

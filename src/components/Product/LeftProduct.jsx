@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const LeftProduct = ({ product }) => {
   const settingSlider = {
@@ -88,3 +89,7 @@ const LeftProduct = ({ product }) => {
 };
 
 export default LeftProduct;
+
+LeftProduct.propTypes = {
+  product: PropTypes.object,
+};

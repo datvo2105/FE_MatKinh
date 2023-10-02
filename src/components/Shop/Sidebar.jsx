@@ -38,7 +38,7 @@ const Sidebar = () => {
             </div>
             <div className="widget-content">
               <div className="list list-sidebar-products">
-                <div className="grid">
+                <div className="grid" style={{ height: 400 }}>
                   <Slider {...settingSlider}>
                     {listProduct.map((product) => {
                       if (product.status.toUpperCase() === "NEW") {

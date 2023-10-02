@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { getAllProduct } from "../services/product.service";
 import { priceDiscount, countRating } from "../hooks/Func";
+import PropTypes from "prop-types";
 
 const ProductSlider = ({ status }) => {
   const [listProduct, setListProduct] = useState([]);
@@ -180,3 +181,7 @@ const ProductSlider = ({ status }) => {
 };
 
 export default ProductSlider;
+
+ProductSlider.propTypes = {
+  status: PropTypes.string,
+};

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Information from "./pages/Information";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
@@ -41,7 +42,7 @@ const App = () => {
           element={<Layouts content={<Checkout />} />}
         ></Route>
         <Route
-          path="/single-blog"
+          path="/blog/:id"
           element={<Layouts content={<SingleBlog />} />}
         ></Route>
 
@@ -49,6 +50,10 @@ const App = () => {
         <Route
           path="/register"
           element={<Layouts content={<Register />} />}
+        ></Route>
+        <Route
+          path="/information"
+          element={<Layouts content={<Information />} />}
         ></Route>
         <Route path="/about" element={<Layouts content={<About />} />}></Route>
         <Route

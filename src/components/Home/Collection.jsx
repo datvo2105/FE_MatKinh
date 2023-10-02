@@ -1,4 +1,5 @@
 import ProductSlider from "../../layouts/ProductSlider";
+import PropTypes from "prop-types";
 
 const Collection = ({ title, desc, status }) => {
   return (
@@ -28,3 +29,9 @@ const Collection = ({ title, desc, status }) => {
   );
 };
 export default Collection;
+
+Collection.propTypes = {
+  title: PropTypes.string,
+  desc: PropTypes.string,
+  status: PropTypes.string,
+};
