@@ -15,10 +15,10 @@ const Sidebar = () => {
 
   const settingSlider = {
     infinite: true,
-    autoplaySpeed: 2500,
-    autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
     vertical: true,
     verticalSwiping: true,
     arrows: false,

@@ -118,35 +118,6 @@ const ListProducts = ({ listProduct }) => {
                           Select Options
                         </button>
                       </form>
-                      <div className="button-set">
-                        <a
-                          href="event.preDefault()"
-                          title="Quick View"
-                          className="quick-view-popup quick-view"
-                          data-toggle="modal"
-                          data-target="#content_quickview"
-                        >
-                          <i className="icon anm anm-search-plus-r"></i>
-                        </a>
-                        <div className="wishlist-btn">
-                          <a
-                            className="wishlist add-to-wishlist"
-                            href="#"
-                            title="Add to Wishlist"
-                          >
-                            <i className="icon anm anm-heart-l"></i>
-                          </a>
-                        </div>
-                        <div className="compare-btn">
-                          <a
-                            className="compare add-to-compare"
-                            href="compare.html"
-                            title="Add to Compare"
-                          >
-                            <i className="icon anm anm-random-r"></i>
-                          </a>
-                        </div>
-                      </div>
                     </div>
 
                     <div className="product-details text-center">

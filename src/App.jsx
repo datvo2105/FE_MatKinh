@@ -14,7 +14,7 @@ import Homepage from "./components/Home/Home";
 import Blogpage from "./components/Blog/ListBlog";
 import SingleBlog from "./components/Blog/SingleBlog";
 import Shoppage from "./components/Shop/Shop";
-import SingleProduct from "./components/Shop/Product";
+import SingleProduct from "./components/Product/Product";
 import ScrollToTop from "./hooks/ScrollToTop";
 
 const App = () => {

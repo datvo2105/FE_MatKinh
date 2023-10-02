@@ -35,7 +35,3 @@ export const filterByCategory = async (query) => {
     throw new Error(error.message);
   }
 };
-
-// export const orderProduct = () => {
-//   const res = await api.post("/order")
-// }
