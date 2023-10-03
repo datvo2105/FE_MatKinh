@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
 import { priceDiscount } from "../../hooks/Func";
 
-const Sidebar = () => {
+const Sidebar = ({ initPage, setInitPage }) => {
   const [listProduct, setListProduct] = useState([]);
   const params = {};
 
   useEffect(() => {
-    getAllProduct(params).then((res) => setListProduct(res.record));
+    getAllProduct(params).then((res) => setListProduct(res.data.record));
   }, []);
 
   const settingSlider = {
@@ -32,7 +32,7 @@ const Sidebar = () => {
         </div>
         <div className="sidebar_tags">
           <div className="sidebar_widget">
-            <Filters />
+            <Filters initPage={initPage} setInitPage={setInitPage} />
             <div className="widget-title">
               <h2>New Products</h2>
             </div>

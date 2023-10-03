@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { filterCategoryById } from "../../features/productSlice";
+import PropTypes from "prop-types";
+import { filterByCategory } from "../../services/product.service";
+import { useLocation } from "react-router-dom";
+import { getPageIndex, getSearch } from "../../utils/getRegex";
 
-const ListCategory = ({ listCategory }) => {
+const ListCategory = ({ listCategory, setInitPage }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [isCheck, setIsCheck] = useState("");
-  const dispatch = useDispatch();
+
+  const location = useLocation();
+  const pageIndex = Number(getPageIndex(location.search));
+  const search = getSearch(location.search);
 
   useEffect(() => {
-    dispatch(filterCategoryById(isCheck));
+    filterByCategory(isCheck, { search, pageIndex }).then((res) =>
+      setInitPage(res.data),
+    );
   }, [isCheck]);
 
   return (
@@ -19,7 +26,7 @@ const ListCategory = ({ listCategory }) => {
           setShowCategory(!showCategory);
         }}
       >
-        <h2>Categories</h2>
+        <h2>Danh mục</h2>
       </div>
       <ul
         className={showCategory ? "d-none  opacity-0 overfollow-hidden" : ""}
@@ -72,3 +79,7 @@ const ListCategory = ({ listCategory }) => {
 };
 
 export default ListCategory;
+
+ListCategory.propTypes = {
+  listCategory: PropTypes.array,
+};

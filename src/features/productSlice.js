@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const initialState = {
   isLoading: false,
-  listProduct: [],
+  newData: [],
 };
 
 const productSlice = createSlice({
@@ -14,35 +14,21 @@ const productSlice = createSlice({
     getProducts: (state, action) => {
       return {
         ...state,
-        listProduct: action.payload,
-      };
-    },
-    filterCategory: (state, action) => {
-      return {
-        ...state,
-        listProduct: action.payload,
+        newData: action.payload,
       };
     },
   },
 });
 
-export const { filterCategory, getProducts } = productSlice.actions;
+export const { getProducts } = productSlice.actions;
 export default productSlice.reducer;
 
 export const selectorProduct = () => useSelector((state) => state.product);
 
 export const setListProducts = createAsyncThunk(
   "product/showProducts",
-  async ({ params }, thunkAPI) => {
-    const data = await getAllProduct({ params }).then((res) => res?.record);
-    thunkAPI.dispatch(getProducts(data));
-  },
-);
-
-export const filterCategoryById = createAsyncThunk(
-  "product/filterCategory",
-  async (query, thunkAPI) => {
-    const data = await filterByCategory(query).then((res) => res?.record);
-    thunkAPI.dispatch(filterCategory(data));
+  async ({ pageIndex, search }, thunkAPI) => {
+    const res = await getAllProduct({ pageIndex, search });
+    thunkAPI.dispatch(getProducts(res.data));
   },
 );

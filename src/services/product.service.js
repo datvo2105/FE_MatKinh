@@ -16,20 +16,18 @@ export const getOneProduct = async (id) => {
   }
 };
 
-export const getAllProduct = async ({ params }) => {
+export const getAllProduct = async (params) => {
   try {
-    const res = await api.get("/product", { params }).then((res) => res?.data);
+    const res = await api.get("/product", { params });
     return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
-export const filterByCategory = async (query) => {
+export const filterByCategory = async (query, params) => {
   try {
-    const res = await api
-      .get(`/product?categoryId=${query}`)
-      .then((res) => res?.data);
+    const res = await api.get(`/product?categoryId=${query}`, { params });
     return res.data;
   } catch (error) {
     throw new Error(error.message);

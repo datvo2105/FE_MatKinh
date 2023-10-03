@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 const Banner = () => {
@@ -48,7 +49,9 @@ const Banner = () => {
                           <span className="mega-subtitle slideshow__subtitle">
                             {slide.subtitle}
                           </span>
-                          <span className="btn">Shop now</span>
+                          <Link to="/product" className="btn">
+                            Shop now
+                          </Link>
                         </div>
                       </div>
                     </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const ListTags = () => {
   const [showTags, setShowTags] = useState(false);
+
   return (
     <div className="sidebar_widget filterBox filter-widget">
       <div

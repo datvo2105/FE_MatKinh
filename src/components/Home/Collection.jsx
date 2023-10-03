@@ -1,7 +1,21 @@
 import ProductSlider from "../../layouts/ProductSlider";
 import PropTypes from "prop-types";
+import { getAllProduct } from "../../services/product.service";
+import { useState, useEffect } from "react";
 
 const Collection = ({ title, desc, status }) => {
+  const [listProduct, setListProduct] = useState([]);
+  useEffect(() => {
+    getAllProduct({})
+      .then((res) => res.data.record)
+      .then((products) => {
+        products.forEach((product) => {
+          if (product.status.toUpperCase() === status.toUpperCase())
+            setListProduct((list) => [...list, product]);
+        });
+      });
+  }, [status]);
+
   return (
     <>
       <div className="tab-slider-product section">
@@ -16,7 +30,10 @@ const Collection = ({ title, desc, status }) => {
                 <div className="tab_container">
                   <div className="tab_content grid-products d-block">
                     <div className="productSlider">
-                      <ProductSlider status={status} />
+                      <ProductSlider
+                        listProduct={listProduct}
+                        status={status}
+                      />
                     </div>
                   </div>
                 </div>

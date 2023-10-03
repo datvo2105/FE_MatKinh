@@ -1,50 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { priceDiscount, countRating } from "../../hooks/Func";
+import PropTypes from "prop-types";
 
-const ListProducts = ({ listProduct }) => {
+const ListProducts = ({ listProduct, totalPage, pageIndex, search }) => {
+  const navigate = useNavigate();
+
+  const pathChange = (search, index) => {
+    const path = `/product?pageIndex=${index + 1}&search=${search}`;
+    navigate(path);
+  };
   return (
     <>
       <div className="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
         <div className="productList">
-          <button
-            type="button"
-            className="btn btn-filter d-block d-md-none d-lg-none"
-          >
-            Product Filters
-          </button>
-          <div className="toolbar">
-            <div className="filters-toolbar-wrapper">
-              <div className="row">
-                <div className="col-12 ">
-                  <div className="filters-toolbar__item">
-                    <label htmlFor="SortBy" className="hidden">
-                      Sort
-                    </label>
-                    <select
-                      name="SortBy"
-                      id="SortBy"
-                      defaultValue={"title-ascending"}
-                      className="filters-toolbar__input filters-toolbar__input--sort float-right"
-                    >
-                      <option value="title-ascending">Sort</option>
-                      <option>Best Selling</option>
-                      <option>Alphabetically, A-Z</option>
-                      <option>Alphabetically, Z-A</option>
-                      <option>Price, low to high</option>
-                      <option>Price, high to low</option>
-                      <option>Date, new to old</option>
-                      <option>Date, old to new</option>
-                    </select>
-                    <input
-                      className="collection-header__default-sort"
-                      type="hidden"
-                      value="manual"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="grid-products grid--view-items">
             <div className="row">
               {listProduct.map((product) => {
@@ -173,12 +141,6 @@ const ListProducts = ({ listProduct }) => {
                         ))}
                       </ul>
                     </div>
-                    <div className="timermobile">
-                      <div
-                        className="saleTime desktop"
-                        data-countdown="2022/03/01"
-                      ></div>
-                    </div>
                   </div>
                 );
               })}
@@ -188,17 +150,20 @@ const ListProducts = ({ listProduct }) => {
         <hr className="clear" />
         <div className="pagination">
           <ul>
-            <li className="active">
-              <a href="#">1</a>
-            </li>
-            <li>
-              <a href="#">2</a>
-            </li>
-            <li className="next">
-              <a href="#">
-                <i className="fa fa-caret-right" aria-hidden="true"></i>
-              </a>
-            </li>
+            {Array.from({ length: totalPage }).map((value, index) => (
+              <li
+                key={index}
+                className={`${pageIndex == index + 1 ? "active" : ""}`}
+              >
+                <a
+                  type="button"
+                  onClick={() => pathChange(search, index)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {index + 1}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -207,3 +172,10 @@ const ListProducts = ({ listProduct }) => {
 };
 
 export default ListProducts;
+
+ListProducts.propTypes = {
+  totalPage: PropTypes.number,
+  pageIndex: PropTypes.number,
+  search: PropTypes.string,
+  listProduct: PropTypes.array,
+};

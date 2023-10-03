@@ -9,7 +9,7 @@ const ListProducts = () => {
   const params = {};
 
   useEffect(() => {
-    getAllProduct(params).then((res) => setListProduct(res.record));
+    getAllProduct(params).then((res) => setListProduct(res.data.record));
   }, []);
 
   const settingSlider = {
@@ -34,7 +34,7 @@ const ListProducts = () => {
         </div>
         <div className="widget-content">
           <div className="list list-sidebar-products">
-            <div className="grid" style={{ maxHeight: 600 }}>
+            <div className="grid" style={{ maxHeight: 564 }}>
               <Slider {...settingSlider}>
                 {listProduct.map((product) => {
                   if (product.status.toUpperCase() === "NEW") {

@@ -3,7 +3,7 @@ import ListCategory from "./ListCategory";
 import ListTags from "./ListTags";
 import { getAllCategory } from "../../services/product.service";
 
-const Filters = () => {
+const Filters = ({ setInitPage }) => {
   const [listCategory, setListCategory] = useState([]);
   useEffect(() => {
     getAllCategory().then((res) => setListCategory(res.data.data));
@@ -11,7 +11,7 @@ const Filters = () => {
 
   return (
     <>
-      <ListCategory listCategory={listCategory} />
+      <ListCategory listCategory={listCategory} setInitPage={setInitPage} />
       <ListTags />
     </>
   );
