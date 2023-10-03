@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import Cart from "../components/Header/Cart";
@@ -11,6 +11,8 @@ const Header = () => {
   const [showAuth, setShowAuth] = useState(false);
   const [showMoblie, setShowMoblie] = useState(false);
   const [isSubDrop, setIsSubDrop] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleMenu = () => {
     setShowMoblie(!showMoblie);
@@ -19,7 +21,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const { isAuth, userData } = authSelector();
 
-  const location = useLocation();
   useEffect(() => {
     setShowAuth(false), setShowCart(false);
   }, [location]);
@@ -27,6 +28,12 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logout());
     window.location.reload();
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const path = `/product?pageIndex=1&search=${searchInput}`;
+    navigate(path);
   };
 
   return (
@@ -198,7 +205,7 @@ const Header = () => {
         </div>
         <div className={`search ${isSearch ? "search--opened" : ""}`}>
           <div className="search__form">
-            <form className="search-bar__form" action="#">
+            <form className="search-bar__form" onSubmit={handleSearch}>
               <button className="go-btn search__button" type="submit">
                 <i className="icon anm anm-search-l"></i>
               </button>

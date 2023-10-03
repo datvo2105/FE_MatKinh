@@ -4,6 +4,7 @@ import ProductSlider from "../../layouts/ProductSlider";
 import { getOneProduct } from "../../services/product.service";
 import LeftProduct from "./LeftProduct";
 import RightProduct from "./RightProduct";
+import Collection from "./Collection";
 
 const Product = () => {
   const { id } = useParams();
@@ -55,9 +56,7 @@ const Product = () => {
                   <span>New</span>
                 </h2>
               </header>
-              <div className="productPageSlider">
-                <ProductSlider status="new" />
-              </div>
+              <Collection status="new" />
             </div>
             <div className="prFeatures">
               <div className="row">

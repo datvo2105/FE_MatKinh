@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ListCategory from "./ListCategory";
-import ListTags from "./ListTags";
 import { getAllCategory } from "../../services/product.service";
 
 const Filters = ({ setInitPage }) => {
@@ -12,7 +11,6 @@ const Filters = ({ setInitPage }) => {
   return (
     <>
       <ListCategory listCategory={listCategory} setInitPage={setInitPage} />
-      <ListTags />
     </>
   );
 };

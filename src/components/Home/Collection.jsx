@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 const Collection = ({ title, desc, status }) => {
   const [listProduct, setListProduct] = useState([]);
+
   useEffect(() => {
     getAllProduct({})
       .then((res) => res.data.record)
