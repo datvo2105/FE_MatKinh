@@ -30,11 +30,11 @@ const ListProducts = () => {
       </div>
       <div className="sidebar_widget">
         <div className="widget-title">
-          <h2>Trending Now</h2>
+          <h2>Sản Phẩm Mới</h2>
         </div>
         <div className="widget-content">
           <div className="list list-sidebar-products">
-            <div className="grid" style={{ maxHeight: 564 }}>
+            <div className="grid" style={{ maxHeight: 584 }}>
               <Slider {...settingSlider}>
                 {listProduct.map((product) => {
                   if (product.status.toUpperCase() === "NEW") {
@@ -68,18 +68,18 @@ const ListProducts = () => {
                               {product.name}
                             </Link>
                             <div className="grid-view-item__meta">
-                              <span className="product-price__price">
+                              <span className="product-price__price float-right">
                                 <span
                                   className="money"
                                   style={{
                                     color: "#e95144 ",
                                   }}
                                 >
-                                  ${" "}
                                   {priceDiscount(
                                     product.price,
                                     product.discount,
-                                  )}
+                                  )}{" "}
+                                  VND
                                 </span>
                               </span>
                             </div>

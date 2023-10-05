@@ -9,9 +9,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = authSelector();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await dispatch(authLogin({ user_name: username, password }));
+    const res = dispatch(authLogin({ user_name: username, password }));
     const message = res?.error?.message;
     if (message) alert(message);
   };
@@ -22,7 +22,7 @@ const Login = () => {
       <div className="page section-header text-center">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">Login</h1>
+            <h1 className="page-width">Đăng Nhập</h1>
           </div>
         </div>
       </div>
@@ -75,10 +75,20 @@ const Login = () => {
                 </div>
                 <div className="row">
                   <div className="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-                    <input type="submit" className="btn mb-3" value="Sign In" />
+                    <input
+                      type="submit"
+                      className="btn mb-3"
+                      value="Đăng Nhập"
+                    />
                     <p className="mb-4">
-                      <Link to="/register" id="customer_register_link">
-                        Create account
+                      Bạn chưa có tài khoản?
+                      <Link
+                        to="/register"
+                        className="ml-1"
+                        id="customer_register_link"
+                        style={{ fontWeight: 600 }}
+                      >
+                        Đăng Ký Ngay!!!
                       </Link>
                     </p>
                   </div>

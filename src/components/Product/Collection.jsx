@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
 import ProductSlider from "../../layouts/ProductSlider";
+import PropTypes from "prop-types";
 
 const Collection = ({ status }) => {
   const [listProduct, setListProduct] = useState([]);
@@ -14,7 +15,7 @@ const Collection = ({ status }) => {
             setListProduct((list) => [...list, product]);
         });
       });
-  }, []);
+  }, [status]);
 
   return (
     <div className="productPageSlider">
@@ -24,3 +25,7 @@ const Collection = ({ status }) => {
 };
 
 export default Collection;
+
+Collection.propTypes = {
+  status: PropTypes.string,
+};

@@ -9,6 +9,7 @@ const Category = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
   };
+
   return (
     <>
       <div className="collection-box section">

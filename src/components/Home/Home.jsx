@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Banner />
       <Collection
-        title={"New"}
+        title={"Sản Phẩm Mới"}
         desc={
           "Chúng tôi luôn liên tục cập nhật những sản phẩm mới nhất tới cho khách hàng"
         }
@@ -16,10 +16,8 @@ const Home = () => {
       />
       <Category />
       <Collection
-        title={"Sales"}
-        desc={
-          "Chúng tôi luôn liên tục cập nhật những sản phẩm mới nhất tới cho khách hàng"
-        }
+        title={"Giảm Giá"}
+        desc={"Những sản phẩm đang có ưu đãi tốt nhất"}
         status={"sales"}
       />
       <Blog />

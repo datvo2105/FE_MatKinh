@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ProductSlider from "../../layouts/ProductSlider";
 import { getOneProduct } from "../../services/product.service";
 import LeftProduct from "./LeftProduct";
 import RightProduct from "./RightProduct";

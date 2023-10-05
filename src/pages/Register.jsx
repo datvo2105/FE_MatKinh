@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthRegister } from "../services/auth.service";
 
 const Register = () => {
@@ -22,7 +23,7 @@ const Register = () => {
       <div className="page section-header text-center">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">Create an Account</h1>
+            <h1 className="page-width">Tạo tài khoản</h1>
           </div>
         </div>
       </div>
@@ -87,11 +88,18 @@ const Register = () => {
                 </div>
                 <div className="row">
                   <div className="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-                    <input
-                      type="submit"
-                      className="btn mb-3"
-                      defaultValue="Create"
-                    />
+                    <input type="submit" className="btn mb-3" value="Đăng ký" />
+                    <p className="mb-4">
+                      Bạn đã có tài khoản?
+                      <Link
+                        to="/login"
+                        className="ml-1"
+                        id="customer_register_link"
+                        style={{ fontWeight: 600 }}
+                      >
+                        Đăng Nhập.
+                      </Link>
+                    </p>
                   </div>
                 </div>
               </form>

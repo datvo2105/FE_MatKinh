@@ -14,60 +14,44 @@ const Content = () => {
       <div className="page section-header text-center mb-0">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">Blog Fullwidth</h1>
+            <h1 className="page-width">Bài Viết</h1>
           </div>
         </div>
       </div>
       <div className="bredcrumbWrap">
         <div className="container breadcrumbs">
           <Link to="/" title="Back to the home page">
-            Home
+            Trang Chủ
           </Link>
           <span aria-hidden="true">›</span>
-          <span>Blog</span>
+          <span>Bài Viết</span>
         </div>
       </div>
       <div className="container">
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-            <div className="custom-search">
-              <form
-                method="get"
-                className="input-group search-header search"
-                role="search"
-                style={{ position: "relative" }}
-              >
-                <input
-                  className="search-header__input search__input input-group__field"
-                  type="search"
-                  name="q"
-                  placeholder="Search"
-                  aria-label="Search"
-                  autoComplete="off"
-                />
-                <span className="input-group__btn">
-                  <button className="btnSearch" type="submit">
-                    {" "}
-                    <i className="icon anm anm-search-l"></i>{" "}
-                  </button>
-                </span>
-              </form>
-            </div>
             <div className="blog--list-view blog--grid-load-more">
               {listBlog.map((blog) => {
                 return (
                   <div key={blog._id} className="article d-block">
-                    <a className="article_featured-image" href="#">
+                    <Link
+                      className="article_featured-image"
+                      to={`/blog/${blog._id}`}
+                    >
                       <img
                         className="blur-up ls-is-cached lazyloaded"
                         data-src={blog.image}
                         src={blog.image}
-                        style={{ height: 826, objectFit: "cover" }}
+                        style={{
+                          width: 100 + "%",
+                          height: 400,
+                          objectFit: "cover",
+                        }}
                         alt="It's all about how you wear"
                       />
-                    </a>
+                    </Link>
                     <h2 className="h3">
-                      <a href="blog-left-sidebar.html">{blog.title}</a>
+                      <Link to={`/blog/${blog._id}`}>{blog.title}</Link>
                     </h2>
                     <ul className="publish-detail">
                       <li>
@@ -88,7 +72,7 @@ const Content = () => {
                         to={`/blog/${blog._id}`}
                         className="btn btn-secondary btn--small"
                       >
-                        Read more
+                        Đọc Bài Viết
                         <i
                           className="fa fa-caret-right ml-1"
                           aria-hidden="true"
@@ -98,11 +82,6 @@ const Content = () => {
                   </div>
                 );
               })}
-              <div className="loadmore-post">
-                <a href="#;" className="btn loadMorepost">
-                  Load More
-                </a>
-              </div>
             </div>
           </div>
         </div>

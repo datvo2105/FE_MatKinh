@@ -8,7 +8,6 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [showAuth, setShowAuth] = useState(false);
   const [showMoblie, setShowMoblie] = useState(false);
   const [isSubDrop, setIsSubDrop] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ const Header = () => {
   const { isAuth, userData } = authSelector();
 
   useEffect(() => {
-    setShowAuth(false), setShowCart(false);
+    setShowCart(false);
   }, [location]);
 
   const handleLogout = () => {
@@ -34,13 +33,14 @@ const Header = () => {
     e.preventDefault();
     const path = `/product?pageIndex=1&search=${searchInput}`;
     navigate(path);
+    setIsSearch(false);
   };
 
   return (
     <>
       <div
         className="header-wrap bg-white shadow bg-body-tertiary classicHeader position-sticky animated d-flex"
-        style={{ position: "sticky", top: 0 }}
+        style={{ position: "sticky", top: 0, zIndex: 1000 }}
       >
         <div className="container-fluid">
           <div className="row align-items-center">
@@ -85,26 +85,21 @@ const Header = () => {
                     </Link>
                     <ul className="dropdown">
                       <li>
-                        <Link to="/about" className="site-nav">
-                          About Us
+                        <Link to="/contact" className="site-nav">
+                          Liên Hệ
                         </Link>
                       </li>
                       <li>
-                        <Link to="/contact" className="site-nav">
-                          Contact Us
+                        <Link to="/about" className="site-nav">
+                          Về Chúng Tôi
                         </Link>
                       </li>
                       <li>
                         <Link to="/faqs" className="site-nav">
-                          FAQs
+                          Câu Hỏi Thường Gặp
                         </Link>
                       </li>
                     </ul>
-                  </li>
-                  <li className="lvl1">
-                    <a href="#">
-                      <b>Buy Now!</b> <i className="anm anm-angle-down-l"></i>
-                    </a>
                   </li>
                 </ul>
               </nav>
@@ -112,55 +107,48 @@ const Header = () => {
             <div className="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
               <div className="logo">
                 <Link to="/">
-                  <img
-                    src="../../public/assets/images/logo.svg"
-                    alt="Belle Multipurpose Html Template"
-                    title="Belle Multipurpose Html Template"
-                  />
+                  <img src="../../public/assets/images/logo.svg" />
                 </Link>
               </div>
             </div>
             <div className="col-4 col-sm-3 col-md-3 col-lg-2">
-              <Cart showCart={showCart} setShowCart={setShowCart} />
-              <div className="site-header__search">
-                <button
-                  type="button"
-                  className="search-trigger"
-                  onClick={() => {
-                    setIsSearch(true);
-                  }}
+              <nav className="grid__item" id="AccessibleNav">
+                <ul
+                  id="siteNav"
+                  className="site-nav medium center hidearrow d-flex align-items-center justify-content-end"
                 >
-                  <i className="icon anm anm-search-l"></i>
-                </button>
-              </div>
-              <div className="site-user float-right py-1 pr-3">
-                <div className="site-cart">
-                  <div
-                    className="site-header__cart "
-                    title="Cart"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      setShowAuth(!showAuth);
-                    }}
-                  >
-                    <i
-                      className="icon anm anm-user-al"
-                      style={{ fontSize: "20px" }}
-                    ></i>
-                  </div>
-                  <div
-                    id="header-cart"
-                    className={`block block-cart ${
-                      showAuth ? "d-block" : "d-none"
-                    }`}
-                    style={{ width: 180 }}
-                  >
-                    <ul className="mini-products-list">
+                  <li className="lvl1">
+                    <div className="site-header__search">
+                      <button
+                        type="button"
+                        className="search-trigger"
+                        onClick={() => {
+                          setIsSearch(true);
+                          setShowCart(false);
+                        }}
+                      >
+                        <i className="icon anm anm-search-l"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="lvl1 mr-4">
+                    <Cart showCart={showCart} setShowCart={setShowCart} />
+                  </li>
+                  <li className="lvl1 parent dropdown d-lg-block d-md-none">
+                    <div className=" site-header__cart ">
+                      <div type="button" style={{ cursor: "pointer" }}>
+                        <i className="icon anm anm-user-al"></i>
+                      </div>
+                    </div>
+                    <ul
+                      className="dropdown"
+                      style={{ transform: "translate(-80%)" }}
+                    >
                       {isAuth !== null ? (
                         <>
                           <li className="item text-center">
                             <Link
-                              className="pName mr-0 "
+                              className="pName mr-0 site-nav"
                               style={{
                                 overflow: "hidden",
                                 textOverflow: "ellipsis",
@@ -173,33 +161,37 @@ const Header = () => {
                             </Link>
                           </li>
                           <li className="item text-center">
-                            <div
-                              className="pName mr-0"
+                            <Link
+                              type="button"
+                              className="pName mr-0 site-nav"
                               style={{ cursor: "pointer" }}
                               onClick={handleLogout}
                             >
-                              Logout
-                            </div>
+                              Đăng Xuất
+                            </Link>
                           </li>
                         </>
                       ) : (
                         <>
                           <li className="item text-center">
-                            <Link className="pName mr-0" to="/login">
-                              Login
+                            <Link className="pName mr-0 site-nav" to="/login">
+                              Đăng Nhập
                             </Link>
                           </li>
                           <li className="item text-center">
-                            <Link className="pName mr-0" to="/register">
-                              Register
+                            <Link
+                              className="pName mr-0 site-nav"
+                              to="/register"
+                            >
+                              Đăng Ký
                             </Link>
                           </li>
                         </>
                       )}
                     </ul>
-                  </div>
-                </div>
-              </div>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
@@ -215,7 +207,7 @@ const Header = () => {
                 name="q"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Search entire store..."
+                placeholder="Tìm kiếm sản phẩm...."
                 aria-label="Search"
                 autoComplete="off"
               />
@@ -277,11 +269,6 @@ const Header = () => {
           </li>
           <li className="lvl1">
             <Link to="/blog">Bài Viết</Link>
-          </li>
-          <li className="lvl1">
-            <Link to="/">
-              <b>Buy Now!</b>
-            </Link>
           </li>
         </ul>
       </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Notfound = () => {
   return (
     <>
@@ -5,16 +7,13 @@ const Notfound = () => {
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12">
             <div className="empty-page-content text-center">
-              <h1>404 Page Not Found</h1>
-              <p>The page you requested does not exist.</p>
+              <h1>Lỗi 404</h1>
+              <p>Trang không tồn tại</p>
               <p>
-                <a
-                  href="http://annimexweb.com/"
-                  className="btn btn--has-icon-after"
-                >
-                  Continue shopping{" "}
+                <Link to="/product" className="btn btn--has-icon-after">
+                  Tiếp tục mua hàng{" "}
                   <i className="fa fa-caret-right" aria-hidden="true"></i>
-                </a>
+                </Link>
               </p>
             </div>
           </div>

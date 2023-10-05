@@ -26,6 +26,7 @@ const orderSlice = createSlice({
 });
 
 export const selectorOrder = () => useSelector((state) => state.order);
+
 export default orderSlice.reducer;
 
 export const { cartOrder } = orderSlice.actions;

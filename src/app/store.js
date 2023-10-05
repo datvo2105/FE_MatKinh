@@ -15,12 +15,10 @@ import storage from "redux-persist/lib/storage";
 import api from "../configs/config";
 
 import authSlice from "../features/authSlice";
-import productSlice from "../features/productSlice";
 import orderSlice from "../features/orderSlice";
 
 export const rootReducer = combineReducers({
   auth: authSlice,
-  product: productSlice,
   order: orderSlice,
 });
 

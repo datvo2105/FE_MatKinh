@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { filterByCategory } from "../../services/product.service";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { filterByCategory } from "../../services/product.service";
 import { getPageIndex, getSearch } from "../../utils/getRegex";
 
 const ListCategory = ({ listCategory, setInitPage }) => {
@@ -16,7 +16,7 @@ const ListCategory = ({ listCategory, setInitPage }) => {
     filterByCategory(isCheck, { search, pageIndex }).then((res) =>
       setInitPage(res.data),
     );
-  }, [isCheck]);
+  }, [search, pageIndex, isCheck, setInitPage]);
 
   return (
     <div className="sidebar_widget filterBox filter-widget">
@@ -48,7 +48,7 @@ const ListCategory = ({ listCategory, setInitPage }) => {
             <span>
               <span></span>
             </span>
-            All
+            Tất Cả
           </label>
         </li>
         {listCategory.map((category, index) => {
@@ -82,4 +82,5 @@ export default ListCategory;
 
 ListCategory.propTypes = {
   listCategory: PropTypes.array,
+  setInitPage: PropTypes.func,
 };

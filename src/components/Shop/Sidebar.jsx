@@ -4,10 +4,10 @@ import Filters from "./Filters";
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
 import { priceDiscount } from "../../hooks/Func";
+import PropTypes from "prop-types";
 
 const Sidebar = ({ initPage, setInitPage }) => {
   const [listProduct, setListProduct] = useState([]);
-  const params = {};
 
   useEffect(() => {
     getAllProduct(params).then((res) => setListProduct(res.data.record));
@@ -34,7 +34,7 @@ const Sidebar = ({ initPage, setInitPage }) => {
           <div className="sidebar_widget">
             <Filters initPage={initPage} setInitPage={setInitPage} />
             <div className="widget-title">
-              <h2>New Products</h2>
+              <h2>Sản Phẩm Mới</h2>
             </div>
             <div className="widget-content">
               <div className="list list-sidebar-products">
@@ -72,18 +72,18 @@ const Sidebar = ({ initPage, setInitPage }) => {
                                   {product.name}
                                 </Link>
                                 <div className="grid-view-item__meta">
-                                  <span className="product-price__price">
+                                  <span className="product-price__price float-right">
                                     <span
                                       className="money"
                                       style={{
                                         color: "#e95144 ",
                                       }}
                                     >
-                                      ${" "}
                                       {priceDiscount(
                                         product.price,
                                         product.discount,
-                                      )}
+                                      )}{" "}
+                                      VND
                                     </span>
                                   </span>
                                 </div>
@@ -103,13 +103,12 @@ const Sidebar = ({ initPage, setInitPage }) => {
           </div>
           <div className="sidebar_widget">
             <div className="widget-title">
-              <h2>Information</h2>
+              <h2>Thông Tin</h2>
             </div>
             <div className="widget-content">
               <p>
-                Use this text to share information about your brand with your
-                customers. Describe a product, share announcements, or welcome
-                customers to your store.
+                Luôn mang những sản phẩm mới với giá ưu đãi nhất đến tay khách
+                hàng.
               </p>
             </div>
           </div>
@@ -120,3 +119,16 @@ const Sidebar = ({ initPage, setInitPage }) => {
 };
 
 export default Sidebar;
+
+const params = {
+  search: "",
+  record: [],
+  pageIndex: 1,
+  limit: 12,
+  total: 1,
+};
+
+Sidebar.propTypes = {
+  initPage: PropTypes.object,
+  setInitPage: PropTypes.func,
+};

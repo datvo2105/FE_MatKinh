@@ -27,11 +27,11 @@ const SingleBlog = () => {
       <div className="bredcrumbWrap">
         <div className="container breadcrumbs">
           <Link to="/" title="Back to the home page">
-            Home
+            Trang Chủ
           </Link>
           <span aria-hidden="true">›</span>
           <Link to="/blog" title="Back to News">
-            Blog
+            Bài Viết
           </Link>
           <span aria-hidden="true">›</span>
           <span>
@@ -62,7 +62,7 @@ const SingleBlog = () => {
             <div className="sidebar_tags">
               <div className="sidebar_widget">
                 <div className="widget-title">
-                  <h2>Recent Posts</h2>
+                  <h2>Các bài viết khác</h2>
                 </div>
                 <div className="widget-content">
                   <div className="list list-sidebar-products">

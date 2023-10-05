@@ -57,24 +57,16 @@ const Cart = ({ showCart, setShowCart }) => {
                     <a className="pName" href="cart.html">
                       {order.product.name}
                     </a>
+                    <div className="variant-cart my-1">
+                      Size: {order.size.toUpperCase()}
+                    </div>
                     <div className="variant-cart">
-                      Sizes: {order.size.toUpperCase()}
+                      Số lượng: {order.quantity}
                     </div>
-                    <div className="wrapQtyBtn">
-                      <div className="qtyField">
-                        <span className="label">Qty:</span>
-                        <input
-                          type="text"
-                          id="Quantity"
-                          name="quantity"
-                          defaultValue={order.quantity}
-                          className="product-form__input qty"
-                        />
-                      </div>
-                    </div>
-                    <div className="priceRow">
-                      <div className="product-price">
-                        <span className="money">$ {order.price}</span>
+                    <div className="priceRow mt-2">
+                      <span style={{ fontWeight: 600 }}>Total:</span>
+                      <div className="product-price ml-1 float-right">
+                        <span className="money">{order.price} VND</span>
                       </div>
                     </div>
                   </div>
@@ -82,13 +74,14 @@ const Cart = ({ showCart, setShowCart }) => {
               );
             })}
           </ul>
-          <div className="total">
-            <div className="buttonSet text-center">
-              <Link to="/cart" className="btn btn-secondary btn--small">
-                View Cart
-              </Link>
-              <Link to="/checkout" className="btn btn-secondary btn--small">
-                Checkout
+          <div className="total pt-2 border-top">
+            <div className="buttonSet text-center ">
+              <Link
+                to="/cart"
+                className="btn btn-secondary btn--small "
+                style={{ width: "100%" }}
+              >
+                Giỏ Hàng
               </Link>
             </div>
           </div>

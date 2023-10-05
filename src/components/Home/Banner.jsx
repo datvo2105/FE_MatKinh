@@ -12,15 +12,10 @@ const Banner = () => {
   const slides = [
     {
       id: 0,
-      title: "Shop Our New Collection",
-      subtitle: "From Hight to low, classic or modern. We have you covered",
+      title: "Sản phẩm mới",
+      subtitle:
+        "Chúng tôi luôn liên tục cập nhật những sản phẩm mới nhất tới cho khách hàng",
       img: "assets/images/slideshow-banners/home-mk-1.jpg",
-    },
-    {
-      id: 1,
-      title: "Summer Bikini Collection",
-      subtitle: "Save up to 50% off this weekend only",
-      img: "assets/images/slideshow-banners/home-mk-2.jpg",
     },
   ];
 
@@ -50,7 +45,7 @@ const Banner = () => {
                             {slide.subtitle}
                           </span>
                           <Link to="/product" className="btn">
-                            Shop now
+                            Mua Ngay
                           </Link>
                         </div>
                       </div>

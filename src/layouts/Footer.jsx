@@ -3,9 +3,7 @@ import { getAllCategory } from "../services/product.service";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const [emailInput, setEmailInput] = useState("");
   const [visible, setVisible] = useState(false);
-
   const [listCategory, setListCategory] = useState([]);
 
   useEffect(() => {
@@ -36,43 +34,7 @@ const Footer = () => {
         <div className="newsletter-section">
           <div className="container">
             <div className="row">
-              <div className="col-12 col-sm-12 col-md-12 col-lg-7 w-100 d-flex justify-content-start align-items-center">
-                <div className="display-table">
-                  <div className="display-table-cell footer-newsletter">
-                    <div className="section-header text-center">
-                      <label className="h2">
-                        <span>sign up for </span>newsletter
-                      </label>
-                    </div>
-                    <form action="#" method="post">
-                      <div className="input-group">
-                        <input
-                          type="email"
-                          className="input-group__field newsletter__input"
-                          name="EMAIL"
-                          value={emailInput}
-                          onChange={(e) => setEmailInput(e.target.value)}
-                          placeholder="Email address"
-                          required=""
-                        />
-                        <span className="input-group__btn">
-                          <button
-                            type="submit"
-                            className="btn newsletter__submit"
-                            name="commit"
-                            id="Subscribe"
-                          >
-                            <span className="newsletter__submit-text--large">
-                              Subscribe
-                            </span>
-                          </button>
-                        </span>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div className="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
+              <div className="col-12 col-sm-12 col-md-12 w-100 d-flex justify-content-end align-items-center">
                 <div className="footer-social">
                   <ul className="list--inline site-footer__social-icons social-icons">
                     <li>
@@ -162,7 +124,7 @@ const Footer = () => {
             <div className="footer-top">
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                  <h4 className="h4">Quick Shop</h4>
+                  <h4 className="h4">Danh Mục</h4>
                   <ul>
                     {listCategory.map((category) => (
                       <li key={category._id}>
@@ -172,26 +134,26 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                  <h4 className="h4">Informations</h4>
+                  <h4 className="h4">Thông Tin</h4>
                   <ul>
                     <li>
-                      <Link to="/about">About us</Link>
+                      <Link to="/about">Về Chúng Tôi</Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                  <h4 className="h4">Customer Services</h4>
+                  <h4 className="h4">Chăm Sóc Khách Hàng</h4>
                   <ul>
                     <li>
-                      <Link to="/faqs">FAQ's</Link>
+                      <Link to="/faqs">Câu Hỏi Thường Gặp</Link>
                     </li>
                     <li>
-                      <Link to="/contact">Contact Us</Link>
+                      <Link to="/contact">Liên Hệ</Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
-                  <h4 className="h4">Contact Us</h4>
+                  <h4 className="h4">Liên Hệ</h4>
                   <ul className="addressFooter">
                     <li>
                       <i className="icon anm anm-map-marker-al"></i>
@@ -216,9 +178,7 @@ const Footer = () => {
             <hr />
             <div className="footer-bottom">
               <div className="row">
-                <div className="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left">
-                  <span></span> <a href="templateshub.net">Templates Hub</a>
-                </div>
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left"></div>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
                   <ul className="payment-icons list--inline">
                     <li>

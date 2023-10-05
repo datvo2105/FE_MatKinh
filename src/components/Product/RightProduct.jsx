@@ -50,8 +50,15 @@ const RightProduct = ({ product }) => {
         <div className="product-nav clearfix"></div>
         <div className="prInfoRow">
           <div className="product-stock">
-            <span className="instock">In Stock</span>
-            <span className="outstock hide">Unavailable</span>
+            <span className={`instock ${product.quantity > 0 ? "" : "hide"}`}>
+              CÒN HÀNG
+            </span>
+            <span
+              className={`outstock ${product.quantity > 0 ? "hide" : ""}`}
+              style={{ color: "#e95144" }}
+            >
+              HẾT HÀNG
+            </span>
           </div>
           <div className="product-review">
             <a className="reviewLink" href="#tab2">
@@ -62,30 +69,30 @@ const RightProduct = ({ product }) => {
           </div>
         </div>
         <p className="product-single__price product-single__price-product-template">
-          <span className="visually-hidden">Regular price</span>
+          <span className="visually-hidden">Giá Cả</span>
           {product.discount > 0 ? (
             <>
               <s id="ComparePrice-product-template">
-                <span className="money mr-1">$ {product.price}</span>
+                <span className="money mr-1">{product.price} VND</span>
               </s>
               <span className="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                 <span id="ProductPrice-product-template">
                   <span className="money">
-                    $ {priceDiscount(product.price, product.discount)}
+                    {priceDiscount(product.price, product.discount)} VND
                   </span>
                 </span>
               </span>
               <span className="discount-badge">
                 <span className="devider">|</span>&nbsp;
-                <span>You Save</span>
+                <span>Bạn tiết kiệm được</span>
                 <span
                   id="SaveAmount-product-template"
                   className="ml-1 product-single__save-amount"
                 >
                   <span className="money">
-                    $
                     {product.price -
-                      priceDiscount(product.price, product.discount)}
+                      priceDiscount(product.price, product.discount)}{" "}
+                    VND
                   </span>
                 </span>
                 <span className="off ml-1">
@@ -97,7 +104,7 @@ const RightProduct = ({ product }) => {
             <>
               <span className="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                 <span id="ProductPrice-product-template">
-                  <span className="money">$ {product.price}</span>
+                  <span className="money">{product.price} VND</span>
                 </span>
               </span>
             </>
@@ -107,9 +114,22 @@ const RightProduct = ({ product }) => {
       <div className="product-single__description rte">
         <span>{product.desc}</span>
       </div>
-      <div id="quantity_message">
-        <span className="items">{product.quantity}</span> in stock.
-      </div>
+      {product.quantity <= 0 ? (
+        <div
+          id="quantity_message"
+          style={{
+            color: "#e95144",
+            borderColor: "#e95144",
+          }}
+        >
+          <span className="items">Hết Hàng</span>
+        </div>
+      ) : (
+        <div id="quantity_message">
+          Còn
+          <span className="items"> {product.quantity}</span> sản phẩm.
+        </div>
+      )}
       <form
         method="post"
         id="product_form_10508262282"
@@ -171,143 +191,88 @@ const RightProduct = ({ product }) => {
             ))}
           </div>
         </div>
-        <p className="infolinks">
-          <a href="#sizechart" className="sizelink btn">
-            {" "}
-            Size Guide
-          </a>
-        </p>
-        <div className="product-action clearfix">
-          <div className="product-form__item--quantity">
-            <div className="wrapQtyBtn">
-              <div className="qtyField">
-                <button
-                  type="button"
-                  className="qtyBtn minus"
-                  onClick={() => setQty(qty - 1)}
-                >
-                  <i className="fa anm anm-minus-r" aria-hidden="true"></i>
-                </button>
-                <input
-                  type="text"
-                  id="Quantity"
-                  name="quantity"
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
-                  className="product-form__input qty"
-                />
-                <button
-                  className="qtyBtn plus"
-                  type="button"
-                  onClick={() => setQty(qty + 1)}
-                >
-                  <i className="fa anm anm-plus-r" aria-hidden="true"></i>
-                </button>
+        {product.quantity > 0 ? (
+          <div className="product-action clearfix">
+            <div className="product-form__item--quantity">
+              <div className="wrapQtyBtn">
+                <div className="qtyField">
+                  <button
+                    type="button"
+                    className="qtyBtn minus"
+                    onClick={() => setQty(qty - 1)}
+                  >
+                    <i className="fa anm anm-minus-r" aria-hidden="true"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="Quantity"
+                    name="quantity"
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    className="product-form__input qty"
+                  />
+                  <button
+                    className="qtyBtn plus"
+                    type="button"
+                    onClick={() => setQty(qty + 1)}
+                  >
+                    <i className="fa anm anm-plus-r" aria-hidden="true"></i>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="product-form__item--submit">
-            <button
-              type="submit"
-              name="add"
-              className="btn product-form__cart-submit"
+            <div className="product-form__item--submit">
+              <button
+                type="submit"
+                name="add"
+                className="btn product-form__cart-submit"
+              >
+                <span>Thêm vào giỏ hàng</span>
+              </button>
+            </div>
+            <div
+              className="shopify-payment-button"
+              data-shopify="payment-button"
             >
-              <span>Add to cart</span>
-            </button>
+              <button
+                type="button"
+                className="shopify-payment-button__button shopify-payment-button__button--unbranded"
+              >
+                mua ngay
+              </button>
+            </div>
           </div>
-          <div className="shopify-payment-button" data-shopify="payment-button">
-            <button
-              type="button"
-              className="shopify-payment-button__button shopify-payment-button__button--unbranded"
+        ) : (
+          <div className="product-action clearfix">
+            <div
+              className="shopify-payment-button"
+              data-shopify="payment-button"
             >
-              Buy it now
-            </button>
+              <button
+                type="button"
+                disabled
+                className="shopify-payment-button__button shopify-payment-button__button--unbranded"
+              >
+                Sản phẩm tạm hết hàng.
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </form>
-      <div className="display-table shareRow">
-        <div className="display-table-cell text-right">
-          <div className="social-sharing">
-            <a
-              target="_blank"
-              href="#"
-              className="btn btn--small btn--secondary btn--share share-facebook"
-              title="Share on Facebook"
-            >
-              <i className="fa fa-facebook-square" aria-hidden="true"></i>
-              <span className="share-title" aria-hidden="true">
-                Share
-              </span>
-            </a>
-            <a
-              target="_blank"
-              href="#"
-              className="btn btn--small btn--secondary btn--share share-twitter"
-              title="Tweet on Twitter"
-            >
-              <i className="fa fa-twitter" aria-hidden="true"></i>
-              <span className="share-title" aria-hidden="true">
-                Tweet
-              </span>
-            </a>
-            <a
-              href="#"
-              title="Share on google+"
-              className="btn btn--small btn--secondary btn--share"
-            >
-              <i className="fa fa-google-plus" aria-hidden="true"></i>
-              <span className="share-title" aria-hidden="true">
-                Google+
-              </span>
-            </a>
-            <a
-              target="_blank"
-              href="#"
-              className="btn btn--small btn--secondary btn--share share-pinterest"
-              title="Pin on Pinterest"
-            >
-              <i className="fa fa-pinterest" aria-hidden="true"></i>
-              <span className="share-title" aria-hidden="true">
-                Pin it
-              </span>
-            </a>
-            <a
-              href="#"
-              className="btn btn--small btn--secondary btn--share share-pinterest"
-              title="Share by Email"
-              target="_blank"
-            >
-              <i className="fa fa-envelope" aria-hidden="true"></i>
-              <span className="share-title" aria-hidden="true">
-                Email
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
+      <br />
 
       <p id="freeShipMsg" className="freeShipMsg" data-price="199">
-        <i className="fa fa-truck" aria-hidden="true"></i> GETTING CLOSER! ONLY
-        <b className="freeShip">
-          <span
-            className="money"
-            data-currency-usd="$199.00"
-            data-currency="USD"
-          >
-            $199.00
-          </span>
-        </b>
-        AWAY FROM <b>FREE SHIPPING!</b>
+        <i className="fa fa-truck" aria-hidden="true"></i>
+        Giao hàng miễn phí
       </p>
       <p className="shippingMsg">
-        <i className="fa fa-clock-o" aria-hidden="true"></i> ESTIMATED DELIVERY
-        BETWEEN <b id="fromDate">Wed. May 1</b> and
-        <b id="toDate">Tue. May 7</b>.
+        <i className="fa fa-clock-o" aria-hidden="true"></i>
+        Khoảng <b id="fromDate">3 ngày</b> ~ <b id="fromDate">7 ngày</b> tùy khu
+        vực
       </p>
       <div className="userViewMsg" data-user="20" data-time="11000">
         <i className="fa fa-users" aria-hidden="true"></i>
-        <strong className="uersView">14</strong> PEOPLE ARE LOOKING FOR THIS
-        PRODUCT
+        <strong className="uersView">14</strong> Lượt xem sản phẩm
       </div>
     </div>
   );

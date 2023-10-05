@@ -22,19 +22,24 @@ const CartCheckOut = ({ listOrder }) => {
 
   return (
     <div className="col-4">
-      <div className="solid-border">
-        <div className="row border-bottom pb-2">
-          <span className="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
+      <div className="solid-border ">
+        <div className="row border py-2 ">
+          <span className="col-12 col-sm-6 cart__subtotal-title">
+            Thành tiền dự kiến
+          </span>
           <span className="col-12 col-sm-6 text-right">
-            <span className="money">$ {totalPrice()}</span>
+            <span className="money">{totalPrice()} VND</span>
           </span>
         </div>
-        <div className="row border-bottom pb-2 pt-2">
+        <div
+          className="row border py-2"
+          style={{ backgroundColor: "rgb(228, 228, 228)" }}
+        >
           <span className="col-12 col-sm-6 cart__subtotal-title">
-            <strong>Grand Total</strong>
+            <strong>Tổng thành tiền</strong>
           </span>
           <span className="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-            <span className="money">$ {totalPrice()}</span>
+            <span className="money">{totalPrice()} VND</span>
           </span>
         </div>
         <div className="paymnet-img">
@@ -49,15 +54,15 @@ const CartCheckOut = ({ listOrder }) => {
               value={isCheck}
               onChange={() => setIsCheck(!isCheck)}
             />
-            I agree with the terms and conditions
+            Tôi đồng ý với các điều khoản và điều kiện
           </label>
         </p>
         <button
           type="button"
-          className="btn btn--small-wide checkout"
+          className="btn btn--small-wide checkout float-right"
           onClick={handleOrder}
         >
-          Proceed To Checkout
+          Thanh toán
         </button>
       </div>
     </div>

@@ -27,7 +27,7 @@ const Information = () => {
       <div className="page section-header text-center">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">Information</h1>
+            <h1 className="page-width">Thông Tin Người Dùng</h1>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ const Information = () => {
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="form-group">
-                      <label htmlFor="FirstName">User Name</label>
+                      <label htmlFor="FirstName">Username</label>
                       <input
                         type="text"
                         name="customer[first_name]"
@@ -76,7 +76,7 @@ const Information = () => {
                   </div>
                   <div className="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="form-group">
-                      <label htmlFor="Address">Address</label>
+                      <label htmlFor="Address">Địa Chỉ</label>
                       <input
                         type="text"
                         name="customer[address]"
@@ -94,7 +94,7 @@ const Information = () => {
                     <input
                       type="submit"
                       className="btn mb-3"
-                      defaultValue="Create"
+                      value="Cập Nhập"
                     />
                   </div>
                 </div>

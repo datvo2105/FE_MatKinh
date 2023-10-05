@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { priceDiscount, countRating } from "../hooks/Func";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { getShipping } from "../services/order.service";
-import { addToCart } from "../features/orderSlice";
 
 const ProductSlider = ({ listProduct }) => {
   const settingSlider = {
@@ -15,36 +11,6 @@ const ProductSlider = ({ listProduct }) => {
     slidesToShow: listProduct.length >= 4 ? 4 : listProduct.length,
     slidesToScroll: 1,
     variableWidth: true,
-  };
-
-  const dispatch = useDispatch();
-  const [chooseSize, setChooseSize] = useState("");
-  const [chooseColor, setChooseColor] = useState("");
-  const [statusShip, setStatusShip] = useState();
-  const [qty, setQty] = useState(1);
-
-  useEffect(() => {
-    getShipping()
-      .then((res) => res.data)
-      .then((shipping) =>
-        shipping.forEach((ship) => {
-          if (ship.status.toLowerCase() == "đơn hàng vừa mới khởi tạo")
-            setStatusShip(ship._id);
-        }),
-      );
-  }, []);
-
-  const handleAddCart = (product) => {
-    dispatch(
-      addToCart({
-        product: product._id,
-        quantity: 1,
-        size: product.sizes[0],
-        color: product.colors[0],
-        status: "cart",
-        shipping: statusShip,
-      }),
-    );
   };
 
   return (
@@ -94,17 +60,6 @@ const ProductSlider = ({ listProduct }) => {
                   )}
                 </div>
               </Link>
-
-              <form className="variants add">
-                <button
-                  className="btn btn-addto-cart"
-                  type="button"
-                  tabIndex="0"
-                  onClick={() => handleAddCart(product)}
-                >
-                  Add To Cart
-                </button>
-              </form>
             </div>
             <div className="product-details text-center">
               <div className="product-name">
@@ -128,13 +83,13 @@ const ProductSlider = ({ listProduct }) => {
                       color: "#e95144 ",
                     }}
                   >
-                    $ {product.price}
+                    {product.price} VND
                   </span>
                 ) : (
                   <>
-                    <span className="old-price">$ {product.price}</span>
+                    <span className="old-price">{product.price} VND</span>
                     <span className="price">
-                      ${priceDiscount(product.price, product.discount)}
+                      {priceDiscount(product.price, product.discount)} VND
                     </span>
                   </>
                 )}

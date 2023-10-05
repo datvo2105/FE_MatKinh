@@ -4,7 +4,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Information from "./pages/Information";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Faqs from "./pages/FAQs";
@@ -37,10 +36,6 @@ const App = () => {
           element={<Layouts content={<SingleProduct />} />}
         ></Route>
         <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>
-        <Route
-          path="/checkout"
-          element={<Layouts content={<Checkout />} />}
-        ></Route>
         <Route
           path="/blog/:id"
           element={<Layouts content={<SingleBlog />} />}
