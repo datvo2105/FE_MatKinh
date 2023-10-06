@@ -1,22 +1,17 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { filterByCategory } from "../../services/product.service";
-import { getPageIndex, getSearch } from "../../utils/getRegex";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getCategoryId } from "../../utils/getRegex";
+import { getAllCategory } from "../../services/product.service";
 
-const ListCategory = ({ listCategory, setInitPage }) => {
+const ListCategory = () => {
+  const navigate = useNavigate();
+  const [listCategory, setListCategory] = useState([]);
   const [showCategory, setShowCategory] = useState(false);
-  const [isCheck, setIsCheck] = useState("");
-
-  const location = useLocation();
-  const pageIndex = Number(getPageIndex(location.search));
-  const search = getSearch(location.search);
+  const categoryId = getCategoryId(location.search);
 
   useEffect(() => {
-    filterByCategory(isCheck, { search, pageIndex }).then((res) =>
-      setInitPage(res.data),
-    );
-  }, [search, pageIndex, isCheck, setInitPage]);
+    getAllCategory().then((res) => setListCategory(res.data));
+  }, []);
 
   return (
     <div className="sidebar_widget filterBox filter-widget">
@@ -41,8 +36,8 @@ const ListCategory = ({ listCategory, setInitPage }) => {
             type="radio"
             id="checkDefault"
             value="all"
-            checked={isCheck == "" ? true : false}
-            onChange={() => setIsCheck("")}
+            checked={categoryId == "" ? true : false}
+            onChange={() => navigate("/product")}
           />
           <label htmlFor="checkDefault" style={{ marginLeft: 5, fontSize: 14 }}>
             <span>
@@ -58,8 +53,8 @@ const ListCategory = ({ listCategory, setInitPage }) => {
                 type="radio"
                 id={`check${index + 1}`}
                 value={category._id}
-                checked={isCheck === category._id ? true : false}
-                onChange={() => setIsCheck(category._id)}
+                checked={categoryId === category._id ? true : false}
+                onChange={() => navigate(`?categoryId=${category._id}`)}
               />
               <label
                 htmlFor={`check${index + 1}`}
@@ -79,8 +74,3 @@ const ListCategory = ({ listCategory, setInitPage }) => {
 };
 
 export default ListCategory;
-
-ListCategory.propTypes = {
-  listCategory: PropTypes.array,
-  setInitPage: PropTypes.func,
-};

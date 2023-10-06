@@ -4,9 +4,8 @@ import Filters from "./Filters";
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
 import { priceDiscount } from "../../hooks/Func";
-import PropTypes from "prop-types";
 
-const Sidebar = ({ initPage, setInitPage }) => {
+const Sidebar = () => {
   const [listProduct, setListProduct] = useState([]);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Sidebar = ({ initPage, setInitPage }) => {
         </div>
         <div className="sidebar_tags">
           <div className="sidebar_widget">
-            <Filters initPage={initPage} setInitPage={setInitPage} />
+            <Filters />
             <div className="widget-title">
               <h2>Sản Phẩm Mới</h2>
             </div>
@@ -126,9 +125,4 @@ const params = {
   pageIndex: 1,
   limit: 12,
   total: 1,
-};
-
-Sidebar.propTypes = {
-  initPage: PropTypes.object,
-  setInitPage: PropTypes.func,
 };

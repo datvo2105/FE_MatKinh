@@ -7,7 +7,7 @@ const Footer = () => {
   const [listCategory, setListCategory] = useState([]);
 
   useEffect(() => {
-    getAllCategory().then((res) => setListCategory(res.data.data));
+    getAllCategory().then((res) => setListCategory(res.data));
   }, []);
 
   const toggleVisible = () => {

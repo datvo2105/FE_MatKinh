@@ -15,7 +15,9 @@ const Login = () => {
     const message = res?.error?.message;
     if (message) alert(message);
   };
-  if (isAuth != null) return <Navigate to="/" />;
+  if (isAuth != null) {
+    location.assign("/");
+  }
 
   return (
     <>

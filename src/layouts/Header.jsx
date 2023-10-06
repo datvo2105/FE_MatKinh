@@ -1,37 +1,28 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { authSelector, logout } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import Cart from "../components/Header/Cart";
 
 const Header = () => {
-  const [searchInput, setSearchInput] = useState("");
   const [isSearch, setIsSearch] = useState(false);
+  const [isSubDrop, setIsSubDrop] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [showCart, setShowCart] = useState(false);
   const [showMoblie, setShowMoblie] = useState(false);
-  const [isSubDrop, setIsSubDrop] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleMenu = () => {
-    setShowMoblie(!showMoblie);
-  };
 
   const dispatch = useDispatch();
   const { isAuth, userData } = authSelector();
 
-  useEffect(() => {
-    setShowCart(false);
-  }, [location]);
-
   const handleLogout = () => {
     dispatch(logout());
-    window.location.reload();
+    location.assign("/");
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const path = `/product?pageIndex=1&search=${searchInput}`;
+    const path = `/product?search=${searchInput}`;
     navigate(path);
     setIsSearch(false);
   };
@@ -60,7 +51,7 @@ const Header = () => {
                   className={`btn--link site-header__menu js-mobile-nav-toggle mobile-nav--${
                     showMoblie ? "close" : "open"
                   }`}
-                  onClick={handleMenu}
+                  onClick={() => setShowMoblie(!showMoblie)}
                 >
                   <i className="icon anm anm-times-l"></i>
                   <i className="anm anm-bars-r"></i>
@@ -132,7 +123,11 @@ const Header = () => {
                     </div>
                   </li>
                   <li className="lvl1 mr-4">
-                    <Cart showCart={showCart} setShowCart={setShowCart} />
+                    <Cart
+                      showCart={showCart}
+                      setShowCart={setShowCart}
+                      isAuth={isAuth}
+                    />
                   </li>
                   <li className="lvl1 parent dropdown d-lg-block d-md-none">
                     <div className=" site-header__cart ">
@@ -229,7 +224,10 @@ const Header = () => {
         className={`mobile-nav-wrapper ${showMoblie ? "active" : ""}`}
         role="navigation"
       >
-        <div className="closemobileMenu" onClick={handleMenu}>
+        <div
+          className="closemobileMenu"
+          onClick={() => setShowMoblie(!showMoblie)}
+        >
           <i className="icon anm anm-times-l pull-right"></i> Close Menu
         </div>
         <ul id="MobileNav" className="mobile-nav">

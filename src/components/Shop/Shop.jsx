@@ -1,8 +1,7 @@
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
 import { getAllProduct } from "../../services/product.service";
-import { useLocation } from "react-router-dom";
-import { getSearch, getPageIndex } from "../../utils/getRegex";
+import { getSearch, getPageIndex, getCategoryId } from "../../utils/getRegex";
 import { Link, useNavigate } from "react-router-dom";
 import { priceDiscount, countRating } from "../../hooks/Func";
 
@@ -10,24 +9,18 @@ const Shop = () => {
   const navigate = useNavigate();
 
   const [initPage, setInitPage] = useState(params);
-  const [newList, setNewList] = useState(params);
 
-  const pathChange = (search, index) => {
-    const path = `/product?pageIndex=${index + 1}&search=${search}`;
-    navigate(path);
-  };
-
-  const location = useLocation();
-  const listProduct = initPage.record || newList.record;
+  const listProduct = initPage.record;
   const totalPage = Math.ceil(initPage.total / initPage.limit);
   const pageIndex = Number(getPageIndex(location.search));
+  const categoryId = getCategoryId(location.search);
   const search = getSearch(location.search);
 
   useEffect(() => {
-    getAllProduct({ pageIndex, search }).then((res) => {
-      setNewList(res.data);
+    getAllProduct({ pageIndex, search, categoryId }).then((res) => {
+      setInitPage(res.data);
     });
-  }, [search, pageIndex, totalPage]);
+  }, [search, pageIndex, categoryId, totalPage]);
 
   return (
     <>
@@ -50,7 +43,7 @@ const Shop = () => {
       </div>
       <div className="container">
         <div className="row">
-          <Sidebar setInitPage={setInitPage} />
+          <Sidebar />
           <div className="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
             <div className="productList">
               <div className="grid-products grid--view-items">
@@ -180,20 +173,28 @@ const Shop = () => {
             <hr className="clear" />
             <div className="pagination">
               <ul>
-                {Array.from({ length: totalPage }).map((value, index) => (
-                  <li
-                    key={index}
-                    className={`${pageIndex == index + 1 ? "active" : ""}`}
-                  >
-                    <a
-                      type="button"
-                      onClick={() => pathChange(search, index)}
-                      style={{ cursor: "pointer" }}
+                {Array.from({ length: totalPage }).map((value, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={`${pageIndex == index + 1 ? "active" : ""}`}
                     >
-                      {index + 1}
-                    </a>
-                  </li>
-                ))}
+                      <a
+                        type="button"
+                        onClick={() => {
+                          navigate(
+                            `?categoryId=${categoryId}&pageIndex=${
+                              index + 1
+                            }&search=${search}`,
+                          );
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

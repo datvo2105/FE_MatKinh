@@ -17,3 +17,13 @@ export const getPageIndex = (string) => {
       ?.at(1) || ""
   );
 };
+
+export const getCategoryId = (string) => {
+  return (
+    string
+      .match(/categoryId=+\w+/)
+      ?.at(0)
+      ?.split("=")
+      ?.at(1) || ""
+  );
+};

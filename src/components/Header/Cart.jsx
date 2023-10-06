@@ -1,11 +1,22 @@
 import PropTypes from "prop-types";
-import { deleteOutCart, selectorOrder } from "../../features/orderSlice";
+import {
+  deleteOutCart,
+  getOrders,
+  selectorOrder,
+} from "../../features/orderSlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-const Cart = ({ showCart, setShowCart }) => {
-  const { orders } = selectorOrder();
+const Cart = ({ isAuth, showCart, setShowCart }) => {
   const dispatch = useDispatch();
+  const { orders } = selectorOrder();
+
+  useEffect(() => {
+    if (isAuth != null) {
+      dispatch(getOrders());
+    }
+  }, [orders]);
 
   const handleDeleteOutCart = (id) => {
     dispatch(deleteOutCart(id));
@@ -94,6 +105,7 @@ const Cart = ({ showCart, setShowCart }) => {
 export default Cart;
 
 Cart.propTypes = {
+  isAuth: PropTypes.string,
   showCart: PropTypes.bool,
   setShowCart: PropTypes.func,
 };

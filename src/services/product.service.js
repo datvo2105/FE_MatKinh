@@ -1,8 +1,9 @@
 import api from "../configs/config";
 
-export const getAllCategory = () => {
+export const getAllCategory = async () => {
   try {
-    return api.get("/category");
+    const res = await api.get("/category");
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -19,15 +20,6 @@ export const getOneProduct = async (id) => {
 export const getAllProduct = async (params) => {
   try {
     const res = await api.get("/product", { params });
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-export const filterByCategory = async (query, params) => {
-  try {
-    const res = await api.get(`/product?categoryId=${query}`, { params });
     return res.data;
   } catch (error) {
     throw new Error(error.message);
