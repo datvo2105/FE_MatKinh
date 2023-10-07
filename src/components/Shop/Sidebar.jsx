@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import Filters from "./Filters";
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
-import { priceDiscount } from "../../hooks/Func";
+import { formatPrice, priceDiscount } from "../../hooks/Func";
 
 const Sidebar = () => {
   const [listProduct, setListProduct] = useState([]);
@@ -80,11 +80,12 @@ const Sidebar = () => {
                                         color: "#e95144 ",
                                       }}
                                     >
-                                      {priceDiscount(
-                                        product.price,
-                                        product.discount,
-                                      )}{" "}
-                                      VND
+                                      {formatPrice.format(
+                                        priceDiscount(
+                                          product.price,
+                                          product.discount,
+                                        ),
+                                      )}
                                     </span>
                                   </span>
                                 </div>

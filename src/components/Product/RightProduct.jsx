@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { priceDiscount, countRating } from "../../hooks/Func";
+import { priceDiscount, countRating, formatPrice } from "../../hooks/Func";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/orderSlice";
 import { getShipping } from "../../services/order.service";
@@ -95,12 +95,16 @@ const RightProduct = ({ product }) => {
           {product.discount > 0 ? (
             <>
               <s id="ComparePrice-product-template">
-                <span className="money mr-1">{product.price} VND</span>
+                <span className="money mr-1">
+                  {formatPrice.format(product.price)}
+                </span>
               </s>
               <span className="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                 <span id="ProductPrice-product-template">
                   <span className="money">
-                    {priceDiscount(product.price, product.discount)} VND
+                    {formatPrice.format(
+                      priceDiscount(product.price, product.discount),
+                    )}
                   </span>
                 </span>
               </span>
@@ -112,9 +116,10 @@ const RightProduct = ({ product }) => {
                   className="ml-1 product-single__save-amount"
                 >
                   <span className="money">
-                    {product.price -
-                      priceDiscount(product.price, product.discount)}{" "}
-                    VND
+                    {formatPrice.format(
+                      product.price -
+                        priceDiscount(product.price, product.discount),
+                    )}
                   </span>
                 </span>
                 <span className="off ml-1">
@@ -126,7 +131,9 @@ const RightProduct = ({ product }) => {
             <>
               <span className="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                 <span id="ProductPrice-product-template">
-                  <span className="money">{product.price} VND</span>
+                  <span className="money">
+                    {formatPrice.format(product.price)}
+                  </span>
                 </span>
               </span>
             </>

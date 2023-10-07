@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateToOrder } from "../../features/orderSlice";
 import { toast } from "react-toastify";
+import { formatPrice } from "../../hooks/Func";
 
 const CartCheckOut = ({ listOrder }) => {
   const [isCheck, setIsCheck] = useState(false);
@@ -34,7 +35,7 @@ const CartCheckOut = ({ listOrder }) => {
             Thành tiền dự kiến
           </span>
           <span className="col-12 col-sm-6 text-right">
-            <span className="money">{totalPrice()} VND</span>
+            <span className="money">{formatPrice.format(totalPrice())}</span>
           </span>
         </div>
         <div
@@ -45,7 +46,7 @@ const CartCheckOut = ({ listOrder }) => {
             <strong>Tổng thành tiền</strong>
           </span>
           <span className="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-            <span className="money">{totalPrice()} VND</span>
+            <span className="money">{formatPrice.format(totalPrice())}</span>
           </span>
         </div>
         <div className="paymnet-img">

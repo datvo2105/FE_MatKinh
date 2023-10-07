@@ -19,3 +19,7 @@ export const countRating = (rate) => {
   }
   return rating;
 };
+export const formatPrice = new Intl.NumberFormat("it-IT", {
+  style: "currency",
+  currency: "VND",
+});

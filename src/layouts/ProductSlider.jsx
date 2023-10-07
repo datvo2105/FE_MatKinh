@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import { priceDiscount, countRating } from "../hooks/Func";
+import { priceDiscount, countRating, formatPrice } from "../hooks/Func";
 import PropTypes from "prop-types";
 
 const ProductSlider = ({ listProduct }) => {
@@ -83,13 +83,17 @@ const ProductSlider = ({ listProduct }) => {
                       color: "#e95144 ",
                     }}
                   >
-                    {product.price} VND
+                    {formatPrice.format(product.price)}
                   </span>
                 ) : (
                   <>
-                    <span className="old-price">{product.price} VND</span>
+                    <span className="old-price">
+                      {formatPrice.format(product.price)}
+                    </span>
                     <span className="price">
-                      {priceDiscount(product.price, product.discount)} VND
+                      {formatPrice.format(
+                        priceDiscount(product.price, product.discount),
+                      )}
                     </span>
                   </>
                 )}

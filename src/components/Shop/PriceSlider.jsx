@@ -3,6 +3,7 @@ import ReactSlider from "react-slider";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCategoryId } from "../../utils/getRegex";
+import { formatPrice } from "../../hooks/Func";
 
 const PriceSlider = () => {
   const navigate = useNavigate();
@@ -14,11 +15,6 @@ const PriceSlider = () => {
   const handleChangePrice = (newPrice) => {
     setPrice(newPrice);
   };
-
-  const formatPrice = new Intl.NumberFormat("it-IT", {
-    style: "currency",
-    currency: "VND",
-  });
 
   const initPrice = [
     formatPrice.format(price[0]),

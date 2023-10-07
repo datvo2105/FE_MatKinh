@@ -7,6 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { formatPrice } from "../../hooks/Func";
 
 const Cart = ({ showCart, setShowCart }) => {
   const dispatch = useDispatch();
@@ -75,7 +76,9 @@ const Cart = ({ showCart, setShowCart }) => {
                     <div className="priceRow mt-2">
                       <span style={{ fontWeight: 600 }}>Total:</span>
                       <div className="product-price ml-1 float-right">
-                        <span className="money">{order.price} VND</span>
+                        <span className="money">
+                          {formatPrice.format(order.price)}
+                        </span>
                       </div>
                     </div>
                   </div>

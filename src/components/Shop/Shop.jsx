@@ -9,7 +9,7 @@ import {
   getMaxPrice,
 } from "../../utils/getRegex";
 import { Link, useNavigate } from "react-router-dom";
-import { priceDiscount, countRating } from "../../hooks/Func";
+import { priceDiscount, countRating, formatPrice } from "../../hooks/Func";
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -137,19 +137,20 @@ const Shop = () => {
                                   color: "#e95144 ",
                                 }}
                               >
-                                {product.price} VND
+                                {formatPrice.format(product.price)}
                               </span>
                             ) : (
                               <>
                                 <span className="old-price">
-                                  {product.price} VND
+                                  {formatPrice.format(product.price)} VND
                                 </span>
                                 <span className="price">
-                                  {priceDiscount(
-                                    product.price,
-                                    product.discount,
-                                  )}{" "}
-                                  VND
+                                  {formatPrice.format(
+                                    priceDiscount(
+                                      product.price,
+                                      product.discount,
+                                    ),
+                                  )}
                                 </span>
                               </>
                             )}

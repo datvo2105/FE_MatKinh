@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllProduct } from "../../services/product.service";
-import { priceDiscount } from "../../hooks/Func";
+import { formatPrice, priceDiscount } from "../../hooks/Func";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
@@ -75,11 +75,12 @@ const ListProducts = () => {
                                     color: "#e95144 ",
                                   }}
                                 >
-                                  {priceDiscount(
-                                    product.price,
-                                    product.discount,
-                                  )}{" "}
-                                  VND
+                                  {formatPrice.format(
+                                    priceDiscount(
+                                      product.price,
+                                      product.discount,
+                                    ),
+                                  )}
                                 </span>
                               </span>
                             </div>

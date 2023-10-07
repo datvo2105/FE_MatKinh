@@ -2,6 +2,7 @@ import { deleteOutCart } from "../../features/orderSlice";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../hooks/Func";
 
 const CartList = ({ orders, putListOrder }) => {
   const dispatch = useDispatch();
@@ -96,7 +97,9 @@ const CartList = ({ orders, putListOrder }) => {
                   </div>
                 </td>
                 <td className="cart__price-wrapper cart-flex-item">
-                  <span className="money">{order.product.price} VND</span>
+                  <span className="money">
+                    {formatPrice.format(order.product.price)}
+                  </span>
                 </td>
                 <td className="cart__update-wrapper cart-flex-item text-right">
                   <div className="cart__qty text-center">
@@ -113,7 +116,9 @@ const CartList = ({ orders, putListOrder }) => {
                 </td>
                 <td className="text-right small--hide cart-price">
                   <div>
-                    <span className="money">{order.price} VND</span>
+                    <span className="money">
+                      {formatPrice.format(order.price)}
+                    </span>
                   </div>
                 </td>
                 <td className="text-center small--hide">
