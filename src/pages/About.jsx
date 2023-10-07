@@ -4,7 +4,7 @@ const About = () => {
       <div className="page section-header text-center">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">About Us</h1>
+            <h1 className="page-width">Về Chúng Tôi</h1>
           </div>
         </div>
       </div>
@@ -13,22 +13,20 @@ const About = () => {
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
             <div className="text-center mb-4">
-              <h2 className="h2">
-                Belle Multipurpose Bootstrap 4 Html Template
-              </h2>
+              <h2 className="h2">Giới Thiệu</h2>
               <div className="rte-setting">
                 <p>
-                  <strong>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </strong>
+                  <strong>Thành lập từ tháng 07 năm 2018</strong>
                 </p>
                 <p>
-                  The standard chunk of Lorem Ipsum used since the 1500s is
-                  reproduced below for those interested. Sections 1.10.32 and
-                  1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                  also reproduced in their exact original form, accompanied by
-                  English versions from the 1914 translation by H. Rackham.
+                  Định vị là một studio thiết kế sản phẩm gọng kính, chúng tôi
+                  tập trung nghiên cứu hình khối, cấu trúc mới trong sản phẩm
+                  gọng kính, lấy ý tưởng từ những vật phẩm công nghiệp và từ
+                  chính đặc tính thô tự nhiên của chất liệu Cellulose Acetate.
+                  Sản phẩm được chăm chút tỉ mỉ bởi bàn tay của những nghệ nhân
+                  lành nghề có kinh nghiệm chế tác lâu năm, với nguồn vật liệu
+                  cao cấp nhất và quy trình kiểm soát chất lượng kép, đem đến
+                  một sản phẩm gọng kính có thể đi cùng bạn trong nhiều năm.
                 </p>
               </div>
             </div>
@@ -37,76 +35,78 @@ const About = () => {
         <div className="row">
           <div className="col-12 col-sm-4 col-md-4 col-lg-4 mb-4">
             <img
+              style={{ height: 260, width: "100%", objectFit: "cover" }}
               className="blur-up lazyload"
-              data-src="assets/images/about1.jpg"
-              src="assets/images/about1.jpg"
+              data-src="https://s.yimg.com/ny/api/res/1.2/l3YE7rOy7u1nPHtuUiE6_g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://s.yimg.com/os/creatr-uploaded-images/2022-06/700fa410-ec1e-11ec-9f9e-d568bd449e8c"
+              src="https://s.yimg.com/ny/api/res/1.2/l3YE7rOy7u1nPHtuUiE6_g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://s.yimg.com/os/creatr-uploaded-images/2022-06/700fa410-ec1e-11ec-9f9e-d568bd449e8c"
               alt="About Us"
             />
           </div>
           <div className="col-12 col-sm-4 col-md-4 col-lg-4 mb-4">
             <img
+              style={{ height: 260, width: "100%", objectFit: "cover" }}
               className="blur-up lazyload"
-              data-src="assets/images/about2.jpg"
-              src="assets/images/about2.jpg"
+              data-src="https://media.istockphoto.com/id/1325248652/photo/3d-render-of-eye-glasses-and-optics-shop.jpg?s=612x612&w=0&k=20&c=woqd1-MJo-08pPDT1JABOHhZsQjIFaMlD4-0GKMYKNw="
+              src="https://media.istockphoto.com/id/1325248652/photo/3d-render-of-eye-glasses-and-optics-shop.jpg?s=612x612&w=0&k=20&c=woqd1-MJo-08pPDT1JABOHhZsQjIFaMlD4-0GKMYKNw="
               alt="About Us"
             />
           </div>
           <div className="col-12 col-sm-4 col-md-4 col-lg-4 mb-4">
             <img
+              style={{ height: 260, width: "100%", objectFit: "cover" }}
               className="blur-up lazyload"
-              data-src="assets/images/about3.jpg"
-              src="assets/images/about3.jpg"
+              data-src="https://ca-times.brightspotcdn.com/dims4/default/7bb360a/2147483647/strip/true/crop/5400x2835+0+383/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F10%2F47%2F979247ce4c2491895dc751262524%2Fon-the-money-try-before-you-buy-11024.jpg"
+              src="https://ca-times.brightspotcdn.com/dims4/default/7bb360a/2147483647/strip/true/crop/5400x2835+0+383/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F10%2F47%2F979247ce4c2491895dc751262524%2Fon-the-money-try-before-you-buy-11024.jpg"
               alt="About Us"
             />
           </div>
         </div>
         <div className="row">
           <div className="col-12">
-            <h2>Sed ut perspiciatis unde omnis iste natus error</h2>
+            <h2>Ý KIẾN CỦA KHÁCH HÀNG</h2>
             <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, On the other hand, we denounce
-              with righteous indignation and dislike men who are so beguiled and
-              demoralized by the charms of pleasure of the moment, so blinded by
-              desire, that they cannot foresee the pain.
+              Tất cả nội dung trang web và ý kiến phê bình của quý khách đều là
+              tài sản của chúng tôi. Nếu chúng tôi phát hiện bất kỳ thông tin
+              giả mạo nào, chúng tôi sẽ khóa tài khoản của quý khách ngay lập
+              tức hoặc áp dụng các biện pháp khác theo quy định của pháp luật
+              Việt Nam.
             </p>
-            <p>
-              simple and easy to distinguish. In a free hour, when our power of
-              choice is untrammelled and when nothing prevents our being able to
-              do what we like best, every pleasure is to be welcomed and every
-              pain avoided. But in certain circumstances and owing to the claims
-              of duty or the obligations of business it will frequently occur
-              that pleasures have to be repudiated and annoyances accepted.
-            </p>
-            <p></p>
+            <br />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-            <h2 className="h2">About Annimex Web</h2>
+          <div
+            className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4"
+            style={{ textAlign: "justify" }}
+          >
+            <h2 className="h2">THƯƠNG HIỆU & BẢN QUYỀN</h2>
             <div className="rte-setting">
               <p>
-                <strong>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </strong>
+                Mọi quyền sở hữu trí tuệ (đã đăng ký hoặc chưa đăng ký), nội
+                dung thông tin và tất cả các thiết kế, văn bản, đồ họa, phần
+                mềm, hình ảnh, video, âm nhạc, âm thanh, biên dịch phần mềm, mã
+                nguồn và phần mềm cơ bản đều là tài sản của chúng tôi. Toàn bộ
+                nội dung của trang web được bảo vệ bởi luật bản quyền của Việt
+                Nam và các Công ước Quốc tế. Bản quyền đã được bảo lưu.
               </p>
+            </div>
+            <h2 className="h2">QUY ĐỊNH VỀ BẢO MẬT</h2>
+            <div className="rte-setting">
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo.
-              </p>
-              <p></p>
-              <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti quos
-                dolores et quas molestias excepturi sint occaecati cupiditate
-                non provident, similique sunt in culpa qui officia deserunt
-                mollitia animi, id est laborum et dolorum fuga.
+                Trang web của chúng tôi coi trọng việc bảo mật thông tin và sử
+                dụng các biện pháp tốt nhất bảo vệ thông tin và việc thanh toán
+                của quý khách. Thông tin của quý khách trong quá trình thanh
+                toán sẽ được mã hóa để đảm bảo an toàn. Sau khi quý khách hoàn
+                thành quá trình đặt hàng, quý khách sẽ thoát khỏi chế độ an
+                toàn. Quý khách không được sử dụng bất kỳ chương trình, công cụ
+                hay hình thức nào khác để can thiệp vào hệ thống hay làm thay
+                đổi cấu trúc dữ liệu. trang web cũng nghiêm cấm việc phát tán,
+                truyền bá hay cổ vũ cho bất kỳ hoạt động nào nhằm can thiệp, phá
+                hoại hay xâm nhập vào dữ liệu của hệ thống. Cá nhân hay tổ chức
+                vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước
+                pháp luật nếu cần thiết. Mọi thông tin giao dịch sẽ được bảo mật
+                ngoại trừ trong trường hợp cơ quan pháp luật yêu cầu.
               </p>
             </div>
           </div>

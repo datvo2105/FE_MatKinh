@@ -6,10 +6,12 @@ import { getShipping } from "../../services/order.service";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
+import { authSelector } from "../../features/authSlice";
 
 const RightProduct = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isAuth } = authSelector();
   const [chooseSize, setChooseSize] = useState("");
   const [chooseColor, setChooseColor] = useState("");
   const [statusShip, setStatusShip] = useState();
@@ -28,20 +30,22 @@ const RightProduct = ({ product }) => {
 
   const handleAddCart = (e) => {
     e.preventDefault();
-    if (chooseSize && chooseColor) {
-      dispatch(
-        addToCart({
-          product: product._id,
-          quantity: qty,
-          size: chooseSize,
-          color: chooseColor,
-          status: "cart",
-          shipping: statusShip,
-        }),
-      );
-      toast.success("Đã thêm sản phẩm vào giỏ hàng");
-      return navigate("/product");
-    } else return toast.warn("Bạn chưa chọn màu hoặc size");
+    if (isAuth) {
+      if (chooseSize && chooseColor) {
+        dispatch(
+          addToCart({
+            product: product._id,
+            quantity: qty,
+            size: chooseSize,
+            color: chooseColor,
+            status: "cart",
+            shipping: statusShip,
+          }),
+        );
+        toast.success("Đã thêm sản phẩm vào giỏ hàng");
+        return navigate("/product");
+      } else return toast.warn("Bạn chưa chọn màu hoặc size");
+    } else return toast.error("Vui lòng đăng nhập để đặt hàng");
   };
 
   const handleBuyNow = (e) => {

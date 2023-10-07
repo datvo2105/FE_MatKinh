@@ -147,9 +147,6 @@ const Footer = () => {
                     <li>
                       <Link to="/faqs">Câu Hỏi Thường Gặp</Link>
                     </li>
-                    <li>
-                      <Link to="/contact">Liên Hệ</Link>
-                    </li>
                   </ul>
                 </div>
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">

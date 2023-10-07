@@ -1,3 +1,12 @@
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+import "react-accessible-accordion/dist/fancy-example.css";
+
 const Faqs = () => {
   return (
     <>
@@ -11,139 +20,92 @@ const Faqs = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-            <div id="accordionExample">
-              <h2 className="title h2">Pyment and Returns</h2>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseOne"
-                  aria-expanded="false"
-                  aria-controls="collapseOne"
-                >
-                  What is Lorem Ipsum?
-                </h4>
-                <div
-                  id="collapseOne"
-                  className="collapse panel-content"
-                  data-parent="#accordionExample"
-                >
-                  Nullam sed neque luctus, maximus diam sed, facilisis orci.
-                  Nunc ultricies neque a aliquam sollicitudin. Vivamus sit amet
-                  finibus sapien. Duis est dui, sodales nec pretium a, interdum
-                  in lacus. Sed et est vel velit vestibulum tincidunt non a
-                  felis. Phasellus convallis, diam eu facilisis tincidunt, ex
-                  nibh vulputate dolor, eu maximus massa libero vel eros. In
-                  vulputate metus lacus, eu vehicula dolor feugiat id. Nulla
-                  vitae nisl in ex consequat porttitor vel a lectus. Vestibulum
-                  viverra in velit ac consequat. Nullam porta nulla eu dignissim
-                  cursus.
-                </div>
-              </div>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  Why do we use it?
-                </h4>
-                <div id="collapseTwo" className="collapse panel-content">
-                  Cras non gravida urna. Ut venenatis nulla in tellus lobortis,
-                  vel mollis lectus condimentum. Duis elementum sapien purus, et
-                  sagittis nulla efficitur in. Phasellus vitae eros sed nisi
-                  fringilla auctor nec quis nunc. Pellentesque habitant morbi
-                  tristique senectus et netus et malesuada fames ac turpis
-                  egestas. Pellentesque rutrum faucibus nibh vitae fermentum.
-                  Aliquam commodo sem sit amet malesuada consectetur. Ut sit
-                  amet vestibulum diam. Etiam quis dictum turpis, eget
-                  condimentum velit. Sed cursus odio dapibus, consectetur massa
-                  sit amet, fringilla purus.
-                </div>
-              </div>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
-                  How to use this template?
-                </h4>
-                <div className="panel-content collapse" id="collapseThree">
-                  Duis nec nisi id ligula dapibus maximus nec eu dui. Proin
-                  ornare, ipsum vitae tincidunt rutrum, diam neque accumsan
-                  turpis, a dignissim nisi libero non lacus. Nulla quis massa
-                  nulla. Morbi metus lacus, sagittis sed est vel, aliquet
-                  ultrices nibh. Morbi auctor ex eget egestas auctor.
-                </div>
-              </div>
-              <h2 className="title h2">Other Resources</h2>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseFour"
-                  aria-expanded="false"
-                  aria-controls="collapseFour"
-                >
-                  Integer et erat quis ante tristique lobortis at vel lorem.
-                </h4>
-                <div className="panel-content collapse" id="collapseFour">
-                  Proin varius magna rhoncus quam egestas, id faucibus eros
-                  viverra. Suspendisse id ipsum at leo congue feugiat non
-                  faucibus enim. Suspendisse non hendrerit lorem. Phasellus sit
-                  amet nisi dui. Aliquam erat volutpat. Integer facilisis lacus
-                  est, a semper felis iaculis vel. Pellentesque ultrices lorem
-                  sed arcu ornare iaculis. Ut pellentesque a dolor ac iaculis.
-                  Nullam ac rutrum urna. Ut tempor tempus tincidunt. Sed
-                  facilisis ante sed tellus malesuada fermentum.
-                </div>
-              </div>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseFive"
-                  aria-expanded="false"
-                  aria-controls="collapseFive"
-                >
-                  Where does it come from?
-                </h4>
-                <div className="panel-content collapse" id="collapseFive">
-                  Aliquam erat volutpat. Interdum et malesuada fames ac ante
-                  ipsum primis in faucibus. Proin tortor enim, lacinia nec
-                  malesuada eget, laoreet eget quam. Suspendisse quis mauris
-                  quis tellus rutrum imperdiet nec id ipsum. Suspendisse non
-                  nisi in metus viverra convallis. Nam dictum erat sed libero
-                  eleifend, a venenatis ipsum elementum. Nulla placerat metus
-                  nec nisl malesuada, et mattis mauris faucibus. Cras blandit
-                  efficitur condimentum. Nam euismod sapien et iaculis tempus.
-                  Duis vitae ullamcorper libero.
-                </div>
-              </div>
-              <div className="faq-body">
-                <h4
-                  className="panel-title"
-                  data-toggle="collapse"
-                  data-target="#collapseSix"
-                  aria-expanded="false"
-                  aria-controls="collapseSix"
-                >
-                  Why do we use it?
-                </h4>
-                <div className="panel-content collapse" id="collapseSix">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its
-                  layout.It is a long established fact that a reader will be
-                  distracted by the readable content of a page when looking at
-                  its layout.
-                </div>
-              </div>
-            </div>
+            <h2 className="title h2">Những câu hỏi thường gặp</h2>
+            <br />
+            <Accordion allowZeroExpanded={true}>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    Tôi không biết cách chọn kính phù hợp với khuôn mặt của mình
+                    ?
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Chuyên gia stylish của Cửa Hàng luôn sẵn sàng tư vấn cho quý
+                    khách kính mắt hợp nhất với khuôn mặt của mình. Vui lòng tới
+                    trực tiếp cửa hàng hoặc gửi cho đội ngũ 1 tấm ảnh của quý
+                    khách.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    Tôi có thể tới cửa hàng để đo mắt & kiểm tra thị lực không ?
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Đo mắt và kiểm tra thị lực hoàn toàn miễn phí, được thực
+                    hiện bởi KTV Khúc Xạ BV Mắt HCM trên 10 năm kinh nghiệm &
+                    thiết bị máy móc nhập khẩu 100% từ Pháp.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span>Tôi có thể đặt hàng Online không ?</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>Quý khách có thể đặt hàng online thông qua website.</p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    Tôi có được kiểm tra và thử kính trước khi thanh toán ?
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Quý khách được kiểm tra sản phẩm và đeo thử trước khi thanh
+                    toán tiền cho nhân viên bưu điện. Nếu không hài lòng quý
+                    khách có thể từ chối nhận sản phẩm mà không phải thanh toán
+                    bất cứ 1 khoản phí nào.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span>Sản phẩm có được bảo hành không ?</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Tất cả sản phẩm được bán ra đều có hóa đơn và thẻ bảo hành
+                    chính hãng hoặc thẻ bảo hành của cửa hàng đối với hàng xách
+                    tay.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span>Sản phẩm có hỗ trợ đổi trả không ?</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Tất cả sản phẩm bán ra đều được hỗ trợ đổi trả trong vòng 15
+                    ngày theo “chính sách đổi trả” của công ty.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>
