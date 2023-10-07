@@ -76,11 +76,6 @@ const Header = () => {
                     </Link>
                     <ul className="dropdown">
                       <li>
-                        <Link to="/contact" className="site-nav">
-                          Liên Hệ
-                        </Link>
-                      </li>
-                      <li>
                         <Link to="/about" className="site-nav">
                           Về Chúng Tôi
                         </Link>
@@ -246,11 +241,6 @@ const Header = () => {
               ></i>
             </Link>
             <ul className={`${isSubDrop ? "d-block" : ""}`}>
-              <li>
-                <Link to="/contact" className="site-nav">
-                  Liên Hệ
-                </Link>
-              </li>
               <li>
                 <Link to="/about" className="site-nav">
                   Về Chúng Tôi

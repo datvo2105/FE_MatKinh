@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import Information from "./pages/Information";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
 import Faqs from "./pages/FAQs";
 import Notfound from "./pages/Notfound";
 import Layouts from "./layouts/Layouts";
@@ -51,10 +50,6 @@ const App = () => {
           element={<Layouts content={<Information />} />}
         ></Route>
         <Route path="/about" element={<Layouts content={<About />} />}></Route>
-        <Route
-          path="/contact"
-          element={<Layouts content={<Contact />} />}
-        ></Route>
         <Route path="/faqs" element={<Layouts content={<Faqs />} />}></Route>
         <Route path="*" element={<Layouts content={<Notfound />} />}></Route>
       </Routes>
