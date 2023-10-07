@@ -13,14 +13,16 @@ const Sidebar = () => {
   }, []);
 
   const settingSlider = {
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    vertical: true,
-    verticalSwiping: true,
+    dots: false,
     arrows: false,
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    vertical: true,
+    pauseOnHover: false,
+    verticalSwiping: true,
+    swipeToSlide: true,
   };
 
   return (
@@ -37,7 +39,7 @@ const Sidebar = () => {
             </div>
             <div className="widget-content">
               <div className="list list-sidebar-products">
-                <div className="grid" style={{ height: 400 }}>
+                <div className="grid">
                   <Slider {...settingSlider}>
                     {listProduct.map((product) => {
                       if (product.status.toUpperCase() === "NEW") {

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCategoryId } from "../../utils/getRegex";
+import { getMinPrice, getMaxPrice, getCategoryId } from "../../utils/getRegex";
 import { getAllCategory } from "../../services/product.service";
 
 const ListCategory = () => {
   const navigate = useNavigate();
   const [listCategory, setListCategory] = useState([]);
   const [showCategory, setShowCategory] = useState(false);
+  const minPrice = getMinPrice(location.search);
+  const maxPrice = getMaxPrice(location.search);
   const categoryId = getCategoryId(location.search);
 
   useEffect(() => {
@@ -54,7 +56,11 @@ const ListCategory = () => {
                 id={`check${index + 1}`}
                 value={category._id}
                 checked={categoryId === category._id ? true : false}
-                onChange={() => navigate(`?categoryId=${category._id}`)}
+                onChange={() =>
+                  navigate(
+                    `?categoryId=${category._id}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
+                  )
+                }
               />
               <label
                 htmlFor={`check${index + 1}`}

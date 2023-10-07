@@ -27,3 +27,23 @@ export const getCategoryId = (string) => {
       ?.at(1) || ""
   );
 };
+
+export const getMinPrice = (string) => {
+  return (
+    string
+      .match(/minPrice=+\w+/)
+      ?.at(0)
+      ?.split("=")
+      ?.at(1) || ""
+  );
+};
+
+export const getMaxPrice = (string) => {
+  return (
+    string
+      .match(/maxPrice=+\w+/)
+      ?.at(0)
+      ?.split("=")
+      ?.at(1) || ""
+  );
+};

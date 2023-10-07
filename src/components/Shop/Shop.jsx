@@ -1,7 +1,13 @@
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
 import { getAllProduct } from "../../services/product.service";
-import { getSearch, getPageIndex, getCategoryId } from "../../utils/getRegex";
+import {
+  getSearch,
+  getPageIndex,
+  getCategoryId,
+  getMinPrice,
+  getMaxPrice,
+} from "../../utils/getRegex";
 import { Link, useNavigate } from "react-router-dom";
 import { priceDiscount, countRating } from "../../hooks/Func";
 
@@ -15,12 +21,16 @@ const Shop = () => {
   const pageIndex = Number(getPageIndex(location.search));
   const categoryId = getCategoryId(location.search);
   const search = getSearch(location.search);
+  const minPrice = getMinPrice(location.search);
+  const maxPrice = getMaxPrice(location.search);
 
   useEffect(() => {
-    getAllProduct({ pageIndex, search, categoryId }).then((res) => {
-      setInitPage(res.data);
-    });
-  }, [search, pageIndex, categoryId, totalPage]);
+    getAllProduct({ pageIndex, search, categoryId, minPrice, maxPrice }).then(
+      (res) => {
+        setInitPage(res.data);
+      },
+    );
+  }, [search, pageIndex, categoryId, minPrice, maxPrice, totalPage]);
 
   return (
     <>
@@ -183,7 +193,7 @@ const Shop = () => {
                         type="button"
                         onClick={() => {
                           navigate(
-                            `?categoryId=${categoryId}&pageIndex=${
+                            `?categoryId=${categoryId}&minPrice=${minPrice}&maxPrice=${maxPrice}&pageIndex=${
                               index + 1
                             }&search=${search}`,
                           );
