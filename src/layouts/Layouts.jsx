@@ -1,19 +1,21 @@
-import React from "react";
 import Header from "../layouts/Header";
-import Content from "../components/Blog/ListBlog";
 import Footer from "../layouts/Footer";
+import PropTypes from "prop-types";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Blog = () => {
+const Layouts = ({ content }) => {
   return (
     <>
-      <div className="template-collection belle">
+      <ToastContainer />
+      <div className={`template-collection belle`}>
         <div className="template-index belle template-index-belle">
           {/* <div id="pre-loader">
         <img src="assets/images/loader.gif" alt="Loading..." />
       </div> */}
           <div className="pageWapper">
             <Header />
-            <Content />
+            <div id="page-content">{content}</div>
             <Footer />
           </div>
         </div>
@@ -22,4 +24,8 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Layouts;
+
+Layouts.propTypes = {
+  content: PropTypes.element,
+};
