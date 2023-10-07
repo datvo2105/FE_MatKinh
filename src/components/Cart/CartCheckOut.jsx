@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateToOrder } from "../../features/orderSlice";
+import { toast } from "react-toastify";
 
 const CartCheckOut = ({ listOrder }) => {
   const [isCheck, setIsCheck] = useState(false);
@@ -14,10 +15,15 @@ const CartCheckOut = ({ listOrder }) => {
   };
 
   const handleOrder = () => {
-    listOrder.map(async (order) => {
-      const newOrder = { ...order, status: "order" };
-      dispatch(updateToOrder({ id: newOrder._id, order: newOrder }));
-    });
+    if (listOrder.length > 0) {
+      if (isCheck) {
+        listOrder.map(async (order) => {
+          const newOrder = { ...order, status: "order" };
+          dispatch(updateToOrder({ id: newOrder._id, order: newOrder }));
+          toast.success("Đặt hàng thành công");
+        });
+      } else return toast.error("Vui lòng xác nhận lại đơn hàng");
+    } else return toast.warn("Vui lòng chọn sản phẩm để đặt");
   };
 
   return (
@@ -54,7 +60,7 @@ const CartCheckOut = ({ listOrder }) => {
               value={isCheck}
               onChange={() => setIsCheck(!isCheck)}
             />
-            Tôi đồng ý với các điều khoản và điều kiện
+            Xác nhận đơn hàng
           </label>
         </p>
         <button

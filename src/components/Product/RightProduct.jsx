@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { priceDiscount, countRating } from "../../hooks/Func";
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 import { addToCart } from "../../features/orderSlice";
 import { getShipping } from "../../services/order.service";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 const RightProduct = ({ product }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [chooseSize, setChooseSize] = useState("");
   const [chooseColor, setChooseColor] = useState("");
   const [statusShip, setStatusShip] = useState();
   const [qty, setQty] = useState(1);
-  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     getShipping()
@@ -27,21 +28,38 @@ const RightProduct = ({ product }) => {
 
   const handleAddCart = (e) => {
     e.preventDefault();
-    dispatch(
-      addToCart({
-        product: product._id,
-        quantity: qty,
-        size: chooseSize,
-        color: chooseColor,
-        status: "cart",
-        shipping: statusShip,
-      }),
-    );
-    setRedirect(true);
+    if (chooseSize && chooseColor) {
+      dispatch(
+        addToCart({
+          product: product._id,
+          quantity: qty,
+          size: chooseSize,
+          color: chooseColor,
+          status: "cart",
+          shipping: statusShip,
+        }),
+      );
+      toast.success("Đã thêm sản phẩm vào giỏ hàng");
+      return navigate("/product");
+    } else return toast.warn("Bạn chưa chọn màu hoặc size");
   };
-  if (redirect) {
-    return <Navigate to="/product" />;
-  }
+
+  const handleBuyNow = (e) => {
+    e.preventDefault();
+    if (chooseSize && chooseColor) {
+      dispatch(
+        addToCart({
+          product: product._id,
+          quantity: qty,
+          size: chooseSize,
+          color: chooseColor,
+          status: "cart",
+          shipping: statusShip,
+        }),
+      );
+      return navigate("/cart");
+    } else return toast.warn("Bạn chưa chọn màu hoặc size");
+  };
 
   return (
     <div className="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -237,6 +255,7 @@ const RightProduct = ({ product }) => {
               <button
                 type="button"
                 className="shopify-payment-button__button shopify-payment-button__button--unbranded"
+                onClick={handleBuyNow}
               >
                 mua ngay
               </button>
@@ -250,8 +269,10 @@ const RightProduct = ({ product }) => {
             >
               <button
                 type="button"
-                disabled
                 className="shopify-payment-button__button shopify-payment-button__button--unbranded"
+                onClick={() =>
+                  toast.info("Hết hàng! Không thể thêm sản phẩm vào giỏ")
+                }
               >
                 Sản phẩm tạm hết hàng.
               </button>

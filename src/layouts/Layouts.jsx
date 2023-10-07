@@ -7,7 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 const Layouts = ({ content }) => {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        autoClose={3500}
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       <div className={`template-collection belle`}>
         <div className="template-index belle template-index-belle">
           {/* <div id="pre-loader">

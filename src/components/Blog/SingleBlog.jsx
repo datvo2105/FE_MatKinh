@@ -73,7 +73,10 @@ const SingleBlog = () => {
                             <div key={blog._id} className="grid__item">
                               <div className="mini-list-item">
                                 <div className="mini-view_image">
-                                  <a className="grid-view-item__link" href="#">
+                                  <Link
+                                    className="grid-view-item__link"
+                                    to={`/blog/${blog._id}`}
+                                  >
                                     <img
                                       className="grid-view-item__image blur-up lazyload"
                                       data-src={blog.image}
@@ -85,7 +88,7 @@ const SingleBlog = () => {
                                       }}
                                       alt=""
                                     />
-                                  </a>
+                                  </Link>
                                 </div>
                                 <div className="details">
                                   {" "}

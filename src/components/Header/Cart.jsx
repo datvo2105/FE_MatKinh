@@ -6,7 +6,7 @@ import {
 } from "../../features/orderSlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Cart = ({ showCart, setShowCart }) => {
   const dispatch = useDispatch();

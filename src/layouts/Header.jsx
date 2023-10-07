@@ -10,8 +10,8 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [showCart, setShowCart] = useState(false);
   const [showMoblie, setShowMoblie] = useState(false);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuth, userData } = authSelector();
 

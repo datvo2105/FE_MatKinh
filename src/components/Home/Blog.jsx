@@ -37,6 +37,7 @@ const Blog = () => {
                       title={blog.subtitle}
                       className="blur-up lazyloaded"
                       style={{
+                        width: "100%",
                         height: 272,
                         objectFit: "cover",
                       }}
