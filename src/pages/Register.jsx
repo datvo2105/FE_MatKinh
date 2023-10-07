@@ -1,22 +1,37 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AuthRegister } from "../services/auth.service";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { authLogin, authSelector } from "../features/authSlice";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAuth } = authSelector();
+  const dispatch = useDispatch();
 
   const handleRegister = async (ev) => {
     ev.preventDefault();
-    const res = await AuthRegister({
-      user_name: username,
-      email,
-      password,
-    });
-    const message = res?.error?.message;
-    if (message) alert(message);
+    try {
+      await AuthRegister({
+        user_name: username,
+        email,
+        password,
+      }).then(() => {
+        toast.success("Đăng ký thành công tài khoản");
+        dispatch(authLogin({ user_name: username, password }));
+      });
+    } catch (error) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
   };
+
+  if (isAuth != null) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>
@@ -46,6 +61,7 @@ const Register = () => {
                       <input
                         type="text"
                         name="customer[first_name]"
+                        required
                         placeholder=""
                         id="Username"
                         value={username}
@@ -59,15 +75,14 @@ const Register = () => {
                       <label htmlFor="CustomerEmail">Email</label>
                       <input
                         type="email"
-                        name="customer[email]"
+                        className="customer[email]"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder=""
+                        required
                         id="CustomerEmail"
-                        className=""
                         autoCorrect="off"
                         autoCapitalize="off"
-                        autoFocus=""
+                        autoFocus
                       />
                     </div>
                   </div>
@@ -78,10 +93,9 @@ const Register = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        name="customer[password]"
-                        placeholder=""
+                        required
+                        className="customer[password]"
                         id="CustomerPassword"
-                        className=""
                       />
                     </div>
                   </div>

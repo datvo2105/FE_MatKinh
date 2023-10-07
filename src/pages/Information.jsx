@@ -1,23 +1,33 @@
 import { useState } from "react";
-import { authSelector } from "../features/authSlice";
+import { authSelector, updateUserProfile } from "../features/authSlice";
 import { updateProfile } from "../services/user.service";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 const Information = () => {
   const { userData } = authSelector();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState(userData.email);
   const [address, setAddress] = useState(userData.address);
   const [redirect, setRedirect] = useState(false);
 
   const handleRegister = async (ev) => {
     ev.preventDefault();
-    const res = await updateProfile({
-      email,
-      address,
-    });
-    setRedirect(true);
+    const res = dispatch(
+      updateUserProfile({
+        address,
+        email,
+      }),
+    );
+
     const message = res?.error?.message;
-    if (message) alert(message);
+    if (message) {
+      toast.error(message);
+    } else {
+      toast.success("Cập nhật thông tin người dùng thành công");
+      setRedirect(true);
+    }
   };
 
   if (redirect) return <Navigate to="/" />;
@@ -80,7 +90,7 @@ const Information = () => {
                       <input
                         type="text"
                         name="customer[address]"
-                        placeholder=""
+                        placeholder={address}
                         id="Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}

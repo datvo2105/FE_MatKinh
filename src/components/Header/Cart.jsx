@@ -6,17 +6,15 @@ import {
 } from "../../features/orderSlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Cart = ({ isAuth, showCart, setShowCart }) => {
+const Cart = ({ showCart, setShowCart }) => {
   const dispatch = useDispatch();
   const { orders } = selectorOrder();
 
   useEffect(() => {
-    if (isAuth != null) {
-      dispatch(getOrders());
-    }
-  }, [orders]);
+    setTimeout(() => dispatch(getOrders()), 1000);
+  }, []);
 
   const handleDeleteOutCart = (id) => {
     dispatch(deleteOutCart(id));

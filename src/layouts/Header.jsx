@@ -122,13 +122,11 @@ const Header = () => {
                       </button>
                     </div>
                   </li>
-                  <li className="lvl1 mr-4">
-                    <Cart
-                      showCart={showCart}
-                      setShowCart={setShowCart}
-                      isAuth={isAuth}
-                    />
-                  </li>
+                  {isAuth && (
+                    <li className="lvl1 mr-4">
+                      <Cart showCart={showCart} setShowCart={setShowCart} />
+                    </li>
+                  )}
                   <li className="lvl1 parent dropdown d-lg-block d-md-none">
                     <div className=" site-header__cart ">
                       <div type="button" style={{ cursor: "pointer" }}>

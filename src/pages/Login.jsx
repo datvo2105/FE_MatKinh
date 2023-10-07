@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Navigate, Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { authLogin, authSelector } from "../features/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,14 +10,17 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = authSelector();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = dispatch(authLogin({ user_name: username, password }));
+    const res = await dispatch(authLogin({ user_name: username, password }));
     const message = res?.error?.message;
-    if (message) alert(message);
+    if (message) {
+      toast.error(message);
+    } else toast.success("Đăng nhập thành công");
   };
+
   if (isAuth != null) {
-    location.assign("/");
+    return <Navigate to="/" />;
   }
 
   return (

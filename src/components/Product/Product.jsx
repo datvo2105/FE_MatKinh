@@ -66,8 +66,8 @@ const Product = () => {
                     title="Safe Payment"
                   />
                   <div className="details">
-                    <h3>Safe Payment</h3>
-                    Pay with the world's most payment methods.
+                    <h3>thanh toán an toàn</h3>
+                    Hệ thống thanh toán thông qua ngân hàng đảm bảo an toàn
                   </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6 col-lg-3 feature">
@@ -77,8 +77,8 @@ const Product = () => {
                     title="Confidence"
                   />
                   <div className="details">
-                    <h3>Confidence</h3>
-                    Protection covers your purchase and personal data.
+                    <h3>An Toàn Dữ liệu</h3>Đảm bảo an toàn cho dữ liệu của
+                    khách hàng
                   </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6 col-lg-3 feature">
@@ -88,9 +88,7 @@ const Product = () => {
                     title="Worldwide Delivery"
                   />
                   <div className="details">
-                    <h3>Worldwide Delivery</h3>
-                    FREE &amp; fast shipping to over 200+ countries &amp;
-                    regions.
+                    <h3>Giao Hàng Toàn Quốc</h3>Miễn phí giao hàng trên cả nước
                   </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6 col-lg-3 feature">
@@ -100,9 +98,8 @@ const Product = () => {
                     title="Hotline"
                   />
                   <div className="details">
-                    <h3>Hotline</h3>
-                    Talk to help line for your question on 4141 456 789, 4125
-                    666 888
+                    <h3>Hotline</h3>Hỗ trợ khách hàng qua{" "}
+                    <strong>Hotline</strong>
                   </div>
                 </div>
               </div>
