@@ -25,7 +25,10 @@ const Login = () => {
 
   return (
     <>
-      <div className="page section-header text-center">
+      <div
+        className="page section-header text-center"
+        style={{ margin: "58px 0" }}
+      >
         <div className="page-title">
           <div className="wrapper">
             <h1 className="page-width">Đăng Nhập</h1>

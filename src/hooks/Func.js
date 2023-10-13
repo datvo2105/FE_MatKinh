@@ -1,3 +1,8 @@
+export const totalPrice = (listOrder) => {
+  let total = 0;
+  listOrder.forEach((order) => (total = total + order.price));
+  return total;
+};
 export const priceDiscount = (price, discount) => {
   let newPrice = price;
   return (newPrice = newPrice - (price * discount) / 100);

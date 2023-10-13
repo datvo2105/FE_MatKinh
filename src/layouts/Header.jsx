@@ -150,6 +150,15 @@ const Header = () => {
                           </li>
                           <li className="item text-center">
                             <Link
+                              className="pName mr-0 site-nav"
+                              style={{ cursor: "pointer" }}
+                              to="/cart/history"
+                            >
+                              Lịch Sử Mua Hàng
+                            </Link>
+                          </li>
+                          <li className="item text-center">
+                            <Link
                               type="button"
                               className="pName mr-0 site-nav"
                               style={{ cursor: "pointer" }}

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { authSelector, updateUserProfile } from "../features/authSlice";
-import { updateProfile } from "../services/user.service";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -34,7 +33,10 @@ const Information = () => {
 
   return (
     <>
-      <div className="page section-header text-center">
+      <div
+        className="page section-header text-center"
+        style={{ margin: "58px 0" }}
+      >
         <div className="page-title">
           <div className="wrapper">
             <h1 className="page-width">Thông Tin Người Dùng</h1>

@@ -1,27 +1,26 @@
 import { Link } from "react-router-dom";
-import { selectorOrder } from "../features/orderSlice";
-import { useState } from "react";
-import CartList from "../components/Cart/CartList";
-import CartCheckOut from "../components/Cart/CartCheckOut";
+import { useEffect, useState } from "react";
+import CartHistory from "../components/Cart/CartHistory";
+import { getAllOrder } from "../services/order.service";
 
-const Cart = () => {
-  const { orders } = selectorOrder();
-  const [listOrder, setListOrder] = useState([]);
+const History = () => {
+  const [historyOrder, setHistoryOrder] = useState([]);
 
-  const putListOrder = (data) => {
-    const orderExist = listOrder.find((order) => order === data);
-    const newState = orderExist
-      ? listOrder.filter((order) => order !== data)
-      : [...listOrder, data];
-    setListOrder(newState);
-  };
+  useEffect(() => {
+    getAllOrder().then((res) => {
+      const newOrder = res.data.filter((order) => {
+        return order.status === "ordered" || order.status === "cancel";
+      });
+      return setHistoryOrder(newOrder);
+    });
+  }, []);
 
   return (
     <>
       <div className="page section-header text-center">
         <div className="page-title">
           <div className="wrapper">
-            <h1 className="page-width">Giỏ Hàng</h1>
+            <h1 className="page-width">Lịch sử mua Hàng</h1>
           </div>
         </div>
       </div>
@@ -37,8 +36,7 @@ const Cart = () => {
               <i className="icon icon-arrow-circle-left"></i> Tiếp tục mua hàng
             </Link>
             <div className="row mt-2">
-              <CartList listOrder={orders} putListOrder={putListOrder} />
-              <CartCheckOut listOrder={listOrder} />
+              <CartHistory listOrder={historyOrder} />
             </div>
           </div>
         </div>
@@ -47,4 +45,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default History;

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Faqs from "./pages/FAQs";
 import Notfound from "./pages/Notfound";
 import Layouts from "./layouts/Layouts";
+import CartHistory from "./pages/History";
 
 import Homepage from "./components/Home/Home";
 import Blogpage from "./components/Blog/ListBlog";
@@ -35,6 +36,10 @@ const App = () => {
           element={<Layouts content={<SingleProduct />} />}
         ></Route>
         <Route path="/cart" element={<Layouts content={<Cart />} />}></Route>
+        <Route
+          path="/cart/history"
+          element={<Layouts content={<CartHistory />} />}
+        ></Route>
         <Route
           path="/blog/:id"
           element={<Layouts content={<SingleBlog />} />}

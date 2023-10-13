@@ -228,7 +228,10 @@ const RightProduct = ({ product }) => {
                   <button
                     type="button"
                     className="qtyBtn minus"
-                    onClick={() => setQty(qty - 1)}
+                    onClick={() => {
+                      if (qty > 1) setQty(qty - 1);
+                      else return toast.warn("Giới hạn đặt tối thiểu là 1");
+                    }}
                   >
                     <i className="fa anm anm-minus-r" aria-hidden="true"></i>
                   </button>
@@ -243,7 +246,13 @@ const RightProduct = ({ product }) => {
                   <button
                     className="qtyBtn plus"
                     type="button"
-                    onClick={() => setQty(qty + 1)}
+                    onClick={() => {
+                      if (qty < product.quantity) setQty(qty + 1);
+                      else
+                        return toast.warn(
+                          `Giới hạn đặt tối thiểu là ${product.quantity}`,
+                        );
+                    }}
                   >
                     <i className="fa anm anm-plus-r" aria-hidden="true"></i>
                   </button>

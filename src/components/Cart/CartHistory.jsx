@@ -1,25 +1,24 @@
 import { updateToOrder } from "../../features/orderSlice";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { formatPrice } from "../../hooks/Func";
 import { toast } from "react-toastify";
 
-const CartList = ({ listOrder, putListOrder }) => {
+const CartHistory = ({ listOrder }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleDeleteCart = (id, order) => {
+  const handleCancelOrder = (id, order) => {
     const newOrder = { ...order, status: "cancel" };
     dispatch(updateToOrder({ id, newOrder }));
-    toast.success("Xóa thành công sản phẩm khỏi giỏ hàng");
-    return navigate("/cart/history");
+    toast.warn("Bạn vừa hủy đơn hàng");
+    location.reload();
   };
 
   return (
     <form
       method="post"
-      className="cart style2 col-8"
+      className="cart style2 col-12"
       style={{ height: 560, overflowY: "scroll" }}
     >
       <table className="table table-bordered">
@@ -28,12 +27,12 @@ const CartList = ({ listOrder, putListOrder }) => {
           style={{ position: "sticky", top: 0, zIndex: 10 }}
         >
           <tr>
-            <th className="text-center"></th>
             <th colSpan="2" className="text-center">
               Sản Phẩm
             </th>
             <th className="text-center">Giá</th>
             <th className="text-center">Số Lượng</th>
+            <th className="text-center">Trạng Thái</th>
             <th className="text-right">Thành Tiền</th>
             <th className="action">&nbsp;</th>
           </tr>
@@ -45,9 +44,6 @@ const CartList = ({ listOrder, putListOrder }) => {
                 key={order._id}
                 className="cart__row border-bottom line1 cart-flex border-top"
               >
-                <td className="text-center">
-                  <input type="checkbox" onChange={() => putListOrder(order)} />
-                </td>
                 <td className="cart__image-wrapper cart-flex-item">
                   <Link to={`/product/${order.product._id}`}>
                     <img
@@ -119,6 +115,13 @@ const CartList = ({ listOrder, putListOrder }) => {
                     </div>
                   </div>
                 </td>
+                <td className="cart__update-wrapper cart-flex-item text-right">
+                  <div className="cart__qty text-center">
+                    <div className="qtyField">
+                      <span>{order.status.toUpperCase()}</span>
+                    </div>
+                  </div>
+                </td>
                 <td className="text-right small--hide cart-price">
                   <div>
                     <span className="money">
@@ -131,7 +134,7 @@ const CartList = ({ listOrder, putListOrder }) => {
                     type="button"
                     className="btn btn--secondary cart__remove"
                     title="Remove tem"
-                    onClick={() => handleDeleteCart(order._id, order)}
+                    onClick={() => handleCancelOrder(order._id, order)}
                   >
                     <i className="icon icon anm anm-times-l"></i>
                   </button>
@@ -145,9 +148,9 @@ const CartList = ({ listOrder, putListOrder }) => {
   );
 };
 
-export default CartList;
+export default CartHistory;
 
-CartList.propTypes = {
+CartHistory.propTypes = {
   listOrder: PropTypes.array,
   putListOrder: PropTypes.func,
 };

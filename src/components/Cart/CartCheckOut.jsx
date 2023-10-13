@@ -3,24 +3,19 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateToOrder } from "../../features/orderSlice";
 import { toast } from "react-toastify";
-import { formatPrice } from "../../hooks/Func";
+import { totalPrice, formatPrice } from "../../hooks/Func";
 
 const CartCheckOut = ({ listOrder }) => {
   const [isCheck, setIsCheck] = useState(false);
   const dispatch = useDispatch();
 
-  const totalPrice = () => {
-    let total = 0;
-    listOrder.forEach((order) => (total = total + order.price));
-    return total;
-  };
-
   const handleOrder = () => {
     if (listOrder.length > 0) {
       if (isCheck) {
         listOrder.map(async (order) => {
-          const newOrder = { ...order, status: "order" };
-          dispatch(updateToOrder({ id: newOrder._id, order: newOrder }));
+          const newOrder = { ...order, status: "ordered" };
+          const id = order._id;
+          dispatch(updateToOrder({ id, newOrder: newOrder }));
           toast.success("Đặt hàng thành công");
         });
       } else return toast.error("Vui lòng xác nhận lại đơn hàng");
@@ -35,7 +30,9 @@ const CartCheckOut = ({ listOrder }) => {
             Thành tiền dự kiến
           </span>
           <span className="col-12 col-sm-6 text-right">
-            <span className="money">{formatPrice.format(totalPrice())}</span>
+            <span className="money">
+              {formatPrice.format(totalPrice(listOrder))}
+            </span>
           </span>
         </div>
         <div
@@ -46,7 +43,9 @@ const CartCheckOut = ({ listOrder }) => {
             <strong>Tổng thành tiền</strong>
           </span>
           <span className="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-            <span className="money">{formatPrice.format(totalPrice())}</span>
+            <span className="money">
+              {formatPrice.format(totalPrice(listOrder))}
+            </span>
           </span>
         </div>
         <div className="paymnet-img">

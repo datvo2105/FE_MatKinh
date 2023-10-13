@@ -49,9 +49,8 @@ export const deleteOutCart = createAsyncThunk(
 
 export const updateToOrder = createAsyncThunk(
   "order/updateToOrder",
-  async (body, thunkApi) => {
-    const { id, order } = body;
-    await updateOrder(id, order);
+  async ({ id, newOrder }, thunkApi) => {
+    await updateOrder(id, newOrder);
     thunkApi.dispatch(getOrders());
   },
 );
