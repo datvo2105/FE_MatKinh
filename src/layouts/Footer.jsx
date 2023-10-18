@@ -155,18 +155,18 @@ const Footer = () => {
                     <li>
                       <i className="icon anm anm-map-marker-al"></i>
                       <p>
-                        55 Gallaxy Enque,
+                        54 Triều khúc thanh xuân
                         <br />
-                        2568 steet, 23568 NY
+                        Hà nội
                       </p>
                     </li>
                     <li className="phone">
                       <i className="icon anm anm-phone-s"></i>
-                      <p>(440) 000 000 0000</p>
+                      <p>0326756406</p>
                     </li>
                     <li className="email">
                       <i className="icon anm anm-envelope-l"></i>
-                      <p>sales@yousite.com</p>
+                      <p>linhhdtb4@gmail.com</p>
                     </li>
                   </ul>
                 </div>

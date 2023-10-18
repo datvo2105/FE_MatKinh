@@ -1,18 +1,23 @@
 import { updateToOrder } from "../../features/orderSlice";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { formatPrice } from "../../hooks/Func";
 import { toast } from "react-toastify";
 
 const CartHistory = ({ listOrder }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCancelOrder = (id, order) => {
-    const newOrder = { ...order, status: "cancel" };
-    dispatch(updateToOrder({ id, newOrder }));
-    toast.warn("Bạn vừa hủy đơn hàng");
-    location.reload();
+    if (order.shipping.status.toUpperCase() === "ĐƠN HÀNG VỪA MỚI KHỞI TẠO") {
+      const newOrder = { ...order, status: "cancel" };
+      dispatch(updateToOrder({ id, newOrder }));
+      toast.warn("Bạn vừa hủy đơn hàng");
+      navigate("/");
+    } else {
+      toast.error("Đơn hàng đã được vận chuyển không thể hủy.");
+    }
   };
 
   return (
@@ -32,6 +37,7 @@ const CartHistory = ({ listOrder }) => {
             </th>
             <th className="text-center">Giá</th>
             <th className="text-center">Số Lượng</th>
+            <th className="text-center">Tình Trạng Đơn Hàng</th>
             <th className="text-center">Trạng Thái</th>
             <th className="text-right">Thành Tiền</th>
             <th className="action">&nbsp;</th>
@@ -118,6 +124,21 @@ const CartHistory = ({ listOrder }) => {
                 <td className="cart__update-wrapper cart-flex-item text-right">
                   <div className="cart__qty text-center">
                     <div className="qtyField">
+                      <span>{order?.shipping?.status}</span>
+                    </div>
+                  </div>
+                </td>
+                <td className="cart__update-wrapper cart-flex-item text-right">
+                  <div className="cart__qty text-center">
+                    <div
+                      className="qtyField"
+                      style={{
+                        color:
+                          order.status.toUpperCase() === "CANCEL"
+                            ? "#E34F42"
+                            : "#09FF01",
+                      }}
+                    >
                       <span>{order.status.toUpperCase()}</span>
                     </div>
                   </div>

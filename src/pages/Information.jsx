@@ -3,6 +3,7 @@ import { authSelector, updateUserProfile } from "../features/authSlice";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { changePassword } from "../services/user.service";
 
 const Information = () => {
   const { userData } = authSelector();
@@ -10,6 +11,7 @@ const Information = () => {
   const [email, setEmail] = useState(userData.email);
   const [address, setAddress] = useState(userData.address);
   const [redirect, setRedirect] = useState(false);
+  const [password, setPassword] = useState("");
 
   const handleRegister = async (ev) => {
     ev.preventDefault();
@@ -19,6 +21,15 @@ const Information = () => {
         email,
       }),
     );
+    if (password !== "") {
+      await changePassword({ password })
+        .then(() => {
+          toast.success("Đổi mật khẩu thành công!!!");
+        })
+        .catch(() => {
+          toast.error("Không thể đổi mật khẩu.");
+        });
+    }
 
     const message = res?.error?.message;
     if (message) {
@@ -96,6 +107,20 @@ const Information = () => {
                         id="Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        autoFocus=""
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div className="form-group">
+                      <label htmlFor="FirstName">Password</label>
+                      <input
+                        type="password"
+                        name="customer[password]"
+                        placeholder=""
+                        id="Password"
+                        defaultValue={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         autoFocus=""
                       />
                     </div>
