@@ -28,6 +28,16 @@ export const getCategoryId = (string) => {
   );
 };
 
+export const getBrandId = (string) => {
+  return (
+    string
+      .match(/brandId=+\w+/)
+      ?.at(0)
+      ?.split("=")
+      ?.at(1) || ""
+  );
+};
+
 export const getMinPrice = (string) => {
   return (
     string

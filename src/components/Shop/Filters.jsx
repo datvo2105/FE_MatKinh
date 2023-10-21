@@ -1,3 +1,4 @@
+import ListBrand from "./ListBrand";
 import ListCategory from "./ListCategory";
 import PriceSlider from "./PriceSlider";
 
@@ -6,6 +7,7 @@ const Filters = () => {
     <>
       <ListCategory />
       <PriceSlider />
+      <ListBrand/>
     </>
   );
 };

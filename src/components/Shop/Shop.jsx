@@ -7,6 +7,7 @@ import {
   getCategoryId,
   getMinPrice,
   getMaxPrice,
+  getBrandId,
 } from "../../utils/getRegex";
 import { Link, useNavigate } from "react-router-dom";
 import { priceDiscount, countRating, formatPrice } from "../../hooks/Func";
@@ -20,17 +21,23 @@ const Shop = () => {
   const totalPage = Math.ceil(initPage.total / initPage.limit);
   const pageIndex = Number(getPageIndex(location.search));
   const categoryId = getCategoryId(location.search);
+  const brandId = getBrandId(location.search);
   const search = getSearch(location.search);
   const minPrice = getMinPrice(location.search);
   const maxPrice = getMaxPrice(location.search);
 
   useEffect(() => {
-    getAllProduct({ pageIndex, search, categoryId, minPrice, maxPrice }).then(
-      (res) => {
-        setInitPage(res.data);
-      },
-    );
-  }, [search, pageIndex, categoryId, minPrice, maxPrice, totalPage]);
+    getAllProduct({
+      pageIndex,
+      search,
+      categoryId,
+      brandId,
+      minPrice,
+      maxPrice,
+    }).then((res) => {
+      setInitPage(res.data);
+    });
+  }, [search, pageIndex, categoryId, brandId, minPrice, maxPrice, totalPage]);
 
   return (
     <>
@@ -62,8 +69,7 @@ const Shop = () => {
                     return (
                       <div
                         key={product._id}
-                        className="col-6 col-sm-6 col-md-4 col-lg-3 item"
-                      >
+                        className="col-6 col-sm-6 col-md-4 col-lg-3 item">
                         <div className="product-image">
                           <Link to={`/product/${product._id}`}>
                             <img
@@ -99,8 +105,7 @@ const Shop = () => {
                                     product.status.toUpperCase() == "NEW"
                                       ? "pr-label1"
                                       : "on-sale"
-                                  }`}
-                                >
+                                  }`}>
                                   {product.status}
                                 </span>
                               )}
@@ -124,8 +129,7 @@ const Shop = () => {
                                 overflow: "hidden",
                                 whiteSpace: "nowrap",
                                 textOverflow: "ellipsis",
-                              }}
-                            >
+                              }}>
                               {product.name}
                             </Link>
                           </div>
@@ -135,8 +139,7 @@ const Shop = () => {
                                 className="price"
                                 style={{
                                   color: "#e95144 ",
-                                }}
-                              >
+                                }}>
                                 {formatPrice.format(product.price)}
                               </span>
                             ) : (
@@ -148,8 +151,8 @@ const Shop = () => {
                                   {formatPrice.format(
                                     priceDiscount(
                                       product.price,
-                                      product.discount,
-                                    ),
+                                      product.discount
+                                    )
                                   )}
                                 </span>
                               </>
@@ -170,8 +173,7 @@ const Shop = () => {
                                   height: 20,
                                   backgroundColor: `${color}`,
                                 }}
-                                key={color}
-                              ></li>
+                                key={color}></li>
                             ))}
                           </ul>
                         </div>
@@ -188,19 +190,17 @@ const Shop = () => {
                   return (
                     <li
                       key={index}
-                      className={`${pageIndex == index + 1 ? "active" : ""}`}
-                    >
+                      className={`${pageIndex == index + 1 ? "active" : ""}`}>
                       <a
                         type="button"
                         onClick={() => {
                           navigate(
-                            `?categoryId=${categoryId}&minPrice=${minPrice}&maxPrice=${maxPrice}&pageIndex=${
+                            `?brandId=${brandId}&categoryId=${categoryId}&minPrice=${minPrice}&maxPrice=${maxPrice}&pageIndex=${
                               index + 1
-                            }&search=${search}`,
+                            }&search=${search}`
                           );
                         }}
-                        style={{ cursor: "pointer" }}
-                      >
+                        style={{ cursor: "pointer" }}>
                         {index + 1}
                       </a>
                     </li>
