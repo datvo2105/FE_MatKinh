@@ -21,8 +21,7 @@ const ListCategory = () => {
         className={`widget-title ${showCategory ? "" : "active"}`}
         onClick={() => {
           setShowCategory(!showCategory);
-        }}
-      >
+        }}>
         <h2>Danh mục</h2>
       </div>
       <ul
@@ -31,17 +30,18 @@ const ListCategory = () => {
           transition: "all 10ms ease",
           opacity: 1,
           overflow: "visible",
-        }}
-      >
+        }}>
         <li style={{ fontSize: 14 }}>
           <input
             type="radio"
-            id="checkDefault"
+            id="checkCategoryDefault"
             value="all"
             checked={categoryId == "" ? true : false}
             onChange={() => navigate("/product")}
           />
-          <label htmlFor="checkDefault" style={{ marginLeft: 5, fontSize: 14 }}>
+          <label
+            htmlFor="checkCategoryDefault"
+            style={{ marginLeft: 5, fontSize: 14 }}>
             <span>
               <span></span>
             </span>
@@ -53,19 +53,18 @@ const ListCategory = () => {
             <li key={category._id} style={{ fontSize: 14 }}>
               <input
                 type="radio"
-                id={`check${index + 1}`}
+                id={`checkCategory${index + 1}`}
                 value={category._id}
                 checked={categoryId === category._id ? true : false}
                 onChange={() =>
                   navigate(
-                    `?categoryId=${category._id}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
+                    `?categoryId=${category._id}&minPrice=${minPrice}&maxPrice=${maxPrice}`
                   )
                 }
               />
               <label
-                htmlFor={`check${index + 1}`}
-                style={{ marginLeft: 5, fontSize: 14 }}
-              >
+                htmlFor={`checkCategory${index + 1}`}
+                style={{ marginLeft: 5, fontSize: 14 }}>
                 <span>
                   <span></span>
                 </span>

@@ -42,8 +42,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Facebook"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Facebook">
                         <i className="icon icon-facebook"></i>
                       </a>
                     </li>
@@ -52,8 +51,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Twitter"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Twitter">
                         <i className="icon icon-twitter"></i>{" "}
                         <span className="icon__fallback-text">Twitter</span>
                       </a>
@@ -63,8 +61,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Pinterest"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Pinterest">
                         <i className="icon icon-pinterest"></i>{" "}
                         <span className="icon__fallback-text">Pinterest</span>
                       </a>
@@ -74,8 +71,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Instagram"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Instagram">
                         <i className="icon icon-instagram"></i>{" "}
                         <span className="icon__fallback-text">Instagram</span>
                       </a>
@@ -85,8 +81,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Tumblr"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Tumblr">
                         <i className="icon icon-tumblr-alt"></i>{" "}
                         <span className="icon__fallback-text">Tumblr</span>
                       </a>
@@ -96,8 +91,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on YouTube"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on YouTube">
                         <i className="icon icon-youtube"></i>{" "}
                         <span className="icon__fallback-text">YouTube</span>
                       </a>
@@ -107,8 +101,7 @@ const Footer = () => {
                         className="social-icons__link"
                         href="#"
                         target="_blank"
-                        title="Belle Multipurpose Bootstrap 4 Template on Vimeo"
-                      >
+                        title="Belle Multipurpose Bootstrap 4 Template on Vimeo">
                         <i className="icon icon-vimeo-alt"></i>{" "}
                         <span className="icon__fallback-text">Vimeo</span>
                       </a>
@@ -155,7 +148,7 @@ const Footer = () => {
                     <li>
                       <i className="icon anm anm-map-marker-al"></i>
                       <p>
-                        54 Triều khúc thanh xuân
+                        54 Triều khúc, Q. Thanh Xuân, Tp. Hà Nội
                         <br />
                         Hà nội
                       </p>
@@ -181,32 +174,27 @@ const Footer = () => {
                     <li>
                       <i
                         className="icon mx-1 fa fa-cc-visa"
-                        aria-hidden="true"
-                      ></i>
+                        aria-hidden="true"></i>
                     </li>
                     <li>
                       <i
                         className="icon mx-1 fa fa-cc-mastercard"
-                        aria-hidden="true"
-                      ></i>
+                        aria-hidden="true"></i>
                     </li>
                     <li>
                       <i
                         className="icon mx-1 fa fa-cc-discover"
-                        aria-hidden="true"
-                      ></i>
+                        aria-hidden="true"></i>
                     </li>
                     <li>
                       <i
                         className="icon mx-1 fa fa-cc-paypal"
-                        aria-hidden="true"
-                      ></i>
+                        aria-hidden="true"></i>
                     </li>
                     <li>
                       <i
                         className="icon mx-1 fa fa-credit-card"
-                        aria-hidden="true"
-                      ></i>
+                        aria-hidden="true"></i>
                     </li>
                   </ul>
                 </div>
@@ -218,8 +206,7 @@ const Footer = () => {
       <span
         id="site-scroll"
         style={{ display: visible ? "inline" : "none" }}
-        onClick={scrollToTop}
-      >
+        onClick={scrollToTop}>
         <i className="icon anm anm-angle-up-r"></i>
       </span>
     </>

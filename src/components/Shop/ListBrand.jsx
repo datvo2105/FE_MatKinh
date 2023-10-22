@@ -36,12 +36,12 @@ const ListBrand = () => {
         <li style={{ fontSize: 14 }}>
           <input
             type="radio"
-            id="checkDefault"
+            id="checkBrand"
             value="all"
             checked={brandId == "" ? true : false}
             onChange={() => navigate("/product")}
           />
-          <label htmlFor="checkDefault" style={{ marginLeft: 5, fontSize: 14 }}>
+          <label htmlFor="checkBrand" style={{ marginLeft: 5, fontSize: 14 }}>
             <span>
               <span></span>
             </span>
@@ -53,7 +53,7 @@ const ListBrand = () => {
             <li key={brand._id} style={{ fontSize: 14 }}>
               <input
                 type="radio"
-                id={`check${index + 1}`}
+                id={`brand${index + 1}`}
                 value={brand._id}
                 checked={brandId === brand._id ? true : false}
                 onChange={() =>
@@ -63,7 +63,7 @@ const ListBrand = () => {
                 }
               />
               <label
-                htmlFor={`check${index + 1}`}
+                htmlFor={`brand${index + 1}`}
                 style={{ marginLeft: 5, fontSize: 14 }}>
                 <span>
                   <span></span>

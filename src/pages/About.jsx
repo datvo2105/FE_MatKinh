@@ -78,8 +78,7 @@ const About = () => {
         <div className="row">
           <div
             className="col-12 col-sm-12 col-md-6 col-lg-6 mb-4"
-            style={{ textAlign: "justify" }}
-          >
+            style={{ textAlign: "justify" }}>
             <h2 className="h2">THƯƠNG HIỆU & BẢN QUYỀN</h2>
             <div className="rte-setting">
               <p>
@@ -115,15 +114,15 @@ const About = () => {
             <ul className="addressFooter">
               <li>
                 <i className="icon anm anm-map-marker-al"></i>
-                <p>55 Gallaxy Enque, 2568 steet, 23568 NY</p>
+                <p>54 Triều khúc, Q. Thanh Xuân, Tp. Hà Nội</p>
               </li>
               <li className="phone">
                 <i className="icon anm anm-phone-s"></i>
-                <p>(440) 000 000 0000</p>
+                <p>0326756406</p>
               </li>
               <li className="email">
                 <i className="icon anm anm-envelope-l"></i>
-                <p>sales@yousite.com</p>
+                <p>linhhdtb4@gmail.com</p>
               </li>
             </ul>
             <hr />
@@ -133,8 +132,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Facebook"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Facebook">
                   <i className="icon icon-facebook"></i>
                 </a>
               </li>
@@ -143,8 +141,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Twitter"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Twitter">
                   <i className="icon icon-twitter"></i>{" "}
                   <span className="icon__fallback-text">Twitter</span>
                 </a>
@@ -154,8 +151,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Pinterest"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Pinterest">
                   <i className="icon icon-pinterest"></i>{" "}
                   <span className="icon__fallback-text">Pinterest</span>
                 </a>
@@ -165,8 +161,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Instagram"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Instagram">
                   <i className="icon icon-instagram"></i>{" "}
                   <span className="icon__fallback-text">Instagram</span>
                 </a>
@@ -176,8 +171,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Tumblr"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Tumblr">
                   <i className="icon icon-tumblr-alt"></i>{" "}
                   <span className="icon__fallback-text">Tumblr</span>
                 </a>
@@ -187,8 +181,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on YouTube"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on YouTube">
                   <i className="icon icon-youtube"></i>{" "}
                   <span className="icon__fallback-text">YouTube</span>
                 </a>
@@ -198,8 +191,7 @@ const About = () => {
                   className="social-icons__link"
                   href="#"
                   target="_blank"
-                  title="Belle Multipurpose Bootstrap 4 Template on Vimeo"
-                >
+                  title="Belle Multipurpose Bootstrap 4 Template on Vimeo">
                   <i className="icon icon-vimeo-alt"></i>{" "}
                   <span className="icon__fallback-text">Vimeo</span>
                 </a>
